@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\PresoneInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PresoneInfo.Designer.cs">
+      <DependentUpon>PresoneInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\PresoneInfo.resx">
+      <DependentUpon>PresoneInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +109,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-login-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-gender-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-address-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-country-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-phone-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-date-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-magnetic-card-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-email-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_boy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
