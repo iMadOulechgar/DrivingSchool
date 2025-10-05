@@ -8,21 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _DVLD_
+namespace _DVLD_.Controls
 {
-    public partial class LoginForm : Form
+    public partial class PersonInfo : UserControl
     {
-        public LoginForm()
+        public PersonInfo()
         {
             InitializeComponent();
         }
 
-        private Main_MDI_ Main = new Main_MDI_();
-
-        private void BTNLogin_Click(object sender, EventArgs e)
-        {
-            Main.Show();
-            this.Hide();
-        }
     }
 }

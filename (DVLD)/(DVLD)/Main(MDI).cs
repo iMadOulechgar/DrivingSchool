@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _DVLD_.PeopleMenu;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,19 +11,17 @@ using System.Windows.Forms;
 
 namespace _DVLD_
 {
-    public partial class LoginForm : Form
+    public partial class Main_MDI_ : Form
     {
-        public LoginForm()
+        public Main_MDI_()
         {
             InitializeComponent();
         }
 
-        private Main_MDI_ Main = new Main_MDI_();
-
-        private void BTNLogin_Click(object sender, EventArgs e)
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Main.Show();
-            this.Hide();
+            ManagePeople MP = new ManagePeople();
+            MP.ShowDialog();
         }
     }
 }

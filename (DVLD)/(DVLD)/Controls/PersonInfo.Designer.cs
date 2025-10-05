@@ -1,6 +1,6 @@
 ﻿namespace _DVLD_.Controls
 {
-    partial class PresoneInfo
+    partial class PersonInfo
     {
         /// <summary> 
         /// Required designer variable.

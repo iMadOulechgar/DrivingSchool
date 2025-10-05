@@ -33,6 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BusinessLayer">
+      <HintPath>..\BusinessLayer\bin\Debug\BusinessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Contacts BusinessLayer">
+      <HintPath>C:\Users\imadr\Documents\C# Projects\ConsoleAppUsingTierArchitecture\Contacts BusinessLayer\bin\Debug\Contacts BusinessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAccessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DataAccessLayer\bin\Debug\DataAccessLayer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,17 +56,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\PresoneInfo.cs">
+    <Compile Include="Controls\AddOrUpdatePeroneControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PresoneInfo.Designer.cs">
-      <DependentUpon>PresoneInfo.cs</DependentUpon>
+    <Compile Include="Controls\AddOrUpdatePeroneControle.Designer.cs">
+      <DependentUpon>AddOrUpdatePeroneControle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PersonInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PersonInfo.Designer.cs">
+      <DependentUpon>PersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main%28MDI%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main%28MDI%29.Designer.cs">
+      <DependentUpon>Main%28MDI%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleMenu\AddPersoneFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeopleMenu\AddPersoneFrm.Designer.cs">
+      <DependentUpon>AddPersoneFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleMenu\ManagePeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeopleMenu\ManagePeople.Designer.cs">
+      <DependentUpon>ManagePeople.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,11 +100,23 @@
     <Compile Include="Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\PresoneInfo.resx">
-      <DependentUpon>PresoneInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\AddOrUpdatePeroneControle.resx">
+      <DependentUpon>AddOrUpdatePeroneControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PersonInfo.resx">
+      <DependentUpon>PersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main%28MDI%29.resx">
+      <DependentUpon>Main%28MDI%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeopleMenu\AddPersoneFrm.resx">
+      <DependentUpon>AddPersoneFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeopleMenu\ManagePeople.resx">
+      <DependentUpon>ManagePeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +128,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +182,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_boy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-application-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-application-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-people-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-vanpool-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-groups-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-window-settings-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-people-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crowd-skin-type-4-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-user-male-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-worker-id-card-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

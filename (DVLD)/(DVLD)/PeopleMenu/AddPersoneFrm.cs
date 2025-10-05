@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _DVLD_.Controls
+namespace _DVLD_.PeopleMenu
 {
-    public partial class PresoneInfo : UserControl
+    public partial class AddPersoneFrm : Form
     {
-        public PresoneInfo()
+        public AddPersoneFrm()
         {
             InitializeComponent();
         }
-
     }
 }

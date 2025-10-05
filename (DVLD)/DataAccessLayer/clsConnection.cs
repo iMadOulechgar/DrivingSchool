@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    static class clsConnection
+    public static class clsConnection
     {
-        public static string Connection = "Server=.;Database=AutoEcole;Integrated Security=True;";
+        public static string ConnectionString = "Server=.;Database=AutoEcole;Integrated Security=True";
     }
 }
