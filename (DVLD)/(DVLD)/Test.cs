@@ -23,7 +23,7 @@ namespace _DVLD_
         {
                 clsBusinessPersone persone = new clsBusinessPersone();
 
-                clsBusinessPersone Per =  persone.FindPersoneByPerId(2);
+            clsBusinessPersone Per =  persone.FindPersoneByPerId(5);
 
                 label2.Text = Per.Firstname + " " + Per.LastName;
                 

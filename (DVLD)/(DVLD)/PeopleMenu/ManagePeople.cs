@@ -50,7 +50,10 @@ namespace _DVLD_.PeopleMenu
             _GetAllColumnsFromGrid();
         }
 
-
-
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+                UpdatePeople Update = new UpdatePeople((int)DGVmanagePeople.CurrentRow.Cells[0].Value);
+                Update.ShowDialog();
+        }
     }
 }

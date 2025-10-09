@@ -15,18 +15,19 @@ namespace DataAccessLayer
 {
      public static class clsPersone
     {
-        public static bool AddPersone(string NationalNum , string Firstname , string SecondName , string ThirdName,
+        public static int AddPersone(string NationalNum , string Firstname , string SecondName , string ThirdName,
             string LastName , DateTime DateOfBirth , int Gendor , string Address , string Phone,
             string Email , int CountryID , string ImgPath
             )
         {
-            int result = 0;
+            int Number = -1;
 
             SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
 
             string Query = @"INSERT INTO People(NationalNo,FirstName,SecondName,ThirdName,LastName,
                     DateOfBirth,Gendor,Address,Phone,Email,NationalityCountryID,ImagePath) VALUES 
-                    (@NationalNum,@Firstname,@SecondName,@ThirdName,@LastName,@DateOfBirth,@Gendor,@Address,@Phone,@Email,@CountryID,@ImgPath);";
+                    (@NationalNum,@Firstname,@SecondName,@ThirdName,@LastName,@DateOfBirth,@Gendor,@Address,@Phone,@Email,@CountryID,@ImgPath);
+                       SELECT SCOPE_IDENTITY();";
            
             SqlCommand cmd = new SqlCommand(Query,Connection);
 
@@ -47,7 +48,12 @@ namespace DataAccessLayer
             {
                 Connection.Open();
 
-                result = cmd.ExecuteNonQuery();
+                object result = cmd.ExecuteScalar();
+
+                if (int.TryParse(result.ToString(), out int Num))
+                {
+                    Number = Num;
+                }
 
             }
             catch (Exception ex)
@@ -59,7 +65,7 @@ namespace DataAccessLayer
                 Connection.Close();
             }
 
-            return (result > 0);
+            return Number;
         }
 
         public static bool DeletePersoneById(int Id)
@@ -94,10 +100,12 @@ namespace DataAccessLayer
         }
 
         public static bool FindPersoneById(int Id , ref string NationalNum, ref string Firstname, ref string SecondName, ref string ThirdName,
-            ref string LastName, ref DateTime DateOfBirth, ref int Gendor, ref string Address, ref string Phone,
-           ref string Email,ref int CountryID,ref string ImgPath)
+            ref string LastName, ref DateTime DateOfBirth, ref byte Gendor, ref string Address, ref string Phone,
+           ref string Email, ref int CountryID, ref string ImgPath)
         {
+            
             bool result = false;
+
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
             string Query = @"SELECT * FROM People WHERE PersoneID = @Id";
             SqlCommand cmd = new SqlCommand(Query,con);
@@ -116,6 +124,7 @@ namespace DataAccessLayer
 
                     NationalNum = (string)Reader["NationalNo"];
                     Firstname = (string)Reader["FirstName"];
+
                     if (Reader["SecondName"] != DBNull.Value)
                         SecondName = (string)Reader["SecondName"];
                     else
@@ -128,7 +137,7 @@ namespace DataAccessLayer
 
                     LastName = (string)Reader["LastName"];
                     DateOfBirth = (DateTime)Reader["DateOfBirth"];
-                    Gendor = (int)Reader["Gendor"];
+                    Gendor = (byte)Reader["Gendor"];
                     Address = (string)Reader["Address"];
                     Phone = (string)Reader["Phone"];
 
@@ -146,6 +155,7 @@ namespace DataAccessLayer
                 }
 
                 Reader.Close();
+
             }
             catch (Exception ex)
             {
@@ -160,13 +170,13 @@ namespace DataAccessLayer
         }
 
         public static bool UpdatePersone(int id, string national, string firstname, string secondname, string thirdname, string lastname, DateTime dateofbirth,
-            int gendor, string address , string phone , string email , int countryid , string imgpath)
+            byte gendor, string address , string phone , string email , int countryid , string imgpath)
         {
 
             bool result = false;
 
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"UPDATE People SET NationalNo = @national,FirstName = @firstname
+            string Query = @"UPDATE People SET NationalNo = @national,FirstName = @firstname,
                                                SecondName = @secondname , ThirdName = @thirdname ,
                             LastName = @lastname , DateOfBirth = @dateofbirth , Gendor = @gendor , Address = @address , 
                             Phone = @phone , Email = @email ,NationalityCountryID = @countryid , ImagePath = @imgpath WHERE PersoneID = @id";
@@ -279,7 +289,70 @@ namespace DataAccessLayer
             return Table;
         }
 
+        public static DataTable GetAllCountrysName()
+        {
+            DataTable TableCountry = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
+            string Query = @"SELECT * FROM Countries";
+            SqlCommand cmd = new SqlCommand(Query,Connection);
 
+            try
+            {
+                Connection.Open();
+
+                SqlDataReader Reader = cmd.ExecuteReader();
+
+                if (Reader.HasRows) 
+                {
+                    TableCountry.Load(Reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return TableCountry;
+        }
+
+        public static string GetCountryNameById(int id)
+        {
+            string Result = "";
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+            string Query = "SELECT * FROM Countries WHERE CountryID = @id";
+
+            SqlCommand cmd = new SqlCommand(Query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Result = (string)reader["CountryName"];
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception (ex.Message);
+            }
+            finally { connection.Close(); }
+
+            if (Result == "")
+                return "";
+            else
+                return Result;
+
+        }
 
     }
 }

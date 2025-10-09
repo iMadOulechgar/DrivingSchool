@@ -1,6 +1,6 @@
 ﻿namespace _DVLD_.PeopleMenu
 {
-    partial class AddPersoneFrm
+    partial class UpdatePeople
     {
         /// <summary>
         /// Required designer variable.
@@ -28,77 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.UpdateControle = new _DVLD_.Controls.AddOrUpdatePersoneControle();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.LBLadd = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.AddControle = new _DVLD_.Controls.AddOrUpdatePersoneControle();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // UpdateControle
+            // 
+            this.UpdateControle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.UpdateControle.Location = new System.Drawing.Point(15, 117);
+            this.UpdateControle.Name = "UpdateControle";
+            this.UpdateControle.Size = new System.Drawing.Size(874, 337);
+            this.UpdateControle.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(196, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "N/A";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "PersoneID : ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(358, 9);
+            this.label1.Location = new System.Drawing.Point(372, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add New Persone";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "PersoneID : ";
-            // 
-            // LBLadd
-            // 
-            this.LBLadd.AutoSize = true;
-            this.LBLadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLadd.Location = new System.Drawing.Point(197, 69);
-            this.LBLadd.Name = "LBLadd";
-            this.LBLadd.Size = new System.Drawing.Size(29, 15);
-            this.LBLadd.TabIndex = 1;
-            this.LBLadd.Text = "N/A";
+            this.label1.Size = new System.Drawing.Size(181, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Update Persone";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_DVLD_.Properties.Resources.icons8_worker_id_card_48;
-            this.pictureBox1.Location = new System.Drawing.Point(120, 66);
+            this.pictureBox1.Location = new System.Drawing.Point(119, 63);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(33, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // AddControle
-            // 
-            this.AddControle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.AddControle.Location = new System.Drawing.Point(12, 115);
-            this.AddControle.Name = "AddControle";
-            this.AddControle.Size = new System.Drawing.Size(874, 337);
-            this.AddControle.TabIndex = 3;
-            // 
-            // AddPersoneFrm
+            // UpdatePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 464);
-            this.Controls.Add(this.AddControle);
+            this.ClientSize = new System.Drawing.Size(908, 466);
+            this.Controls.Add(this.UpdateControle);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.LBLadd);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "AddPersoneFrm";
+            this.Name = "UpdatePeople";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddPersoneFrm";
+            this.Text = "UpdatePeople";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,11 +107,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label LBLadd;
+        private Controls.AddOrUpdatePersoneControle UpdateControle;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Controls.AddOrUpdatePersoneControle addOrUpdatePeroneControle1;
-        private Controls.AddOrUpdatePersoneControle AddControle;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -16,7 +16,7 @@ namespace _DVLD_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new Main_MDI_());
         }
     }
 }
