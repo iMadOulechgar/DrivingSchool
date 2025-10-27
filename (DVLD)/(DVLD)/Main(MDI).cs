@@ -1,12 +1,6 @@
 ﻿using _DVLD_.PeopleMenu;
+using _DVLD_.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _DVLD_
@@ -21,7 +15,19 @@ namespace _DVLD_
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManagePeople MP = new ManagePeople();
+
             MP.ShowDialog();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserManagment User = new UserManagment();
+            User.ShowDialog();
         }
     }
 }

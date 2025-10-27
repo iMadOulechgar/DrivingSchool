@@ -62,6 +62,12 @@
     <Compile Include="Controls\AddOrUpdatePersoneControle.Designer.cs">
       <DependentUpon>AddOrUpdatePersoneControle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FilterControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FilterControle.Designer.cs">
+      <DependentUpon>FilterControle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PersonInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,11 +98,11 @@
     <Compile Include="PeopleMenu\ManagePeople.Designer.cs">
       <DependentUpon>ManagePeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="PeopleMenu\UpdatePeople.cs">
+    <Compile Include="PeopleMenu\ShowDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PeopleMenu\UpdatePeople.Designer.cs">
-      <DependentUpon>UpdatePeople.cs</DependentUpon>
+    <Compile Include="PeopleMenu\ShowDetails.Designer.cs">
+      <DependentUpon>ShowDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,8 +112,23 @@
     <Compile Include="Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\FrmAddUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FrmAddUsers.Designer.cs">
+      <DependentUpon>FrmAddUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserManagment.Designer.cs">
+      <DependentUpon>UserManagment.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\AddOrUpdatePersoneControle.resx">
       <DependentUpon>AddOrUpdatePersoneControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FilterControle.resx">
+      <DependentUpon>FilterControle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PersonInfo.resx">
       <DependentUpon>PersonInfo.cs</DependentUpon>
@@ -124,8 +145,8 @@
     <EmbeddedResource Include="PeopleMenu\ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PeopleMenu\UpdatePeople.resx">
-      <DependentUpon>UpdatePeople.cs</DependentUpon>
+    <EmbeddedResource Include="PeopleMenu\ShowDetails.resx">
+      <DependentUpon>ShowDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,6 +160,12 @@
     </Compile>
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FrmAddUsers.resx">
+      <DependentUpon>FrmAddUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserManagment.resx">
+      <DependentUpon>UserManagment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -245,6 +272,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-send-email-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-employees-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-find-user-male-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-password-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-id-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-name-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sign-out-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_boy1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

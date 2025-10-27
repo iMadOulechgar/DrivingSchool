@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,6 +55,8 @@
             this.CBCountries = new System.Windows.Forms.ComboBox();
             this.RBMale = new System.Windows.Forms.RadioButton();
             this.RBFemale = new System.Windows.Forms.RadioButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -65,6 +68,7 @@
             this.PBPerson = new System.Windows.Forms.PictureBox();
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -177,6 +181,7 @@
             this.TBNationalNumber.Name = "TBNationalNumber";
             this.TBNationalNumber.Size = new System.Drawing.Size(147, 20);
             this.TBNationalNumber.TabIndex = 21;
+            this.TBNationalNumber.Validating += new System.ComponentModel.CancelEventHandler(this.TBNationalNumber_Validating);
             // 
             // TBEmail
             // 
@@ -184,6 +189,7 @@
             this.TBEmail.Name = "TBEmail";
             this.TBEmail.Size = new System.Drawing.Size(147, 20);
             this.TBEmail.TabIndex = 21;
+            this.TBEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TBEmail_Validating);
             // 
             // TBSecodnName
             // 
@@ -223,24 +229,26 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(738, 227);
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(725, 227);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(77, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(92, 20);
             this.linkLabel1.TabIndex = 23;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Set Image";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(738, 256);
+            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.Location = new System.Drawing.Point(736, 258);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(65, 16);
+            this.linkLabel2.Size = new System.Drawing.Size(70, 18);
             this.linkLabel2.TabIndex = 24;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Remove";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // label1
             // 
@@ -293,6 +301,7 @@
             // RBMale
             // 
             this.RBMale.AutoSize = true;
+            this.RBMale.Checked = true;
             this.RBMale.Location = new System.Drawing.Point(178, 129);
             this.RBMale.Name = "RBMale";
             this.RBMale.Size = new System.Drawing.Size(48, 17);
@@ -301,6 +310,7 @@
             this.RBMale.Tag = "1";
             this.RBMale.Text = "Male";
             this.RBMale.UseVisualStyleBackColor = true;
+            this.RBMale.CheckedChanged += new System.EventHandler(this.RBMale_CheckedChanged);
             // 
             // RBFemale
             // 
@@ -309,10 +319,18 @@
             this.RBFemale.Name = "RBFemale";
             this.RBFemale.Size = new System.Drawing.Size(59, 17);
             this.RBFemale.TabIndex = 29;
-            this.RBFemale.TabStop = true;
             this.RBFemale.Tag = "2";
             this.RBFemale.Text = "Female";
             this.RBFemale.UseVisualStyleBackColor = true;
+            this.RBFemale.CheckedChanged += new System.EventHandler(this.RBFemale_CheckedChanged);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // pictureBox6
             // 
@@ -397,7 +415,7 @@
             // PBPerson
             // 
             this.PBPerson.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PBPerson.Image = global::_DVLD_.Properties.Resources.person_boy;
+            this.PBPerson.Image = global::_DVLD_.Properties.Resources.person_boy1;
             this.PBPerson.Location = new System.Drawing.Point(695, 97);
             this.PBPerson.Name = "PBPerson";
             this.PBPerson.Size = new System.Drawing.Size(147, 127);
@@ -417,6 +435,7 @@
             this.BTNcancel.TabIndex = 1;
             this.BTNcancel.Text = "Cancel";
             this.BTNcancel.UseVisualStyleBackColor = false;
+            this.BTNcancel.Click += new System.EventHandler(this.BTNcancel_Click);
             // 
             // BTNsave
             // 
@@ -477,6 +496,7 @@
             this.Name = "AddOrUpdatePersoneControle";
             this.Size = new System.Drawing.Size(886, 337);
             this.Load += new System.EventHandler(this.AddOrUpdatePeroneControle_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -529,5 +549,7 @@
         private System.Windows.Forms.RadioButton RBMale;
         private System.Windows.Forms.RadioButton RBFemale;
         private System.Windows.Forms.Button BTNcancel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

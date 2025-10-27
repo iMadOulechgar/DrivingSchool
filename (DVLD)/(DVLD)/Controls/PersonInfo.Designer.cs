@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.LBLDateofbirth = new System.Windows.Forms.Label();
             this.LBLName = new System.Windows.Forms.Label();
             this.LBLAddress = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.LBLDateofbirth);
             this.groupBox1.Controls.Add(this.LBLName);
             this.groupBox1.Controls.Add(this.LBLAddress);
@@ -104,6 +106,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Persone Information";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(587, 29);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(108, 16);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Edit Persone Info";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // LBLDateofbirth
             // 
@@ -366,12 +379,12 @@
             this.PBPerson.TabIndex = 0;
             this.PBPerson.TabStop = false;
             // 
-            // PresoneInfo
+            // PersonInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Name = "PresoneInfo";
+            this.Name = "PersonInfo";
             this.Size = new System.Drawing.Size(747, 256);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -418,5 +431,6 @@
         private System.Windows.Forms.Label LBLDateofbirth;
         private System.Windows.Forms.Label LBLCountry;
         private System.Windows.Forms.Label LBLPhone;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
