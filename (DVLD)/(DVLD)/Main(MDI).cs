@@ -1,4 +1,6 @@
-﻿using _DVLD_.PeopleMenu;
+﻿using _DVLD_.About_Test;
+using _DVLD_.Application;
+using _DVLD_.PeopleMenu;
 using _DVLD_.Users;
 using System;
 using System.Windows.Forms;
@@ -28,6 +30,40 @@ namespace _DVLD_
         {
             UserManagment User = new UserManagment();
             User.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowUserDetails Details = new ShowUserDetails(clsGlobal.UserLogin.UserID,clsGlobal.UserLogin.PersonIdByRef);
+            Details.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordFrm Password = new ChangePasswordFrm(clsGlobal.UserLogin.UserID, clsGlobal.UserLogin.PersonIdByRef);
+            Password.ShowDialog();
+        }
+
+        private void drivingLicenceServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmManageApplicationTypes frm = new FrmManageApplicationTypes();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTestTypes Tests = new FrmTestTypes();
+            Tests.ShowDialog();
         }
     }
 }

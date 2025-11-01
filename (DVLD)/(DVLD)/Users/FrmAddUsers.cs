@@ -19,7 +19,27 @@ namespace _DVLD_.Users
             InitializeComponent();
         }
 
-        clsUserBusiness User = new clsUserBusiness();
+        public clsUserBusiness User  = new clsUserBusiness();
+        public event Action WhenTheUserGetAddedOrEdited; 
+
+        public FrmAddUsers(int UserID)
+        {
+            InitializeComponent();
+
+            clsUserBusiness User2 = new clsUserBusiness();
+            clsBusinessPersone Persone = new clsBusinessPersone();
+            User = User2.Find(UserID);
+
+            if (User != null)
+            {
+                FillAllDataToUi();
+                personInfo1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
+                filterControle1.fillfilter(personInfo1.Persone1.PersoneID);
+                filterControle1.Enabled = false;
+                BTNsave.Enabled = true;
+                button1.Visible = false;
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -56,14 +76,27 @@ namespace _DVLD_.Users
         {
             User.UserName = TBUsername.Text;
             User.Password = TBPassword.Text;
-            if (CBIsActive.Checked = true)
+            if (CBIsActive.Checked == true)
                 User.IsActive = 1;
             else
                 User.IsActive = 0;
         }
 
+        private void FillAllDataToUi()
+        {
+            LBLUserID.Text = User.UserID.ToString();
+            TBUsername.Text = User.UserName;
+            TBPassword.Text = User.Password;
+            TBConfirmPassword.Text = User.Password;
+            if (User.IsActive == 1)
+                CBIsActive.Checked = true;
+            else
+                CBIsActive.Checked = false;
+        }
+
         private void BTNcancel_Click(object sender, EventArgs e)
         {
+            WhenTheUserGetAddedOrEdited?.Invoke();
             this.Close();
         }
 
@@ -85,11 +118,11 @@ namespace _DVLD_.Users
                 if (User.Save())
                 {
                     LBLUserID.Text = User.UserID.ToString();
-                    MessageBox.Show("User Added Succesfly :) ", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("User Saved Succesfly :) ", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    MessageBox.Show("User Has Not Been Added :/ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid User :/ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

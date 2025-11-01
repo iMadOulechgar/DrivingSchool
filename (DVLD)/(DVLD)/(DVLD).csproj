@@ -56,6 +56,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About Test\FrmTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About Test\FrmTestTypes.Designer.cs">
+      <DependentUpon>FrmTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="About Test\FrmUpdateTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About Test\FrmUpdateTestTypes.Designer.cs">
+      <DependentUpon>FrmUpdateTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\FrmEditApplicationType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\FrmEditApplicationType.Designer.cs">
+      <DependentUpon>FrmEditApplicationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\FrmManageApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\FrmManageApplicationTypes.Designer.cs">
+      <DependentUpon>FrmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clsGlobal.cs" />
     <Compile Include="Controls\AddOrUpdatePersoneControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +92,12 @@
     </Compile>
     <Compile Include="Controls\FilterControle.Designer.cs">
       <DependentUpon>FilterControle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginUserInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LoginUserInfo.Designer.cs">
+      <DependentUpon>LoginUserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PersonInfo.cs">
       <SubType>UserControl</SubType>
@@ -112,11 +143,23 @@
     <Compile Include="Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\ChangePasswordFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\ChangePasswordFrm.Designer.cs">
+      <DependentUpon>ChangePasswordFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\FrmAddUsers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\FrmAddUsers.Designer.cs">
       <DependentUpon>FrmAddUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\ShowUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\ShowUserDetails.Designer.cs">
+      <DependentUpon>ShowUserDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\UserManagment.cs">
       <SubType>Form</SubType>
@@ -124,11 +167,26 @@
     <Compile Include="Users\UserManagment.Designer.cs">
       <DependentUpon>UserManagment.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="About Test\FrmTestTypes.resx">
+      <DependentUpon>FrmTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About Test\FrmUpdateTestTypes.resx">
+      <DependentUpon>FrmUpdateTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\FrmEditApplicationType.resx">
+      <DependentUpon>FrmEditApplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\FrmManageApplicationTypes.resx">
+      <DependentUpon>FrmManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\AddOrUpdatePersoneControle.resx">
       <DependentUpon>AddOrUpdatePersoneControle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FilterControle.resx">
       <DependentUpon>FilterControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LoginUserInfo.resx">
+      <DependentUpon>LoginUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PersonInfo.resx">
       <DependentUpon>PersonInfo.cs</DependentUpon>
@@ -161,8 +219,14 @@
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\ChangePasswordFrm.resx">
+      <DependentUpon>ChangePasswordFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\FrmAddUsers.resx">
       <DependentUpon>FrmAddUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ShowUserDetails.resx">
+      <DependentUpon>ShowUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UserManagment.resx">
       <DependentUpon>UserManagment.cs</DependentUpon>
@@ -296,6 +360,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_boy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-change-password-58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-title-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-laptop-settings-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fees-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-insurance-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-insurance-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-decentralized-application-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-insurance-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-test-results-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-title-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-laptop-settings-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-log-out-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-password-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-insurance-48 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-test-results-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-text-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-1001.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

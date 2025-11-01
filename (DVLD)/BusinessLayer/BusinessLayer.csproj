@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsBusinessApplicationType.cs" />
     <Compile Include="clsBusinessPersone.cs" />
+    <Compile Include="clsBusinessTestTypes.cs" />
     <Compile Include="clsUserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

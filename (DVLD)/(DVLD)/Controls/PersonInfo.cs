@@ -114,8 +114,11 @@ namespace _DVLD_.Controls
                 MessageBox.Show("The Persone Not Exists In The System", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
-        
 
+        private void PersonInfo_Load(object sender, EventArgs e)
+        {
+            if (Persone1 != null)
+                _FillControlsWithData(Persone1.PersoneID);
+        }
     }
 }

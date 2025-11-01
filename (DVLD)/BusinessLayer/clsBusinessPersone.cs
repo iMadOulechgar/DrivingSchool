@@ -167,7 +167,6 @@ namespace BusinessLayer
             return clsPersone.GetCountOfRowsInPeople();
         }
 
-
         public bool IsExists(string name)
         {
             return clsPersone.Exists(name);

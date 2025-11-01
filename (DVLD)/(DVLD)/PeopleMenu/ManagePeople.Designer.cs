@@ -128,9 +128,9 @@
             this.DGVmanagePeople.ContextMenuStrip = this.contextMenuStrip1;
             this.DGVmanagePeople.Location = new System.Drawing.Point(25, 228);
             this.DGVmanagePeople.Name = "DGVmanagePeople";
-            this.DGVmanagePeople.ReadOnly = true;
             this.DGVmanagePeople.Size = new System.Drawing.Size(1131, 248);
             this.DGVmanagePeople.TabIndex = 4;
+            this.DGVmanagePeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVmanagePeople_CellContentClick);
             // 
             // PerId
             // 

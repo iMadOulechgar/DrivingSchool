@@ -157,5 +157,10 @@ namespace _DVLD_.PeopleMenu
                     e.Handled = true;
             }
         }
+
+        private void DGVmanagePeople_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -88,10 +88,12 @@ namespace _DVLD_.Controls
                 MessageBox.Show("Fill What You Wanna Search For", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void FilterControle_Load(object sender, EventArgs e)
+        public void fillfilter(int Id)
         {
             comboBox1.SelectedIndex = 0;
+            textBox1.Text = Id.ToString();
         }
+
 
     }
 }

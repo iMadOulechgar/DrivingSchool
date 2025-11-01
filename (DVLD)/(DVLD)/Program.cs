@@ -1,8 +1,8 @@
-﻿using System;
+﻿using _DVLD_;
+using System;
 using System.Windows.Forms;
 
-namespace _DVLD_
-{
+
     internal static class Program
     {
         /// <summary>
@@ -13,7 +13,6 @@ namespace _DVLD_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main_MDI_());
+            Application.Run(new LoginForm());
         }
     }
-}

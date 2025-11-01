@@ -145,7 +145,7 @@ namespace _DVLD_.Controls
                 }
             }
 
-            return FinalResult;
+            return (FinalResult == 0) ? 1 : FinalResult ;
         }
 
         bool CheckInputs()
