@@ -98,7 +98,7 @@ namespace DataAccessLayer
             bool result = false;
 
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"SELECT * FROM People WHERE PersoneID = @Id";
+            string Query = @"SELECT * FROM People WHERE PersonID = @Id";
             SqlCommand cmd = new SqlCommand(Query, con);
 
             cmd.Parameters.AddWithValue("@Id", Id);
@@ -170,7 +170,7 @@ namespace DataAccessLayer
             string Query = @"UPDATE People SET NationalNo = @national,FirstName = @firstname,
                                                SecondName = @secondname , ThirdName = @thirdname ,
                             LastName = @lastname , DateOfBirth = @dateofbirth , Gendor = @gendor , Address = @address , 
-                            Phone = @phone , Email = @email ,NationalityCountryID = @countryid , ImagePath = @imgpath WHERE PersoneID = @id";
+                            Phone = @phone , Email = @email ,NationalityCountryID = @countryid , ImagePath = @imgpath WHERE PersonID = @id";
 
             SqlCommand cmd = new SqlCommand(Query, connection);
 
@@ -218,7 +218,7 @@ namespace DataAccessLayer
             bool result = false;
 
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"SELECT * FROM People WHERE PersoneID = @Id";
+            string Query = @"SELECT * FROM People WHERE PersonID = @Id";
             SqlCommand cmd = new SqlCommand(Query, con);
 
             cmd.Parameters.AddWithValue("@Id", id);
@@ -464,7 +464,7 @@ namespace DataAccessLayer
                 {
                     result = true;
 
-                    Id = (int)Reader["PersoneID"];
+                    Id = (int)Reader["PersonID"];
                     NationalNum = (string)Reader["NationalNo"];
                     Firstname = (string)Reader["FirstName"];
 
@@ -510,6 +510,39 @@ namespace DataAccessLayer
             }
 
             return result;
+        }
+
+        public static string getPersoneFullNameByID(int ID)
+        {
+            string FullName = "";
+
+            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
+            string Query = @"SELECT firstname+' '+isnull(secondname,'')+' '+isnull(thirdname,'')+' '+lastname FROM People WHERE People.PersonID =@ID ";
+
+            SqlCommand cmd = new SqlCommand(Query,con);
+
+            cmd.Parameters.AddWithValue("@ID",ID);
+
+            try
+            {
+                con.Open();
+
+                object Obj = cmd.ExecuteScalar();
+
+                FullName = Obj.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+
+            return FullName;
         }
 
     }

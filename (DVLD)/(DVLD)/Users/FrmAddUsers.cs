@@ -33,9 +33,9 @@ namespace _DVLD_.Users
             if (User != null)
             {
                 FillAllDataToUi();
-                personInfo1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
-                filterControle1.fillfilter(personInfo1.Persone1.PersoneID);
-                filterControle1.Enabled = false;
+                personeFilterAndAdd1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
+                personeFilterAndAdd1.fillfilter(personeFilterAndAdd1.Persone1.PersoneID);
+                personeFilterAndAdd1.Enabled = false;
                 BTNsave.Enabled = true;
                 button1.Visible = false;
             }
@@ -43,9 +43,9 @@ namespace _DVLD_.Users
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!User.IsExists(personInfo1.Persone1.PersoneID))
+            if (!User.IsExists(personeFilterAndAdd1.Persone1.PersoneID))
             {
-                User.PersonIdByRef = personInfo1.Persone1.PersoneID;
+                User.PersonIdByRef = personeFilterAndAdd1.Persone1.PersoneID;
                 Tab.SelectedIndex = 1;
                 BTNsave.Enabled = true;
             }
@@ -58,9 +58,6 @@ namespace _DVLD_.Users
 
         private void FrmAddUsers_Load(object sender, EventArgs e)
         {
-            filterControle1.FillDataByDelegateSearchSTR += personInfo1._FillControlsWithData;
-            filterControle1.GetFunFromInfoPer += personInfo1._FillControlsWithData;
-            filterControle1.FillDataByDelegateSearchINT += personInfo1._FillControlsWithData;
         }
 
         private bool ValidatingTools()

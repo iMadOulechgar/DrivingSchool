@@ -47,7 +47,7 @@ namespace _DVLD_.PeopleMenu
             {
                 int Counter = DGVmanagePeople.Rows.Add();
 
-                DGVmanagePeople.Rows[Counter].Cells[0].Value = Row["PersoneID"];
+                DGVmanagePeople.Rows[Counter].Cells[0].Value = Row["PersonID"];
                 DGVmanagePeople.Rows[Counter].Cells[1].Value = Row["NationalNo"];
                 DGVmanagePeople.Rows[Counter].Cells[2].Value = Row["FirstName"];
                 DGVmanagePeople.Rows[Counter].Cells[3].Value = Row["SecondName"];

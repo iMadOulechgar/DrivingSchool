@@ -32,9 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Tab = new System.Windows.Forms.TabControl();
             this.Tab1 = new System.Windows.Forms.TabPage();
-            this.personInfo1 = new _DVLD_.Controls.PersonInfo();
             this.button1 = new System.Windows.Forms.Button();
-            this.filterControle1 = new _DVLD_.Controls.FilterControle();
             this.Tab2 = new System.Windows.Forms.TabPage();
             this.CBIsActive = new System.Windows.Forms.CheckBox();
             this.TBConfirmPassword = new System.Windows.Forms.TextBox();
@@ -52,6 +50,7 @@
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.personeFilterAndAdd1 = new _DVLD_.Controls.PersoneFilterAndAdd();
             this.Tab.SuspendLayout();
             this.Tab1.SuspendLayout();
             this.Tab2.SuspendLayout();
@@ -85,9 +84,8 @@
             // 
             // Tab1
             // 
-            this.Tab1.Controls.Add(this.personInfo1);
+            this.Tab1.Controls.Add(this.personeFilterAndAdd1);
             this.Tab1.Controls.Add(this.button1);
-            this.Tab1.Controls.Add(this.filterControle1);
             this.Tab1.Location = new System.Drawing.Point(4, 22);
             this.Tab1.Name = "Tab1";
             this.Tab1.Padding = new System.Windows.Forms.Padding(3);
@@ -95,13 +93,6 @@
             this.Tab1.TabIndex = 0;
             this.Tab1.Text = "Persone Info";
             this.Tab1.UseVisualStyleBackColor = true;
-            // 
-            // personInfo1
-            // 
-            this.personInfo1.Location = new System.Drawing.Point(15, 113);
-            this.personInfo1.Name = "personInfo1";
-            this.personInfo1.Size = new System.Drawing.Size(747, 256);
-            this.personInfo1.TabIndex = 4;
             // 
             // button1
             // 
@@ -116,13 +107,6 @@
             this.button1.Text = "Next";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // filterControle1
-            // 
-            this.filterControle1.Location = new System.Drawing.Point(15, 6);
-            this.filterControle1.Name = "filterControle1";
-            this.filterControle1.Size = new System.Drawing.Size(747, 92);
-            this.filterControle1.TabIndex = 0;
             // 
             // Tab2
             // 
@@ -303,6 +287,13 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // personeFilterAndAdd1
+            // 
+            this.personeFilterAndAdd1.Location = new System.Drawing.Point(9, 18);
+            this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
+            this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
+            this.personeFilterAndAdd1.TabIndex = 6;
+            // 
             // FrmAddUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,7 +328,6 @@
         private System.Windows.Forms.TabControl Tab;
         private System.Windows.Forms.TabPage Tab1;
         private System.Windows.Forms.TabPage Tab2;
-        private Controls.FilterControle filterControle1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -355,6 +345,6 @@
         private System.Windows.Forms.Button BTNsave;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Controls.PersonInfo personInfo1;
+        private Controls.PersoneFilterAndAdd personeFilterAndAdd1;
     }
 }

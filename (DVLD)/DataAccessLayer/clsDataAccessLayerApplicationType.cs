@@ -108,7 +108,101 @@ namespace DataAccessLayer
             return result;
         }
 
+        public static string GetTypeNameByID(int id)
+        {
+            string Type = "";
 
+            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
+            string Query = "SELECT TestTypeTitle FROM TestTypes WHERE TestTypeID = @id ";
+
+            SqlCommand cmd = new SqlCommand(Query, con);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                con.Open();
+
+                object Obj = cmd.ExecuteScalar();
+
+                Type = Obj.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return Type;
+        }
+
+        public static string GetApplicationTypesByAppID(int id)
+        {
+            string Type = "";
+
+            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
+            string Query = "SELECT ApplicationTypeTitle FROM ApplicationTypes WHERE ApplicationTypeID = @id ";
+
+            SqlCommand cmd = new SqlCommand(Query, con);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                con.Open();
+
+                object Obj = cmd.ExecuteScalar();
+
+                Type = Obj.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return Type;
+        }
+
+        public static decimal GetFeesByTypeID(int TypeId)
+        {
+            decimal Type = 0;
+
+            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
+            string Query = "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @id ";
+
+            SqlCommand cmd = new SqlCommand(Query, con);
+
+            cmd.Parameters.AddWithValue("@id", TypeId);
+
+            try
+            {
+                con.Open();
+
+                object Obj = cmd.ExecuteScalar();
+
+                Type = Convert.ToDecimal(Obj);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return Type;
+        }
 
     }
 }

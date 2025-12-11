@@ -1,6 +1,7 @@
 ﻿using _DVLD_.Applications;
-using DataAccessLayer;
+using BusinessLayer;
 using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,9 @@ namespace _DVLD_.Application
 
         void SetDataInDGV()
         {
-            Data = clsDataAccessLayerApplicationType.GetAllApplicationTypes();
+            clsBusinessApplicationType App = new clsBusinessApplicationType();
+
+            Data = App.GetAllManageApp();
 
             dataGridView1.Rows.Clear();
 

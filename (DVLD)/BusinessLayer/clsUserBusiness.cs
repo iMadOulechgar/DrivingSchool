@@ -90,13 +90,13 @@ namespace BusinessLayer
 
         public clsUserBusiness Find(int Userid)
         {
-            int Personeid = -1;
+            int Personid = -1;
             string Username = "", password = "";
             bool isactive = false;
 
-            if (clsUsers.FindUserByUserID(ref Userid, ref Personeid, ref Username, ref password, ref isactive))
+            if (clsUsers.FindUserByUserID(ref Userid, ref Personid, ref Username, ref password, ref isactive))
             {
-                return new clsUserBusiness(Userid, Personeid, Username, password, isactive);
+                return new clsUserBusiness(Userid, Personid, Username, password, isactive);
             }
 
             return null;

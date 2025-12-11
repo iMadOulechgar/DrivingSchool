@@ -62,7 +62,20 @@ namespace BusinessLayer
             return false;   
         }
 
+        public DataTable GetAllManageApp()
+        {
+            return clsDataAccessLayerApplicationType.GetAllApplicationTypes();
+        }
 
+        public decimal GetFeesByAppTypeID(int TypeID)
+        {
+            return clsDataAccessLayerApplicationType.GetFeesByTypeID(TypeID);
+        }
+
+        public string GetAppTypesNameByAppID(int AppID)
+        {
+            return clsDataAccessLayerApplicationType.GetApplicationTypesByAppID(AppID);
+        }
 
     }
 }

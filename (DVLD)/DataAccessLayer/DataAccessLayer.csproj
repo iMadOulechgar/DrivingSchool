@@ -42,8 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
+    <Compile Include="clsDataAccessLayerApplication.cs" />
     <Compile Include="clsDataAccessLayerApplicationType.cs" />
-    <Compile Include="clsDataAccessLayerTestTypes.cs" />
+    <Compile Include="clsDataAccessLayerDetained.cs" />
+    <Compile Include="clsDataAccessLayerDrivers.cs" />
+    <Compile Include="clsDataAccessLayerInternationalLicences.cs" />
+    <Compile Include="clsDataAccessLayerLicences.cs" />
+    <Compile Include="clsDataAccessLayerTestAppointmentAndTest.cs" />
+    <Compile Include="clsDataAccessLayerTypeTests.cs" />
     <Compile Include="clsPersone.cs" />
     <Compile Include="clsUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

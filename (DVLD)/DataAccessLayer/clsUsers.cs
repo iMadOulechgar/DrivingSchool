@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.SymbolStore;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +18,7 @@ namespace DataAccessLayer
         {
             int result = -1;
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"INSERT INTO Users (personeid,Username,password,isActive)VALUES
+            string Query = @"INSERT INTO Users (personid,Username,Password,isActive)VALUES
                            (@personeid,@username,@password,@isActive); SELECT SCOPE_IDENTITY();";
 
             SqlCommand cmd = new SqlCommand(Query, con);
@@ -53,8 +55,8 @@ namespace DataAccessLayer
             DataTable Dt = new DataTable();
 
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"SELECT Users.UserID,Users.PersoneID,FirstName+' '+SecondName+' '+ThirdName+' '+LastName AS Fullname , Username , isActive from Users INNER JOIN 
-                                         People ON People.PersoneID = Users.PersoneID;";
+            string Query = @"SELECT Users.UserID,Users.PersonID,FirstName+' '+SecondName+' '+ThirdName+' '+LastName AS Fullname , UserName , IsActive from Users INNER JOIN 
+                                         People ON People.PersonID = Users.PersonID;";
             SqlCommand cmd = new SqlCommand(Query, con);
 
             try
@@ -88,7 +90,7 @@ namespace DataAccessLayer
             bool Result = false;
 
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = "SELECT * FROM Users WHERE PersoneID = @PersoneID";
+            string Query = "SELECT * FROM Users WHERE PersonID = @PersoneID";
             SqlCommand cmd = new SqlCommand(Query,con);
 
             cmd.Parameters.AddWithValue("@PersoneID",Per);
@@ -179,7 +181,7 @@ namespace DataAccessLayer
                 {
                     result = true;
 
-                    personeid = (int)Reader["PersoneID"];
+                    personeid = (int)Reader["PersonID"];
                     username = (string)Reader["UserName"];
                     password = (string)Reader["Password"];
                     isActive = (bool)Reader["isActive"];
@@ -218,7 +220,7 @@ namespace DataAccessLayer
                     result = true;
 
                     usersid = (int)Reader["UserID"];
-                    personeid = (int)Reader["PersoneID"];
+                    personeid = (int)Reader["PersonID"];
                     username = (string)Reader["UserName"];
                     password = (string)Reader["Password"];
                     isActive = (bool)Reader["isActive"];
@@ -341,6 +343,40 @@ namespace DataAccessLayer
 
             return result;
         }
+
+        public static string GetUserNameByID(int id)
+        {
+            string Username = "";
+
+            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
+            string Query = "SELECT UserName FROM Users WHERE UserID = @id ";
+
+            SqlCommand cmd = new SqlCommand(Query,con);
+
+            cmd.Parameters.AddWithValue("@id",id);
+
+            try
+            {
+                con.Open();
+
+                object Obj = cmd.ExecuteScalar();
+
+                Username = Obj.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return Username;
+        } 
+
+
 
     }
 }

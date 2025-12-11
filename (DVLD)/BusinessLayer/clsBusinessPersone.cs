@@ -182,5 +182,10 @@ namespace BusinessLayer
             return clsPersone.GetCountryIdByName(Name);
         }
 
+        public string GetFullName()
+        {
+            return Firstname + " " + SecondName + " " + ThirdName + " " + LastName;
+        }
+
     }
 }

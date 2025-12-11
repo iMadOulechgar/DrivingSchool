@@ -19,6 +19,13 @@ namespace _DVLD_.PeopleMenu
             personInfo1._FillControlsWithData(PerID);
         }
 
+        public ShowDetails(string No)
+        {
+            InitializeComponent();
+            personInfo1._FillControlsWithData(No);
+        }
+
+
         private void BTNcancel_Click(object sender, EventArgs e)
         {
             this.Close();

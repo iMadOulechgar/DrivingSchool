@@ -18,14 +18,14 @@ namespace _DVLD_
         void SaveDataONFile()
         {
             string Path = @"D:\DrivingSchool\(DVLD)\(DVLD)\Users\RememberMe.txt";
-            string Text = TBLoginUsername.Text + @"\" + TBLoginPassword.Text;
+            string Text = TBLoginUsername.Text.Trim() + @"\" + TBLoginPassword.Text.Trim();
 
             if (File.Exists(Path))
             {
                 string Read = File.ReadAllText(Path);
                 int GetIndexOf = Read.IndexOf(@"\");
-                TBLoginUsername.Text = Read.Substring(0, GetIndexOf);
-                string Pass = Read.Remove(0,GetIndexOf + 1);
+                TBLoginUsername.Text = Read.Substring(0, GetIndexOf).Trim();
+                string Pass = Read.Remove(0, GetIndexOf + 1).Trim();
                 TBLoginPassword.Text = Pass;
             } 
 
@@ -33,10 +33,10 @@ namespace _DVLD_
             {
               if (!File.Exists(Path))
               {
-                  File.AppendAllText(Path, TBLoginUsername.Text + @"\" + TBLoginPassword.Text + "\n");
+                  File.AppendAllText(Path,TBLoginUsername.Text+@"\"+TBLoginPassword.Text+"\n".Trim());
               }
             }
-            else
+            else if(checkBox1.Checked == false)
             {
                 File.Delete(Path);
             }

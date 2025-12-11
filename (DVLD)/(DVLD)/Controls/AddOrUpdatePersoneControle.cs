@@ -3,6 +3,7 @@ using BusinessLayer;
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Windows.Forms;
 
@@ -109,14 +110,18 @@ namespace _DVLD_.Controls
 
         }
 
-        void DeletePictureFromFolder(string Source , string OldPath , string NewPath)
+        void DeletePictureFromFolder(string Source, string OldPath, string NewPath)
         {
             string DestinationPath = Path.Combine(Source, Path.GetFileName(OldPath));
-            if(DestinationPath != NewPath)
+            if (DestinationPath != @"D:\DrivingSchool\(DVLD)\PeoplePicture\person_boy.png")
             {
-                File.Delete(DestinationPath);
+                if (DestinationPath != NewPath)
+                {
+                    File.Delete(DestinationPath);
+                }
             }
-        }
+        }       
+            
 
         bool EmailValidating(string Text)
         {

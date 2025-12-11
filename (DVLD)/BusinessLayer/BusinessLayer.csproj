@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BusinessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BusinessLayer.dll</HintPath>
+    </Reference>
     <Reference Include="DataAccessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DataAccessLayer\bin\Debug\DataAccessLayer.dll</HintPath>
@@ -45,9 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsApplicationBusinessLayer.cs" />
     <Compile Include="clsBusinessApplicationType.cs" />
+    <Compile Include="clsBusinessLayerDrivers.cs" />
+    <Compile Include="clsBusinessLayerInternationalLicence.cs" />
+    <Compile Include="clsBusinessLayerLicences.cs" />
     <Compile Include="clsBusinessPersone.cs" />
-    <Compile Include="clsBusinessTestTypes.cs" />
+    <Compile Include="clsBusinessTest.cs" />
+    <Compile Include="clsBussinessLayerDetainedLicense.cs" />
+    <Compile Include="clsBussinessLayerTestAndAppointment.cs" />
     <Compile Include="clsUserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

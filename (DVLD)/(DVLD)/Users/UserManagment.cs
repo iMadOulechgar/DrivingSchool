@@ -35,8 +35,8 @@ namespace _DVLD_.Users
                 int count = dataGridView1.Rows.Add();
 
                 dataGridView1.Rows[count].Cells[0].Value = Row["UserID"];
-                dataGridView1.Rows[count].Cells[1].Value = Row["PersoneID"];
-                dataGridView1.Rows[count].Cells[2].Value = Row["FullName"];
+                dataGridView1.Rows[count].Cells[1].Value = Row["PersonID"];
+                dataGridView1.Rows[count].Cells[2].Value = Row["Fullname"];
                 dataGridView1.Rows[count].Cells[3].Value = Row["UserName"];
                 dataGridView1.Rows[count].Cells[4].Value = Row["IsActive"];
             }
