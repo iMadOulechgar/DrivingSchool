@@ -16,13 +16,13 @@ namespace _DVLD_.PeopleMenu
         public ShowDetails(int PerID)
         {
             InitializeComponent();
-            personInfo1._FillControlsWithData(PerID);
+            personInfo1.LoadPersonInfo(PerID);
         }
 
         public ShowDetails(string No)
         {
             InitializeComponent();
-            personInfo1._FillControlsWithData(No);
+            personInfo1.LoadPersonInfo(No);
         }
 
 

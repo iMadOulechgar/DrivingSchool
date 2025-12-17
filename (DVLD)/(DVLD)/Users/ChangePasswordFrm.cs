@@ -24,7 +24,6 @@ namespace _DVLD_.Users
 
             UserBus = User.Find(UserID);
             loginUserInfo1.User1 = UserBus;
-            personInfo1.Persone1 = PersoneBus.FindPersoneByPerId(PersoneID);
         }
 
         private void BTNcancel_Click(object sender, EventArgs e)

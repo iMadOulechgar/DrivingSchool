@@ -21,7 +21,7 @@ namespace _DVLD_.Licences
             clsBusinessLayerLicences Lic = new clsBusinessLayerLicences();
 
             driverLicenceInfo1.Application = App.GetDataByLocalID(localID);
-            driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
             driverLicenceInfo1.Licence = Lic.FindByAppID(driverLicenceInfo1.Application.App.ApplicationId);
         }
 
@@ -38,7 +38,7 @@ namespace _DVLD_.Licences
 
             driverLicenceInfo1.Licence = Lic.FindByLicenceID(LicenceID);
             driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-            driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
         }
 
         private void BTNcancel_Click(object sender, EventArgs e)

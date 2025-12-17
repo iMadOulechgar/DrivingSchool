@@ -67,10 +67,10 @@ namespace _DVLD_.Controls
             {
                 driverLicenceInfo1.Licence = Licences.FindByLicenceID(int.Parse(textBox1.Text));
                 driverLicenceInfo1.Application = Application.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-                driverLicenceInfo1.Person = persone.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+                //driverLicenceInfo1.Person = persone.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
                 driverLicenceInfo1._FillDataInControle();
                 
-                GetIds?.Invoke(driverLicenceInfo1.Application.App.ApplicationId, driverLicenceInfo1.Person.PersoneID, driverLicenceInfo1.Licence.DriverID, driverLicenceInfo1.Licence.LicenceClassID);
+                GetIds?.Invoke(driverLicenceInfo1.Application.App.ApplicationId, driverLicenceInfo1.Person.PersonID, driverLicenceInfo1.Licence.DriverID, driverLicenceInfo1.Licence.LicenceClassID);
                 
                 if (CheckIsExpired(driverLicenceInfo1.Licence.LicenceID))
                 {

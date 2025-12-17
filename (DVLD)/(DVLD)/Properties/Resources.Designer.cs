@@ -1203,6 +1203,16 @@ namespace _DVLD_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap person_girl {
+            get {
+                object obj = ResourceManager.GetObject("person_girl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SplashLogo {
             get {
                 object obj = ResourceManager.GetObject("SplashLogo", resourceCulture);

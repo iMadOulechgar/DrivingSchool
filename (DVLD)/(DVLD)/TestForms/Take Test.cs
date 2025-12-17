@@ -26,7 +26,7 @@ namespace _DVLD_.TestForms
             checkTest(num);
 
             clTakeTest2.ApplicationLocal = App.GetDataByLocalID(LocalID);
-            clTakeTest2.Per = Persone.FindPersoneByPerId(clTakeTest2.ApplicationLocal.App.AppPersoneId);
+            //clTakeTest2.Per = Persone.FindPersoneByPerId(clTakeTest2.ApplicationLocal.App.AppPersoneId);
             clTakeTest2._FillControleWithData(Trial,TestTypeID);
         }
 

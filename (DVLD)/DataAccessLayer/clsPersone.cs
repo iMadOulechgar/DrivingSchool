@@ -284,7 +284,20 @@ namespace DataAccessLayer
             DataTable Table = new DataTable();
 
             SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = "SELECT * FROM People";
+            string Query = @"SELECT People.PersonID, People.NationalNo,
+              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+			  People.DateOfBirth, People.Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption ,
+			  People.Address, People.Phone, People.Email, 
+              People.NationalityCountryID, Countries.CountryName, People.ImagePath
+              FROM            People INNER JOIN
+                         Countries ON People.NationalityCountryID = Countries.CountryID
+                ORDER BY People.FirstName";
 
             SqlCommand cmd = new SqlCommand(Query, Connection);
 
@@ -311,134 +324,6 @@ namespace DataAccessLayer
             }
 
             return Table;
-        }
-
-        public static DataTable GetAllCountrysName()
-        {
-            DataTable TableCountry = new DataTable();
-            SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"SELECT * FROM Countries";
-            SqlCommand cmd = new SqlCommand(Query, Connection);
-
-            try
-            {
-                Connection.Open();
-
-                SqlDataReader Reader = cmd.ExecuteReader();
-
-                if (Reader.HasRows)
-                {
-                    TableCountry.Load(Reader);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                Connection.Close();
-            }
-
-            return TableCountry;
-        }
-
-        public static string GetCountryNameById(int id)
-        {
-            string Result = "";
-            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = "SELECT * FROM Countries WHERE CountryID = @id";
-
-            SqlCommand cmd = new SqlCommand(Query, connection);
-
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
-            {
-                connection.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    Result = (string)reader["CountryName"];
-                }
-
-                reader.Close();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally { connection.Close(); }
-
-            if (Result == "")
-                return "";
-            else
-                return Result;
-
-        }
-
-        public static int GetCountryIdByName(string Name)
-        {
-            int Result = 0;
-            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = "SELECT CountryID FROM Countries WHERE CountryName = @Name";
-
-            SqlCommand cmd = new SqlCommand(Query, connection);
-
-            try
-            {
-                connection.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    Result = (int)reader["CountryID"];
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally 
-            { 
-                connection.Close(); 
-            }
-
-            return Result;
-        }
-
-        public static int GetCountOfRowsInPeople()
-        {
-            int Count = 0;
-
-            SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = "SELECT COUNT(*) FROM People";
-
-            SqlCommand cmd = new SqlCommand(Query, Connection);
-
-            try
-            {
-                Connection.Open();
-
-                Count = cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                Connection.Close();
-            }
-
-            return Count;
         }
 
         public static bool FindPersoneByNational(ref int Id, ref string NationalNum, ref string Firstname, ref string SecondName, ref string ThirdName,
@@ -510,39 +395,6 @@ namespace DataAccessLayer
             }
 
             return result;
-        }
-
-        public static string getPersoneFullNameByID(int ID)
-        {
-            string FullName = "";
-
-            SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"SELECT firstname+' '+isnull(secondname,'')+' '+isnull(thirdname,'')+' '+lastname FROM People WHERE People.PersonID =@ID ";
-
-            SqlCommand cmd = new SqlCommand(Query,con);
-
-            cmd.Parameters.AddWithValue("@ID",ID);
-
-            try
-            {
-                con.Open();
-
-                object Obj = cmd.ExecuteScalar();
-
-                FullName = Obj.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-
-
-
-            return FullName;
         }
 
     }

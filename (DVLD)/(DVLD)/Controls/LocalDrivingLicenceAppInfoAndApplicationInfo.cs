@@ -45,7 +45,7 @@ namespace _DVLD_.Controls
             LBLStatus.Text = StatusUi(Application.App.AppStatus);
             LBLFees.Text = Application.App.PaidFees.ToString();
             LBLType.Text = clsDataAccessLayerApplication.GetAppType(Application.App.AppType);
-            LBLApp.Text = clsPersone.getPersoneFullNameByID(Application.App.AppPersoneId);
+            //LBLApp.Text = clsPersone.getPersoneFullNameByID(Application.App.AppPersoneId);
             LBLDate.Text = Application.App.AppDate.ToString();
             LBLDateStatus.Text = Application.App.LastStatusDate.ToString();
             LBLCreatedBy.Text = clsUsers.GetUserNameByID(Application.App.CreatedByUserID);

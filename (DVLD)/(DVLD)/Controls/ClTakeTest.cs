@@ -48,7 +48,7 @@ namespace _DVLD_.AllAboutTest
             LBLClass.Text = ApplicationLocal.GetClassName(ApplicationLocal.LocalApp.LicenceClasses).ToString();
             LBLFees.Text = Convert.ToInt32(App.GetPaidFees(TestTypeID)).ToString();
             LBLTrial.Text = TrialNum.ToString();
-            LBLName.Text = Per.Firstname + " " + Per.SecondName + " " + Per.ThirdName + " " + Per.LastName;
+            LBLName.Text = Per.FullName;
         }
 
 

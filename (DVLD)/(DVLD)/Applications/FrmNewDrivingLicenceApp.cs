@@ -29,7 +29,7 @@ namespace _DVLD_.Applications
             Applications.App.AppStatus = 1;
             Applications.App.AppType = 1;
             Applications.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
-            Applications.App.AppPersoneId = personeFilterAndAdd1.Persone1.PersoneID;
+            Applications.App.AppPersoneId = personeFilterAndAdd1.Persone1.PersonID;
             Applications.App.LastStatusDate = DateTime.Now;
             Applications.App.PaidFees = Convert.ToDecimal(LBLFees.Text);
             Applications.LocalApp.LicenceClasses = LicenceID;
@@ -74,7 +74,7 @@ namespace _DVLD_.Applications
                 
                IdClass += CBLicenceClasses.SelectedIndex;
 
-            if (!Applications.Exists(personeFilterAndAdd1.Persone1.PersoneID, IdClass)) 
+            if (!Applications.Exists(personeFilterAndAdd1.Persone1.PersonID, IdClass)) 
             {
                 _FillDataFromUiToDb();
 

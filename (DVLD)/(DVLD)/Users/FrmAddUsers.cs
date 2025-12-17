@@ -33,8 +33,8 @@ namespace _DVLD_.Users
             if (User != null)
             {
                 FillAllDataToUi();
-                personeFilterAndAdd1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
-                personeFilterAndAdd1.fillfilter(personeFilterAndAdd1.Persone1.PersoneID);
+                //personeFilterAndAdd1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
+                personeFilterAndAdd1.fillfilter(personeFilterAndAdd1.Persone1.PersonID);
                 personeFilterAndAdd1.Enabled = false;
                 BTNsave.Enabled = true;
                 button1.Visible = false;
@@ -43,9 +43,9 @@ namespace _DVLD_.Users
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!User.IsExists(personeFilterAndAdd1.Persone1.PersoneID))
+            if (!User.IsExists(personeFilterAndAdd1.Persone1.PersonID))
             {
-                User.PersonIdByRef = personeFilterAndAdd1.Persone1.PersoneID;
+                User.PersonIdByRef = personeFilterAndAdd1.Persone1.PersonID;
                 Tab.SelectedIndex = 1;
                 BTNsave.Enabled = true;
             }

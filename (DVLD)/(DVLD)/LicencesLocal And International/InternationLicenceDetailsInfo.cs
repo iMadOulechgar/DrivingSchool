@@ -33,7 +33,6 @@ namespace _DVLD_.LicencesLocal_And_International
         private void InternationLicenceDetailsInfo_Load(object sender, EventArgs e)
         {
             driver_International_License_Info1.InternationalLicence = International.FindInternationalLicenceByLicenceID(LicenceID);
-            driver_International_License_Info1.Persone = Per.FindPersoneByPerId(Persone);
             driver_International_License_Info1.FillData();
         }
     }

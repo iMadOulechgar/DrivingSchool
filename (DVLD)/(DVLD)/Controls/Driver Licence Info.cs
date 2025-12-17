@@ -34,9 +34,9 @@ namespace _DVLD_.Controls
             clsBussinessLayerDetainedLicense Detained = new clsBussinessLayerDetainedLicense();
 
             LBLClass.Text = Application.GetClassName(Licence.LicenceClassID);
-            LBLName1.Text = Person.GetFullName();
+            LBLName1.Text = Person.FullName;
             LBLLicence.Text = Licence.LicenceID.ToString();
-            LBLNATIONALNO.Text = Person.NationalNum.ToString();
+            LBLNATIONALNO.Text = Person.NationalNo;
             if (Person.Gendor == 1)
                 LBLGendor.Text = "Male";
             else
@@ -70,7 +70,7 @@ namespace _DVLD_.Controls
             else
                 LBLIsDetained.Text = "No";
 
-            PB.Load(Person.ImgPath);
+            PB.Load(Person.ImagePath);
         }
 
 

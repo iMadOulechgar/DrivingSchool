@@ -21,8 +21,7 @@ namespace _DVLD_.Licences
 
             clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
             App = Application.GetDataByLocalID(LocalID);
-            personeFilterAndAdd1._FillControlsWithData(App.App.AppPersoneId);
-            personeFilterAndAdd1.fillfilter(App.App.AppPersoneId);
+           personeFilterAndAdd1.fillfilter(App.App.AppPersoneId);
             driver_Licences_Hirtory1.FillDataGridView(App.App.ApplicationId);
             driver_Licences_Hirtory1.FillDataGridViewInternationalLicence();
         }
@@ -34,7 +33,6 @@ namespace _DVLD_.Licences
 
         public void FillData(int PersonID , int AppID)
         {
-            personeFilterAndAdd1._FillControlsWithData(PersonID);
             personeFilterAndAdd1.fillfilter(PersonID);
             driver_Licences_Hirtory1.FillDataGridView(AppID);
             driver_Licences_Hirtory1.FillDataGridViewInternationalLicence();
@@ -42,7 +40,6 @@ namespace _DVLD_.Licences
 
         public void FillByDetained(int PerID , int LicID)
         {
-            personeFilterAndAdd1._FillControlsWithData(PerID);
             personeFilterAndAdd1.fillfilter(PerID);
             driver_Licences_Hirtory1.FillDatByLicenceIDDirect(LicID);
             driver_Licences_Hirtory1.FillDataGridViewInternationalLicence();

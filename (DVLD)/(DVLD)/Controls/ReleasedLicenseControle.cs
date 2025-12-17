@@ -41,7 +41,7 @@ namespace _DVLD_.Controls
 
             driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
             driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-            driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
             driverLicenceInfo1._FillDataInControle();
             if (IsReleasedAlready)
             {
@@ -99,7 +99,7 @@ namespace _DVLD_.Controls
 
         void FillDataInDb()
         {
-            FillDataBaseApp(driverLicenceInfo1.Person.PersoneID);
+            FillDataBaseApp(driverLicenceInfo1.Person.PersonID);
             if (Application.SaveAddAppCanBeChange())
             {
                 MessageBox.Show("App Saved Successfly","Confirm",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -185,7 +185,7 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Person.PersoneID, driverLicenceInfo1.Application.App.ApplicationId);
+            History.FillData(driverLicenceInfo1.Person.PersonID, driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
 

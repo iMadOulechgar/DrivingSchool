@@ -118,8 +118,8 @@ namespace _DVLD_.Detained
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
             clsBusinessPersone Per = new clsBusinessPersone();
-            Person = Per.FindPersoneByNationalNo((string)DGVDetainedLicenses.CurrentRow.Cells[6].Value);
-            History.FillByDetained(Person.PersoneID, (int)DGVDetainedLicenses.CurrentRow.Cells[1].Value);
+            //Person = Per.FindPersoneByNationalNo((string)DGVDetainedLicenses.CurrentRow.Cells[6].Value);
+            History.FillByDetained(Person.PersonID, (int)DGVDetainedLicenses.CurrentRow.Cells[1].Value);
             History.ShowDialog();
         }
 

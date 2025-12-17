@@ -61,7 +61,7 @@ namespace _DVLD_.Controls
             {
                 driverLicenceInfo1.Licence = Licences.FindByLicenceID(int.Parse(textBox1.Text));
                 driverLicenceInfo1.Application = Application.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-                driverLicenceInfo1.Person = persone.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+                //driverLicenceInfo1.Person = persone.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
                 driverLicenceInfo1._FillDataInControle();
 
                 if (International.CheckIsThereAlreadyAnInternationalLicence(driverLicenceInfo1.Licence.LicenceID))
@@ -90,7 +90,7 @@ namespace _DVLD_.Controls
             App.App.AppType = 6;
             App.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
             App.App.AppDate = DateTime.Now;
-            App.App.AppPersoneId = driverLicenceInfo1.Person.PersoneID;
+            App.App.AppPersoneId = driverLicenceInfo1.Person.PersonID;
             App.App.AppStatus = 3;
             App.App.LastStatusDate = DateTime.Now;            
         }
@@ -145,7 +145,7 @@ namespace _DVLD_.Controls
         {
             InternationLicenceDetailsInfo DetailsInter = new InternationLicenceDetailsInfo();
 
-            DetailsInter.Persone = driverLicenceInfo1.Person.PersoneID;
+            DetailsInter.Persone = driverLicenceInfo1.Person.PersonID;
             DetailsInter.LicenceID = driverLicenceInfo1.Licence.LicenceID;
 
             DetailsInter.ShowDialog();
@@ -154,7 +154,7 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Person.PersoneID,driverLicenceInfo1.Application.App.ApplicationId);
+            History.FillData(driverLicenceInfo1.Person.PersonID,driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
     }

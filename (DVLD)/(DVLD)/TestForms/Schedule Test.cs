@@ -23,7 +23,7 @@ namespace _DVLD_.TestForms
 
             checkTest(TypesTest,Islocked);
             clTestAppointment1.ApplicationLocal = Business.GetDataByLocalID(LocalID);
-            clTestAppointment1.Per = persone.FindPersoneByPerId(clTestAppointment1.ApplicationLocal.App.AppPersoneId);
+            //clTestAppointment1.Per = persone.FindPersoneByPerId(clTestAppointment1.ApplicationLocal.App.AppPersoneId);
             clTestAppointment1.FillDataInApp(LocalID, TypesTest+1);
         }
 
@@ -37,7 +37,6 @@ namespace _DVLD_.TestForms
 
             checkTest(TypesTest, islocked);
             clTestAppointment1.ApplicationLocal = Business.GetDataByLocalID(LocalID);
-            clTestAppointment1.Per = persone.FindPersoneByPerId(clTestAppointment1.ApplicationLocal.App.AppPersoneId);
             clTestAppointment1.Appointments = App.Find(Appointment);
             clTestAppointment1.FillDataInApp(LocalID, TypesTest + 1);
         }

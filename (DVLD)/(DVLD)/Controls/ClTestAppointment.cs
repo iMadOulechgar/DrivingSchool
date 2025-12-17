@@ -31,7 +31,7 @@ namespace _DVLD_.AllAboutTest
             LBLClass.Text = ApplicationLocal.GetClassName(ApplicationLocal.LocalApp.LicenceClasses).ToString();
             LBLfees.Text = Convert.ToInt32(Appointments.GetPaidFees(Appointments.TestAppointement.TestTypeID)).ToString();
             LBLTrial.Text = Appointments.Trial(localId, Type).ToString();
-            LBLNAME.Text = Per.Firstname + " " + Per.SecondName + " " + Per.ThirdName + " " + Per.LastName;
+            LBLNAME.Text = Per.FullName;
             if (Appointments.TestAppointement.TestAppointmentID != -1)
             {
                 LBLAppointmentID.Text = Appointments.TestAppointement.TestAppointmentID.ToString();

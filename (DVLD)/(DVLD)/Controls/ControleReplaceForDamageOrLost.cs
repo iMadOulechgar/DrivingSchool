@@ -41,7 +41,7 @@ namespace _DVLD_.Controls
 
             driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
             driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-            driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
+            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
             driverLicenceInfo1._FillDataInControle();
             FillReplacementControlesWithData();
         }
@@ -147,7 +147,7 @@ namespace _DVLD_.Controls
 
         bool Save()
         {
-            FillDataBaseApp(driverLicenceInfo1.Person.PersoneID);
+            FillDataBaseApp(driverLicenceInfo1.Person.PersonID);
 
             if (Application.SaveAddAppCanBeChange())
             {

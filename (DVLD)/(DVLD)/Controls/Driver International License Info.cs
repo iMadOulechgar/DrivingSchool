@@ -30,7 +30,7 @@ namespace _DVLD_.Controls
                 LBLGendor.Text = "Female";
             LBLDriverID.Text = InternationalLicence.DriverID.ToString();
             LBLExpirationDate.Text = InternationalLicence.ExpirationDate.ToString();
-            LBLNATIONALNO.Text = Persone.NationalNum.ToString();
+            LBLNATIONALNO.Text = Persone.NationalNo.ToString();
             LBLInternationID.Text = InternationalLicence.InternationalLicenceID.ToString();
             
             if(InternationalLicence.IsActive == true)
@@ -39,7 +39,7 @@ namespace _DVLD_.Controls
                 LBLIsActive.Text = "No";
 
             LBLIssueDate.Text = InternationalLicence.IssueDate.ToString();
-            LBLName1.Text = Persone.GetFullName();
+            LBLName1.Text = Persone.FullName;
             LBLDateOfBirth.Text = Persone.DateOfBirth.ToString();
             LBLLicence.Text = InternationalLicence.LicenceID.ToString();
         }

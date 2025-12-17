@@ -93,12 +93,6 @@
       <DependentUpon>FrmNewDrivingLicenceApp.cs</DependentUpon>
     </Compile>
     <Compile Include="clsGlobal.cs" />
-    <Compile Include="Controls\AddOrUpdatePersoneControle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\AddOrUpdatePersoneControle.Designer.cs">
-      <DependentUpon>AddOrUpdatePersoneControle.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ControleReplaceForDamageOrLost.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,12 +123,6 @@
     <Compile Include="Controls\Driver Licences History.Designer.cs">
       <DependentUpon>Driver Licences History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FilterControle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\FilterControle.Designer.cs">
-      <DependentUpon>FilterControle.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\FilterLicences.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,16 +147,16 @@
     <Compile Include="Controls\NewInternationalLicenseControle.Designer.cs">
       <DependentUpon>NewInternationalLicenseControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PersoneFilterAndAdd.cs">
+    <Compile Include="PeopleMenu\Controles\PersoneFilterAndAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PersoneFilterAndAdd.Designer.cs">
+    <Compile Include="PeopleMenu\Controles\PersoneFilterAndAdd.Designer.cs">
       <DependentUpon>PersoneFilterAndAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PersonInfo.cs">
+    <Compile Include="PeopleMenu\Controles\PersonInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PersonInfo.Designer.cs">
+    <Compile Include="PeopleMenu\Controles\PersonInfo.Designer.cs">
       <DependentUpon>PersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ReleasedLicenseControle.cs">
@@ -207,6 +195,8 @@
     <Compile Include="Drivers\frmAllDrivers.Designer.cs">
       <DependentUpon>frmAllDrivers.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalClasses\clsUtil.cs" />
+    <Compile Include="GlobalClasses\clsValidation.cs" />
     <Compile Include="LicencesLocal And International\frmDrivingLicenceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +262,12 @@
     </Compile>
     <Compile Include="PeopleMenu\AddPersoneFrm.Designer.cs">
       <DependentUpon>AddPersoneFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleMenu\FrmFindPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeopleMenu\FrmFindPerson.Designer.cs">
+      <DependentUpon>FrmFindPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="PeopleMenu\ManagePeople.cs">
       <SubType>Form</SubType>
@@ -359,9 +355,6 @@
     <EmbeddedResource Include="Applications\FrmNewDrivingLicenceApp.resx">
       <DependentUpon>FrmNewDrivingLicenceApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\AddOrUpdatePersoneControle.resx">
-      <DependentUpon>AddOrUpdatePersoneControle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ControleReplaceForDamageOrLost.resx">
       <DependentUpon>ControleReplaceForDamageOrLost.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,9 +370,6 @@
     <EmbeddedResource Include="Controls\Driver Licences History.resx">
       <DependentUpon>Driver Licences History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\FilterControle.resx">
-      <DependentUpon>FilterControle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FilterLicences.resx">
       <DependentUpon>FilterLicences.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,10 +382,10 @@
     <EmbeddedResource Include="Controls\NewInternationalLicenseControle.resx">
       <DependentUpon>NewInternationalLicenseControle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PersoneFilterAndAdd.resx">
+    <EmbeddedResource Include="PeopleMenu\Controles\PersoneFilterAndAdd.resx">
       <DependentUpon>PersoneFilterAndAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PersonInfo.resx">
+    <EmbeddedResource Include="PeopleMenu\Controles\PersonInfo.resx">
       <DependentUpon>PersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ReleasedLicenseControle.resx">
@@ -448,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PeopleMenu\AddPersoneFrm.resx">
       <DependentUpon>AddPersoneFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeopleMenu\FrmFindPerson.resx">
+      <DependentUpon>FrmFindPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PeopleMenu\ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
@@ -834,6 +827,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-stop-hand-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_girl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
