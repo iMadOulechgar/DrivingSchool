@@ -23,7 +23,6 @@ namespace _DVLD_.Users
             clsUserBusiness User = new clsUserBusiness();
 
             UserBus = User.Find(UserID);
-            loginUserInfo1.User1 = UserBus;
         }
 
         private void BTNcancel_Click(object sender, EventArgs e)

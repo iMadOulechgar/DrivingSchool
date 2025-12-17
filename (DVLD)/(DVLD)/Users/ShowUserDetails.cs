@@ -19,8 +19,6 @@ namespace _DVLD_.Users
 
             clsUserBusiness User = new clsUserBusiness();
             clsBusinessPersone Persone = new clsBusinessPersone();
-            loginUserInfo1.User1 = User.Find(UserID);
-            //personInfo1.Persone1 = Persone.FindPersoneByPerId(PersoneID);
         }
     }
 }

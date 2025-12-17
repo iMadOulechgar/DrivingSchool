@@ -40,7 +40,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
-            this.loginUserInfo1 = new _DVLD_.Controls.LoginUserInfo();
             this.personInfo1 = new _DVLD_.Controls.PersonInfo();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -162,14 +161,6 @@
             this.BTNsave.UseVisualStyleBackColor = false;
             this.BTNsave.Click += new System.EventHandler(this.BTNsave_Click);
             // 
-            // loginUserInfo1
-            // 
-            this.loginUserInfo1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.loginUserInfo1.Location = new System.Drawing.Point(28, 274);
-            this.loginUserInfo1.Name = "loginUserInfo1";
-            this.loginUserInfo1.Size = new System.Drawing.Size(747, 92);
-            this.loginUserInfo1.TabIndex = 20;
-            // 
             // personInfo1
             // 
             this.personInfo1.Location = new System.Drawing.Point(28, 12);
@@ -188,7 +179,6 @@
             this.ClientSize = new System.Drawing.Size(800, 618);
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.BTNsave);
-            this.Controls.Add(this.loginUserInfo1);
             this.Controls.Add(this.personInfo1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TBConfirmPassword);
@@ -224,7 +214,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controls.PersonInfo personInfo1;
-        private Controls.LoginUserInfo loginUserInfo1;
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.Button BTNsave;
         private System.Windows.Forms.ErrorProvider errorProvider1;

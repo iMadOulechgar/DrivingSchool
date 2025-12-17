@@ -135,12 +135,6 @@
     <Compile Include="Controls\LocalDrivingLicenceAppInfoAndApplicationInfo.Designer.cs">
       <DependentUpon>LocalDrivingLicenceAppInfoAndApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LoginUserInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\LoginUserInfo.Designer.cs">
-      <DependentUpon>LoginUserInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\NewInternationalLicenseControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -319,6 +313,12 @@
     <Compile Include="Users\ChangePasswordFrm.Designer.cs">
       <DependentUpon>ChangePasswordFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\ctrlUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\ctrlUserCard.Designer.cs">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\FrmAddUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,9 +375,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LocalDrivingLicenceAppInfoAndApplicationInfo.resx">
       <DependentUpon>LocalDrivingLicenceAppInfoAndApplicationInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\LoginUserInfo.resx">
-      <DependentUpon>LoginUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NewInternationalLicenseControle.resx">
       <DependentUpon>NewInternationalLicenseControle.cs</DependentUpon>
@@ -475,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\ChangePasswordFrm.resx">
       <DependentUpon>ChangePasswordFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ctrlUserCard.resx">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\FrmAddUsers.resx">
       <DependentUpon>FrmAddUsers.cs</DependentUpon>

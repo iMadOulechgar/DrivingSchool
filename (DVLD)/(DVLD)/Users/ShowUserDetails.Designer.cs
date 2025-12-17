@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.personInfo1 = new _DVLD_.Controls.PersonInfo();
-            this.loginUserInfo1 = new _DVLD_.Controls.LoginUserInfo();
             this.SuspendLayout();
             // 
             // personInfo1
@@ -41,18 +40,13 @@
             // 
             // loginUserInfo1
             // 
-            this.loginUserInfo1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.loginUserInfo1.Location = new System.Drawing.Point(12, 291);
-            this.loginUserInfo1.Name = "loginUserInfo1";
-            this.loginUserInfo1.Size = new System.Drawing.Size(747, 88);
-            this.loginUserInfo1.TabIndex = 1;
+           
             // 
             // ShowUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 415);
-            this.Controls.Add(this.loginUserInfo1);
             this.Controls.Add(this.personInfo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ShowUserDetails";
@@ -65,6 +59,5 @@
         #endregion
 
         private Controls.PersonInfo personInfo1;
-        private Controls.LoginUserInfo loginUserInfo1;
     }
 }
