@@ -13,12 +13,22 @@ namespace _DVLD_.Users
 {
     public partial class ShowUserDetails : Form
     {
-        public ShowUserDetails(int UserID , int PersoneID)
+
+        private int _UserID = -1;
+        public ShowUserDetails(int UserID)
         {
             InitializeComponent();
+            this._UserID = UserID;
+        }
 
-            clsUserBusiness User = new clsUserBusiness();
-            clsBusinessPersone Persone = new clsBusinessPersone();
+        private void BTNcancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ShowUserDetails_Load(object sender, EventArgs e)
+        {
+            ctrlUserCard1.LoadUserInfo(_UserID);
         }
     }
 }

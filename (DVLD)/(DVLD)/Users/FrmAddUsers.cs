@@ -1,5 +1,6 @@
 ﻿using _DVLD_.PeopleMenu;
 using BusinessLayer;
+using DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,90 +18,126 @@ namespace _DVLD_.Users
         public FrmAddUsers()
         {
             InitializeComponent();
+            _Mode = enMode.AddNew;
         }
 
-        public clsUserBusiness User  = new clsUserBusiness();
-        public event Action WhenTheUserGetAddedOrEdited; 
+        public enum enMode { AddNew = 0, Update = 1 };
+        private enMode _Mode;
+        private int _UserID = -1;
+        clsUserBusiness _User;
 
         public FrmAddUsers(int UserID)
         {
             InitializeComponent();
+            _Mode = enMode.Update;
+            _UserID = UserID;
+        }
 
-            clsUserBusiness User2 = new clsUserBusiness();
-            clsBusinessPersone Persone = new clsBusinessPersone();
-            User = User2.Find(UserID);
+        private void _ResetDefualtValues()
+        {
+            //this will initialize the reset the defaule values
 
-            if (User != null)
+            if (_Mode == enMode.AddNew)
             {
-                FillAllDataToUi();
-                //personeFilterAndAdd1.Persone1 = Persone.FindPersoneByPerId(User.PersonIdByRef);
-                personeFilterAndAdd1.fillfilter(personeFilterAndAdd1.Persone1.PersonID);
-                personeFilterAndAdd1.Enabled = false;
-                BTNsave.Enabled = true;
-                button1.Visible = false;
+                lblTitle.Text = "Add New User";
+                this.Text = "Add New User";
+                _User = new clsUserBusiness();
+
+                tbLogininfo.Enabled = false;
+
+                personeFilterAndAdd1.FilterFocus();
             }
+            else
+            {
+                lblTitle.Text = "Update User";
+                this.Text = "Update User";
+
+                tbLogininfo.Enabled = true;
+                BTNsave.Enabled = true;
+            }
+
+            txtUserName.Text = "";
+            TBPassword.Text = "";
+            TBConfirmPassword.Text = "";
+            CBIsActive.Checked = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!User.IsExists(personeFilterAndAdd1.Persone1.PersonID))
+            if (_Mode == enMode.Update)
             {
-                User.PersonIdByRef = personeFilterAndAdd1.Persone1.PersonID;
-                Tab.SelectedIndex = 1;
                 BTNsave.Enabled = true;
+                tbLogininfo.Enabled = true;
+                Tab.SelectedTab = Tab.TabPages["tbLogininfo"];
+                return;
             }
-            else
+
+            //incase of add new mode.
+            if (personeFilterAndAdd1.PersonID != -1)
             {
-                MessageBox.Show("This Persone Is Already User !! ","STOP",MessageBoxButtons.OKCancel,MessageBoxIcon.Hand);
+
+                if (clsUserBusiness.IsUserExistsByPerID(personeFilterAndAdd1.PersonID))
+                {
+
+                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    personeFilterAndAdd1.FilterFocus();
+                }
+                else
+                {
+                    BTNsave.Enabled = true;
+                    tbLogininfo.Enabled = true;
+                    Tab.SelectedTab = Tab.TabPages["tbLogininfo"];
+                }
             }
-            
+
+            else
+
+            {
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                personeFilterAndAdd1.FilterFocus();
+
+            }
+
+        }
+
+        private void _LoadData()
+        {
+            _User = clsUserBusiness.FindByUserID(_UserID);
+            personeFilterAndAdd1.FilterEnabled = false;
+
+            if (_User == null)
+            {
+                MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
+                return;
+            }
+
+            //the following code will not be executed if the person was not found
+            LBLUserID.Text = _User.UserID.ToString();
+            txtUserName.Text = _User.UserName;
+            TBPassword.Text = _User.Password;
+            TBConfirmPassword.Text = _User.Password;
+            CBIsActive.Checked = _User.IsActive;
+            personeFilterAndAdd1.LoadPersonInfo(_User.PersonIdByRef);
         }
 
         private void FrmAddUsers_Load(object sender, EventArgs e)
         {
-        }
-
-        private bool ValidatingTools()
-        {
-            if (TBConfirmPassword.Text != "" && !(TBConfirmPassword.Text != TBPassword.Text) && TBPassword.Text != "" && TBUsername.Text != "")
-                return true;
-
-
-            return false;
-        }
-
-        private void _GetDataFromUI()
-        {
-            User.UserName = TBUsername.Text;
-            User.Password = TBPassword.Text;
-            if (CBIsActive.Checked == true)
-                User.IsActive = 1;
-            else
-                User.IsActive = 0;
-        }
-
-        private void FillAllDataToUi()
-        {
-            LBLUserID.Text = User.UserID.ToString();
-            TBUsername.Text = User.UserName;
-            TBPassword.Text = User.Password;
-            TBConfirmPassword.Text = User.Password;
-            if (User.IsActive == 1)
-                CBIsActive.Checked = true;
-            else
-                CBIsActive.Checked = false;
+            _ResetDefualtValues();
+            if (_Mode == enMode.Update)
+                _LoadData();
         }
 
         private void BTNcancel_Click(object sender, EventArgs e)
         {
-            WhenTheUserGetAddedOrEdited?.Invoke();
             this.Close();
         }
 
         private void TBConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
-            if (TBPassword.Text != TBConfirmPassword.Text)
+            if (TBPassword.Text.Trim() != TBConfirmPassword.Text.Trim())
             {
+                e.Cancel = true;
                 errorProvider1.SetError(TBConfirmPassword, "The Password Not The Same");
             }
             else
@@ -109,23 +146,91 @@ namespace _DVLD_.Users
 
         private void BTNsave_Click(object sender, EventArgs e)
         {
-            if (ValidatingTools())
+            if (!this.ValidateChildren())
             {
-                _GetDataFromUI();
-                if (User.Save())
-                {
-                    LBLUserID.Text = User.UserID.ToString();
-                    MessageBox.Show("User Saved Succesfly :) ", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Invalid User :/ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            _User.PersonIdByRef = personeFilterAndAdd1.PersonID;
+            _User.UserName = txtUserName.Text.Trim();
+            _User.Password = TBPassword.Text.Trim();
+            _User.IsActive = CBIsActive.Checked;
+
+
+            if (_User.Save())
+            {
+                LBLUserID.Text = _User.UserID.ToString();
+                //change form mode to update.
+                _Mode = enMode.Update;
+                lblTitle.Text = "Update User";
+                this.Text = "Update User";
+
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void TBUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtUserName, "Username cannot be blank");
+                return;
             }
             else
             {
-                MessageBox.Show("Wrong Info , Fill Data !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(txtUserName, null);
+            }
+
+
+            if (_Mode == enMode.AddNew)
+            {
+
+                if (clsUserBusiness.isUserExist(txtUserName.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtUserName, "username is used by another user");
+                }
+                else
+                {
+                    errorProvider1.SetError(txtUserName, null);
+                }
+            }
+            else
+            {
+                //incase update make sure not to use anothers user name
+                if (_User.UserName != txtUserName.Text.Trim())
+                {
+                    if (clsUserBusiness.isUserExist(txtUserName.Text.Trim()))
+                    {
+                        e.Cancel = true;
+                        errorProvider1.SetError(txtUserName, "username is used by another user");
+                        return;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtUserName, null);
+                    } 
+                }
+            }
+        }
+
+        private void TBPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TBPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(TBPassword, "Password cannot be blank");
+            }
+            else
+            {
+                errorProvider1.SetError(TBPassword, null);
             }
             
         }

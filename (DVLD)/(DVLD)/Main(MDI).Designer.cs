@@ -113,7 +113,6 @@
             this.drivingLicenceServicesToolStripMenuItem.Name = "drivingLicenceServicesToolStripMenuItem";
             this.drivingLicenceServicesToolStripMenuItem.Size = new System.Drawing.Size(271, 54);
             this.drivingLicenceServicesToolStripMenuItem.Text = "Driving Licences Services";
-            this.drivingLicenceServicesToolStripMenuItem.Click += new System.EventHandler(this.drivingLicenceServicesToolStripMenuItem_Click);
             // 
             // newDrivingLicenceToolStripMenuItem
             // 

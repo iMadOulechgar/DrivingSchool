@@ -65,6 +65,11 @@ namespace _DVLD_.Controls
 
         public clsBusinessPersone Persone1;
 
+        public void FilterFocus()
+        {
+            TBSearch.Focus();
+        }
+
         public int PersonID
         {
             get { return personInfo1.PersonID; }
@@ -91,6 +96,13 @@ namespace _DVLD_.Controls
             CBSearch.SelectedIndex = 1;
             TBSearch.Text = PersonID.ToString();
             personInfo1.LoadPersonInfo(PersonID);
+        }
+
+        public void LoadPersonInfo(int PersonID)
+        {
+            CBSearch.SelectedIndex = 1;
+            TBSearch.Text = PersonID.ToString();
+            FindNow();
         }
 
         private void button2_Click(object sender, EventArgs e)

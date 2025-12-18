@@ -14,7 +14,7 @@ namespace DataAccessLayer
     public static class clsUsers
     {
 
-        public static int AddUser(int personeid,string Username,string password ,short isActive)
+        public static int AddUser(int personeid,string Username,string password ,bool isActive)
         {
             int result = -1;
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
@@ -68,12 +68,7 @@ namespace DataAccessLayer
 
                 SqlDataReader Reader = cmd.ExecuteReader();
 
-                if (Reader.Read())
-                {
                     Dt.Load(Reader);
-                }
-
-                Reader.Close();
             }
             catch (Exception ex)
             {
@@ -241,7 +236,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public static bool UpdateUser(int userid  , string username , string password , short isactive)
+        public static bool UpdateUser(int userid  , string username , string password , bool isactive)
         {
             bool Result = false;
 
@@ -380,7 +375,7 @@ namespace DataAccessLayer
         }
 
         public static bool GetUserInfoByPersonID(int PersonID, ref int UserID, ref string UserName,
-  ref string Password, ref bool IsActive)
+            ref string Password, ref bool IsActive)
         {
             bool isFound = false;
 
@@ -432,8 +427,129 @@ namespace DataAccessLayer
             return isFound;
         }
 
+        public static bool GetUserInfoByUsernameAndPassword(string UserName, string Password,
+            ref int UserID, ref int PersonID, ref bool IsActive)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = "SELECT * FROM Users WHERE Username = @Username and Password=@Password;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@Username", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
 
 
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+                    UserID = (int)reader["UserID"];
+                    PersonID = (int)reader["PersonID"];
+                    UserName = (string)reader["UserName"];
+                    Password = (string)reader["Password"];
+                    IsActive = (bool)reader["IsActive"];
+
+
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool IsUserExistForPersonID(int PersonID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = "SELECT Found=1 FROM Users WHERE PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool IsUserExist(string UserName)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = "SELECT Found=1 FROM Users WHERE UserName = @UserName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
 
 
     }

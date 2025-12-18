@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.Tab = new System.Windows.Forms.TabControl();
             this.Tab1 = new System.Windows.Forms.TabPage();
+            this.personeFilterAndAdd1 = new _DVLD_.Controls.PersoneFilterAndAdd();
             this.button1 = new System.Windows.Forms.Button();
-            this.Tab2 = new System.Windows.Forms.TabPage();
+            this.tbLogininfo = new System.Windows.Forms.TabPage();
             this.CBIsActive = new System.Windows.Forms.CheckBox();
             this.TBConfirmPassword = new System.Windows.Forms.TextBox();
             this.TBPassword = new System.Windows.Forms.TextBox();
-            this.TBUsername = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.LBLUserID = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -50,10 +51,9 @@
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.personeFilterAndAdd1 = new _DVLD_.Controls.PersoneFilterAndAdd();
             this.Tab.SuspendLayout();
             this.Tab1.SuspendLayout();
-            this.Tab2.SuspendLayout();
+            this.tbLogininfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,21 +61,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(335, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Add New User";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblTitle.Location = new System.Drawing.Point(335, 19);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(161, 25);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Add New User";
             // 
             // Tab
             // 
             this.Tab.Controls.Add(this.Tab1);
-            this.Tab.Controls.Add(this.Tab2);
+            this.Tab.Controls.Add(this.tbLogininfo);
             this.Tab.Location = new System.Drawing.Point(12, 47);
             this.Tab.Name = "Tab";
             this.Tab.SelectedIndex = 0;
@@ -94,6 +94,15 @@
             this.Tab1.Text = "Persone Info";
             this.Tab1.UseVisualStyleBackColor = true;
             // 
+            // personeFilterAndAdd1
+            // 
+            this.personeFilterAndAdd1.FilterEnabled = true;
+            this.personeFilterAndAdd1.Location = new System.Drawing.Point(9, 18);
+            this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
+            this.personeFilterAndAdd1.ShowAddPerson = true;
+            this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
+            this.personeFilterAndAdd1.TabIndex = 6;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -108,28 +117,28 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Tab2
+            // tbLogininfo
             // 
-            this.Tab2.Controls.Add(this.CBIsActive);
-            this.Tab2.Controls.Add(this.TBConfirmPassword);
-            this.Tab2.Controls.Add(this.TBPassword);
-            this.Tab2.Controls.Add(this.TBUsername);
-            this.Tab2.Controls.Add(this.LBLUserID);
-            this.Tab2.Controls.Add(this.pictureBox4);
-            this.Tab2.Controls.Add(this.pictureBox2);
-            this.Tab2.Controls.Add(this.pictureBox1);
-            this.Tab2.Controls.Add(this.pictureBox3);
-            this.Tab2.Controls.Add(this.label4);
-            this.Tab2.Controls.Add(this.label3);
-            this.Tab2.Controls.Add(this.label2);
-            this.Tab2.Controls.Add(this.label5);
-            this.Tab2.Location = new System.Drawing.Point(4, 22);
-            this.Tab2.Name = "Tab2";
-            this.Tab2.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab2.Size = new System.Drawing.Size(791, 430);
-            this.Tab2.TabIndex = 1;
-            this.Tab2.Text = "Login Info";
-            this.Tab2.UseVisualStyleBackColor = true;
+            this.tbLogininfo.Controls.Add(this.CBIsActive);
+            this.tbLogininfo.Controls.Add(this.TBConfirmPassword);
+            this.tbLogininfo.Controls.Add(this.TBPassword);
+            this.tbLogininfo.Controls.Add(this.txtUserName);
+            this.tbLogininfo.Controls.Add(this.LBLUserID);
+            this.tbLogininfo.Controls.Add(this.pictureBox4);
+            this.tbLogininfo.Controls.Add(this.pictureBox2);
+            this.tbLogininfo.Controls.Add(this.pictureBox1);
+            this.tbLogininfo.Controls.Add(this.pictureBox3);
+            this.tbLogininfo.Controls.Add(this.label4);
+            this.tbLogininfo.Controls.Add(this.label3);
+            this.tbLogininfo.Controls.Add(this.label2);
+            this.tbLogininfo.Controls.Add(this.label5);
+            this.tbLogininfo.Location = new System.Drawing.Point(4, 22);
+            this.tbLogininfo.Name = "tbLogininfo";
+            this.tbLogininfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbLogininfo.Size = new System.Drawing.Size(791, 430);
+            this.tbLogininfo.TabIndex = 1;
+            this.tbLogininfo.Text = "Login Info";
+            this.tbLogininfo.UseVisualStyleBackColor = true;
             // 
             // CBIsActive
             // 
@@ -160,13 +169,15 @@
             this.TBPassword.Size = new System.Drawing.Size(164, 20);
             this.TBPassword.TabIndex = 8;
             this.TBPassword.UseSystemPasswordChar = true;
+            this.TBPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TBPassword_Validating);
             // 
-            // TBUsername
+            // txtUserName
             // 
-            this.TBUsername.Location = new System.Drawing.Point(263, 138);
-            this.TBUsername.Name = "TBUsername";
-            this.TBUsername.Size = new System.Drawing.Size(164, 20);
-            this.TBUsername.TabIndex = 8;
+            this.txtUserName.Location = new System.Drawing.Point(263, 138);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(164, 20);
+            this.txtUserName.TabIndex = 8;
+            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.TBUsername_Validating);
             // 
             // LBLUserID
             // 
@@ -287,13 +298,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // personeFilterAndAdd1
-            // 
-            this.personeFilterAndAdd1.Location = new System.Drawing.Point(9, 18);
-            this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
-            this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
-            this.personeFilterAndAdd1.TabIndex = 6;
-            // 
             // FrmAddUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,7 +306,7 @@
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.BTNsave);
             this.Controls.Add(this.Tab);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FrmAddUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -310,8 +314,8 @@
             this.Load += new System.EventHandler(this.FrmAddUsers_Load);
             this.Tab.ResumeLayout(false);
             this.Tab1.ResumeLayout(false);
-            this.Tab2.ResumeLayout(false);
-            this.Tab2.PerformLayout();
+            this.tbLogininfo.ResumeLayout(false);
+            this.tbLogininfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -324,10 +328,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TabControl Tab;
         private System.Windows.Forms.TabPage Tab1;
-        private System.Windows.Forms.TabPage Tab2;
+        private System.Windows.Forms.TabPage tbLogininfo;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -339,7 +343,7 @@
         private System.Windows.Forms.CheckBox CBIsActive;
         private System.Windows.Forms.TextBox TBConfirmPassword;
         private System.Windows.Forms.TextBox TBPassword;
-        private System.Windows.Forms.TextBox TBUsername;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label LBLUserID;
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.Button BTNsave;

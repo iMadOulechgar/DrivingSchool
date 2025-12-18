@@ -30,12 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.UserIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PersoneIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActiveColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,13 +43,13 @@
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LBLRec = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.CBSelect = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -70,57 +65,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Manage Users";
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserIdColumn,
-            this.PersoneIDColumn,
-            this.FullnameColumn,
-            this.UserNameColumn,
-            this.isActiveColumn});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 237);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 287);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // UserIdColumn
-            // 
-            this.UserIdColumn.HeaderText = "UserID";
-            this.UserIdColumn.Name = "UserIdColumn";
-            this.UserIdColumn.ReadOnly = true;
-            // 
-            // PersoneIDColumn
-            // 
-            this.PersoneIDColumn.HeaderText = "PersoneID";
-            this.PersoneIDColumn.Name = "PersoneIDColumn";
-            this.PersoneIDColumn.ReadOnly = true;
-            // 
-            // FullnameColumn
-            // 
-            this.FullnameColumn.HeaderText = "FullName";
-            this.FullnameColumn.MinimumWidth = 20;
-            this.FullnameColumn.Name = "FullnameColumn";
-            this.FullnameColumn.ReadOnly = true;
-            this.FullnameColumn.Width = 250;
-            // 
-            // UserNameColumn
-            // 
-            this.UserNameColumn.HeaderText = "UserName";
-            this.UserNameColumn.Name = "UserNameColumn";
-            this.UserNameColumn.ReadOnly = true;
-            // 
-            // isActiveColumn
-            // 
-            this.isActiveColumn.HeaderText = "IsActive";
-            this.isActiveColumn.Name = "isActiveColumn";
-            this.isActiveColumn.ReadOnly = true;
+            this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.AllowUserToOrderColumns = true;
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvUsers.Location = new System.Drawing.Point(12, 237);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.Size = new System.Drawing.Size(776, 287);
+            this.dgvUsers.TabIndex = 2;
             // 
             // contextMenuStrip1
             // 
@@ -223,20 +180,19 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "#Records :  ";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(306, 209);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 23);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // CBSelect
             // 
+            this.CBSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBSelect.FormattingEnabled = true;
-            this.CBSelect.Location = new System.Drawing.Point(89, 208);
+            this.CBSelect.Items.AddRange(new object[] {
+            "None",
+            "User ID",
+            "UserName",
+            "Person ID",
+            "Full Name",
+            "Is Active"});
+            this.CBSelect.Location = new System.Drawing.Point(89, 205);
             this.CBSelect.Name = "CBSelect";
             this.CBSelect.Size = new System.Drawing.Size(211, 23);
             this.CBSelect.TabIndex = 6;
@@ -255,11 +211,16 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(306, 209);
+            this.comboBox1.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.comboBox1.Location = new System.Drawing.Point(314, 206);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(211, 23);
+            this.comboBox1.Size = new System.Drawing.Size(114, 23);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -284,6 +245,15 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(399, 205);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(232, 23);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // UserManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,7 +266,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LBLRec);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -304,7 +274,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagement";
             this.Load += new System.EventHandler(this.UserManagment_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -316,18 +286,12 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Label LBLRec;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox CBSelect;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PersoneIDColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullnameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserNameColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveColumn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
@@ -339,5 +303,6 @@
         private System.Windows.Forms.ToolStripMenuItem phoneCallToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

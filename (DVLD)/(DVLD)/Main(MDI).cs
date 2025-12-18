@@ -43,19 +43,14 @@ namespace _DVLD_
 
         private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowUserDetails Details = new ShowUserDetails(clsGlobal.UserLogin.UserID,clsGlobal.UserLogin.PersonIdByRef);
+            ShowUserDetails Details = new ShowUserDetails(clsGlobal.UserLogin.UserID);
             Details.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordFrm Password = new ChangePasswordFrm(clsGlobal.UserLogin.UserID, clsGlobal.UserLogin.PersonIdByRef);
+            ChangePasswordFrm Password = new ChangePasswordFrm(clsGlobal.UserLogin.UserID);
             Password.ShowDialog();
-        }
-
-        private void drivingLicenceServicesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)

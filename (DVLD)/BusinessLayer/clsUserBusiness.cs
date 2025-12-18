@@ -18,9 +18,10 @@ namespace BusinessLayer
 
         public int UserID { get; set; }
         public int PersonIdByRef { get; set; }
+        public clsBusinessPersone PersonInfo;
         public string UserName { get; set; }
         public string Password { get; set; }
-        public short IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         public clsUserBusiness() 
         {
@@ -28,7 +29,7 @@ namespace BusinessLayer
             PersonIdByRef = -1;
             UserName = "";
             Password = "";
-            IsActive = -1;
+            IsActive = false;
             Mode = enmode.Add;
         }   
 
@@ -36,12 +37,10 @@ namespace BusinessLayer
         {
             UserID = userid;
             PersonIdByRef = personeid;
+            PersonInfo = clsBusinessPersone.FindPersoneByPerId(personeid);
             UserName = username;
             Password = password;
-            if (isactive)
-                IsActive = 1;
-            else
-                IsActive = 0;
+            this.IsActive = isactive;
 
             Mode = enmode.Update;
         }
@@ -73,7 +72,7 @@ namespace BusinessLayer
             return (UserID != -1);
         }
 
-        public DataTable GetAllUsersFromDB() =>
+        public static DataTable GetAllUsersFromDB() =>
             clsUsers.GetAllUsers();
 
         public bool Save()
@@ -86,14 +85,12 @@ namespace BusinessLayer
                         Mode = enmode.Update;
                         return true;
                     }
-                break;
-
-                case enmode.Update:
-                    if (_UpdateUser())
+                    else
                     {
-                        return true;
+                        return false;
                     }
-                break;
+                case enmode.Update:
+                    return _UpdateUser();
             }
 
             return false;
@@ -104,7 +101,7 @@ namespace BusinessLayer
             return clsUsers.IsUserExistsAndIsActive(this.UserName,this.Password);
         }
 
-        public clsUserBusiness FindByUserID(int Userid)
+        public static clsUserBusiness FindByUserID(int Userid)
         {
             int Personid = -1;
             string Username = "", password = "";
@@ -132,12 +129,29 @@ namespace BusinessLayer
             return null;
         }
 
+        public static clsUserBusiness FindByUsernameAndPassword(string UserName, string Password)
+        {
+            int UserID = -1;
+            int PersonID = -1;
+
+            bool IsActive = false;
+
+            bool IsFound = clsUsers.GetUserInfoByUsernameAndPassword
+                                (UserName, Password, ref UserID, ref PersonID, ref IsActive);
+
+            if (IsFound)
+                //we return new object of that User with the right data
+                return new clsUserBusiness(UserID, PersonID, UserName, Password, IsActive);
+            else
+                return null;
+        }
+
         public bool _UpdateUser()
         {
             return clsUsers.UpdateUser(this.UserID, this.UserName, this.Password, this.IsActive);
         }
-    
-        public bool DeleteUser(int userid)
+        
+        public static bool DeleteUser(int userid)
         {
             return clsUsers.DeleteUserbyid(userid);
         }
@@ -146,6 +160,17 @@ namespace BusinessLayer
         {
             return clsUsers.CheckUserPasswordIsExists(Pass,this.UserID);
         }
+
+        public static bool IsUserExistsByPerID(int PerID)
+        {
+            return clsUsers.IsUserExistForPersonID(PerID);
+        }
+
+        public static bool isUserExist(string UserName)
+        {
+            return clsUsers.IsUserExist(UserName);
+        }
+
 
     }
 }

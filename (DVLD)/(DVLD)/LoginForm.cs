@@ -68,7 +68,7 @@ namespace _DVLD_
                 Bus.Password = TBLoginPassword.Text.Trim();
                 if (Bus.CheckLoginUser())
                 {
-                    clsGlobal.UserLogin = Bus.Find(Bus.UserName);
+                    clsGlobal.UserLogin = Bus.FindByUsername(Bus.UserName);
                     return true;
                 }
             }

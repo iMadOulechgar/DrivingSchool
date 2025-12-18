@@ -40,8 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
-            this.personInfo1 = new _DVLD_.Controls.PersonInfo();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlUserCard1 = new _DVLD_.Users.ctrlUserCard();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +50,7 @@
             // 
             // TBConfirmPassword
             // 
-            this.TBConfirmPassword.Location = new System.Drawing.Point(243, 510);
+            this.TBConfirmPassword.Location = new System.Drawing.Point(259, 511);
             this.TBConfirmPassword.MaxLength = 10;
             this.TBConfirmPassword.Name = "TBConfirmPassword";
             this.TBConfirmPassword.Size = new System.Drawing.Size(164, 20);
@@ -60,16 +60,17 @@
             // 
             // TBPassword
             // 
-            this.TBPassword.Location = new System.Drawing.Point(243, 454);
+            this.TBPassword.Location = new System.Drawing.Point(259, 455);
             this.TBPassword.MaxLength = 10;
             this.TBPassword.Name = "TBPassword";
             this.TBPassword.Size = new System.Drawing.Size(164, 20);
             this.TBPassword.TabIndex = 16;
             this.TBPassword.UseSystemPasswordChar = true;
+            this.TBPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TBPassword_Validating);
             // 
             // TBCurrentPass
             // 
-            this.TBCurrentPass.Location = new System.Drawing.Point(243, 400);
+            this.TBCurrentPass.Location = new System.Drawing.Point(259, 401);
             this.TBCurrentPass.Name = "TBCurrentPass";
             this.TBCurrentPass.Size = new System.Drawing.Size(164, 20);
             this.TBCurrentPass.TabIndex = 17;
@@ -79,7 +80,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::_DVLD_.Properties.Resources.icons8_password_24;
-            this.pictureBox4.Location = new System.Drawing.Point(185, 506);
+            this.pictureBox4.Location = new System.Drawing.Point(201, 507);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(26, 24);
             this.pictureBox4.TabIndex = 12;
@@ -88,7 +89,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::_DVLD_.Properties.Resources.icons8_password_24;
-            this.pictureBox3.Location = new System.Drawing.Point(186, 449);
+            this.pictureBox3.Location = new System.Drawing.Point(202, 450);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
             this.pictureBox3.TabIndex = 14;
@@ -98,7 +99,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(38, 506);
+            this.label4.Location = new System.Drawing.Point(54, 507);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 16);
             this.label4.TabIndex = 9;
@@ -108,7 +109,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(91, 449);
+            this.label3.Location = new System.Drawing.Point(107, 450);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 16);
             this.label3.TabIndex = 10;
@@ -118,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 395);
+            this.label2.Location = new System.Drawing.Point(54, 396);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 16);
             this.label2.TabIndex = 11;
@@ -127,7 +128,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_DVLD_.Properties.Resources.icons8_password_24;
-            this.pictureBox1.Location = new System.Drawing.Point(187, 395);
+            this.pictureBox1.Location = new System.Drawing.Point(203, 396);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
             this.pictureBox1.TabIndex = 18;
@@ -139,7 +140,7 @@
             this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
             this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNcancel.Location = new System.Drawing.Point(575, 569);
+            this.BTNcancel.Location = new System.Drawing.Point(555, 569);
             this.BTNcancel.Name = "BTNcancel";
             this.BTNcancel.Size = new System.Drawing.Size(104, 37);
             this.BTNcancel.TabIndex = 21;
@@ -153,7 +154,7 @@
             this.BTNsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNsave.Image = global::_DVLD_.Properties.Resources.icons8_save_20;
             this.BTNsave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNsave.Location = new System.Drawing.Point(688, 569);
+            this.BTNsave.Location = new System.Drawing.Point(668, 569);
             this.BTNsave.Name = "BTNsave";
             this.BTNsave.Size = new System.Drawing.Size(104, 37);
             this.BTNsave.TabIndex = 22;
@@ -161,25 +162,25 @@
             this.BTNsave.UseVisualStyleBackColor = false;
             this.BTNsave.Click += new System.EventHandler(this.BTNsave_Click);
             // 
-            // personInfo1
-            // 
-            this.personInfo1.Location = new System.Drawing.Point(28, 12);
-            this.personInfo1.Name = "personInfo1";
-            this.personInfo1.Size = new System.Drawing.Size(747, 256);
-            this.personInfo1.TabIndex = 19;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlUserCard1
+            // 
+            this.ctrlUserCard1.Location = new System.Drawing.Point(12, 12);
+            this.ctrlUserCard1.Name = "ctrlUserCard1";
+            this.ctrlUserCard1.Size = new System.Drawing.Size(756, 360);
+            this.ctrlUserCard1.TabIndex = 23;
             // 
             // ChangePasswordFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 618);
+            this.ClientSize = new System.Drawing.Size(782, 618);
+            this.Controls.Add(this.ctrlUserCard1);
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.BTNsave);
-            this.Controls.Add(this.personInfo1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TBConfirmPassword);
             this.Controls.Add(this.TBPassword);
@@ -193,6 +194,7 @@
             this.Name = "ChangePasswordFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangePasswordFrm";
+            this.Load += new System.EventHandler(this.ChangePasswordFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -213,9 +215,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Controls.PersonInfo personInfo1;
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.Button BTNsave;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ctrlUserCard ctrlUserCard1;
     }
 }
