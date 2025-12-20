@@ -68,10 +68,10 @@
     <Compile Include="Controls\ClTestAppointment.Designer.cs">
       <DependentUpon>ClTestAppointment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\FrmEditApplicationType.cs">
+    <Compile Include="Applications\ApplicationTypes\FrmEditApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\FrmEditApplicationType.Designer.cs">
+    <Compile Include="Applications\ApplicationTypes\FrmEditApplicationType.Designer.cs">
       <DependentUpon>FrmEditApplicationType.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\FrmLocalDrivingLicenceApp.cs">
@@ -80,10 +80,10 @@
     <Compile Include="Applications\FrmLocalDrivingLicenceApp.Designer.cs">
       <DependentUpon>FrmLocalDrivingLicenceApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\FrmManageApplicationTypes.cs">
+    <Compile Include="Applications\ApplicationTypes\FrmManageApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\FrmManageApplicationTypes.Designer.cs">
+    <Compile Include="Applications\ApplicationTypes\FrmManageApplicationTypes.Designer.cs">
       <DependentUpon>FrmManageApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\FrmNewDrivingLicenceApp.cs">
@@ -239,10 +239,10 @@
     <Compile Include="LicencesLocal And International\Issue Driving Licence.Designer.cs">
       <DependentUpon>Issue Driving Licence.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Login\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main%28MDI%29.cs">
@@ -277,34 +277,34 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestForms\Schedule Test.cs">
+    <Compile Include="Tests\Schedule Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestForms\Schedule Test.Designer.cs">
+    <Compile Include="Tests\Schedule Test.Designer.cs">
       <DependentUpon>Schedule Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestForms\Take Test.cs">
+    <Compile Include="Tests\Take Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestForms\Take Test.Designer.cs">
+    <Compile Include="Tests\Take Test.Designer.cs">
       <DependentUpon>Take Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestForms\Test Appointment.cs">
+    <Compile Include="Tests\Test Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestForms\Test Appointment.Designer.cs">
+    <Compile Include="Tests\Test Appointment.Designer.cs">
       <DependentUpon>Test Appointment.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestType\FrmTestTypes.cs">
+    <Compile Include="Tests\TestType\FrmTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestType\FrmTestTypes.Designer.cs">
+    <Compile Include="Tests\TestType\FrmTestTypes.Designer.cs">
       <DependentUpon>FrmTestTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestType\FrmUpdateTestTypes.cs">
+    <Compile Include="Tests\TestType\FrmUpdateTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestType\FrmUpdateTestTypes.Designer.cs">
+    <Compile Include="Tests\TestType\FrmUpdateTestTypes.Designer.cs">
       <DependentUpon>FrmUpdateTestTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\ChangePasswordFrm.cs">
@@ -343,13 +343,13 @@
     <EmbeddedResource Include="Controls\ClTestAppointment.resx">
       <DependentUpon>ClTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\FrmEditApplicationType.resx">
+    <EmbeddedResource Include="Applications\ApplicationTypes\FrmEditApplicationType.resx">
       <DependentUpon>FrmEditApplicationType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\FrmLocalDrivingLicenceApp.resx">
       <DependentUpon>FrmLocalDrivingLicenceApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\FrmManageApplicationTypes.resx">
+    <EmbeddedResource Include="Applications\ApplicationTypes\FrmManageApplicationTypes.resx">
       <DependentUpon>FrmManageApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\FrmNewDrivingLicenceApp.resx">
@@ -427,7 +427,7 @@
     <EmbeddedResource Include="LicencesLocal And International\Issue Driving Licence.resx">
       <DependentUpon>Issue Driving Licence.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main%28MDI%29.resx">
@@ -455,19 +455,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TestForms\Schedule Test.resx">
+    <EmbeddedResource Include="Tests\Schedule Test.resx">
       <DependentUpon>Schedule Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForms\Take Test.resx">
+    <EmbeddedResource Include="Tests\Take Test.resx">
       <DependentUpon>Take Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForms\Test Appointment.resx">
+    <EmbeddedResource Include="Tests\Test Appointment.resx">
       <DependentUpon>Test Appointment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestType\FrmTestTypes.resx">
+    <EmbeddedResource Include="Tests\TestType\FrmTestTypes.resx">
       <DependentUpon>FrmTestTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestType\FrmUpdateTestTypes.resx">
+    <EmbeddedResource Include="Tests\TestType\FrmUpdateTestTypes.resx">
       <DependentUpon>FrmUpdateTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\ChangePasswordFrm.resx">

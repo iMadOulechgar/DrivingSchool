@@ -55,7 +55,7 @@
     <Compile Include="clsBusinessLayerInternationalLicence.cs" />
     <Compile Include="clsBusinessLayerLicences.cs" />
     <Compile Include="clsBusinessPersone.cs" />
-    <Compile Include="clsBusinessTest.cs" />
+    <Compile Include="clsBusinessTestTypes.cs" />
     <Compile Include="clsBussinessLayerDetainedLicense.cs" />
     <Compile Include="clsBussinessLayerTestAndAppointment.cs" />
     <Compile Include="clsCountry.cs" />

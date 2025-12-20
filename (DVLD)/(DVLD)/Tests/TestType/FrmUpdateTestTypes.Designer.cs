@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TBFees = new System.Windows.Forms.TextBox();
             this.TBDescription = new System.Windows.Forms.TextBox();
             this.TBtitle = new System.Windows.Forms.TextBox();
@@ -42,9 +43,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // TBFees
@@ -53,6 +56,7 @@
             this.TBFees.Name = "TBFees";
             this.TBFees.Size = new System.Drawing.Size(277, 20);
             this.TBFees.TabIndex = 33;
+            this.TBFees.Validating += new System.ComponentModel.CancelEventHandler(this.TBFees_Validating);
             // 
             // TBDescription
             // 
@@ -61,6 +65,7 @@
             this.TBDescription.Name = "TBDescription";
             this.TBDescription.Size = new System.Drawing.Size(277, 47);
             this.TBDescription.TabIndex = 34;
+            this.TBDescription.Validating += new System.ComponentModel.CancelEventHandler(this.TBDescription_Validating);
             // 
             // TBtitle
             // 
@@ -68,6 +73,7 @@
             this.TBtitle.Name = "TBtitle";
             this.TBtitle.Size = new System.Drawing.Size(277, 20);
             this.TBtitle.TabIndex = 35;
+            this.TBtitle.Validating += new System.ComponentModel.CancelEventHandler(this.TBtitle_Validating);
             // 
             // LBLID
             // 
@@ -188,6 +194,10 @@
             this.BTNsave.UseVisualStyleBackColor = false;
             this.BTNsave.Click += new System.EventHandler(this.BTNsave_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmUpdateTestTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +247,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

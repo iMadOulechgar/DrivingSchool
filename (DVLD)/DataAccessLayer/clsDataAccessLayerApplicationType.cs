@@ -172,6 +172,50 @@ namespace DataAccessLayer
             return Type;
         }
 
+        public static int AddNewApplicationType(string Title, decimal Fees)
+        {
+            int ApplicationTypeID = -1;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = @"Insert Into ApplicationTypes (ApplicationTypeTitle,ApplicationFees)
+                            Values (@Title,@Fees)
+                            
+                            SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", Title);
+            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    ApplicationTypeID = insertedID;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return ApplicationTypeID;
+
+        }
+
         public static decimal GetFeesByTypeID(int TypeId)
         {
             decimal Type = 0;

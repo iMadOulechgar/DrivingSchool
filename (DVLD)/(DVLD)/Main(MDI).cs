@@ -13,9 +13,11 @@ namespace _DVLD_
 {
     public partial class Main_MDI_ : Form
     {
-        public Main_MDI_()
+        LoginForm _login;
+        public Main_MDI_(LoginForm Frm)
         {
             InitializeComponent();
+            _login = Frm;
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace _DVLD_
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+            clsGlobal.UserLogin = null;
+            _login.ShowDialog();
         }
 
         private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)

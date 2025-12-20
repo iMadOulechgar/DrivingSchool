@@ -10,6 +10,10 @@ namespace BusinessLayer
 {
     public class clsBusinessApplicationType
     {
+
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode = enMode.AddNew;
+
         public int AppId { get; set; }
         public string AppTitle { get; set; }
         public decimal AppFees { get; set; }
@@ -18,6 +22,7 @@ namespace BusinessLayer
             AppId = id;
             AppTitle = title;
             AppFees = fees;
+            Mode = enMode.Update;
         }
 
         public clsBusinessApplicationType()
@@ -25,9 +30,10 @@ namespace BusinessLayer
             AppId = 0;
             AppTitle = "";
             AppFees = 0;
+            Mode = enMode.AddNew;
         }
 
-        public clsBusinessApplicationType Find(int AppId)
+        public static clsBusinessApplicationType Find(int AppId)
         {
             string Title = "";
             decimal fees = 0;
@@ -42,7 +48,14 @@ namespace BusinessLayer
             }
         }
 
-        public DataTable GetAllFromAppTypes()
+        private bool _AddNewApplicationType()
+        {
+            this.AppId = clsDataAccessLayerApplicationType.AddNewApplicationType(this.AppTitle, this.AppFees);
+
+            return (this.AppId != -1);
+        }
+
+        public static DataTable GetAllFromAppTypes()
         {
             return clsDataAccessLayerApplicationType.GetAllApplicationTypes();
         }
@@ -54,12 +67,22 @@ namespace BusinessLayer
 
         public bool Save()
         {
-            if (_Update())
+            switch (Mode)
             {
-                return true;
+                case enMode.AddNew:
+                    if (_AddNewApplicationType())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+                    return _Update();
             }
 
-            return false;   
+            return false;
         }
 
         public DataTable GetAllManageApp()

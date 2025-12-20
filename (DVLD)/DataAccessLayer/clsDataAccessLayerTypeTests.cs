@@ -40,7 +40,7 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static bool Find(ref int ID ,ref string title ,ref string Description, ref decimal fees)
+        public static bool Find(int ID ,ref string title ,ref string Description, ref decimal fees)
         {
             bool result = false;
 
@@ -114,8 +114,50 @@ namespace DataAccessLayer
             return result;
         }
 
-        
+        public static int AddNewTestType(string Title, string Description, decimal Fees)
+        {
+            int TestTypeID = -1;
 
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = @"Insert Into TestTypes (TestTypeTitle,TestTypeTitle,TestTypeFees)
+                            Values (@TestTypeTitle,@TestTypeDescription,@ApplicationFees)
+                            where TestTypeID = @TestTypeID;
+                            SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeTitle", Title);
+            command.Parameters.AddWithValue("@TestTypeDescription", Description);
+            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    TestTypeID = insertedID;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return TestTypeID;
+
+        }
 
     }
 }
