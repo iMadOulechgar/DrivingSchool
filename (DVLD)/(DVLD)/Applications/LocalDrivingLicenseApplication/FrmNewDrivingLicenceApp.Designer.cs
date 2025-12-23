@@ -32,6 +32,7 @@
             this.BTNsave = new System.Windows.Forms.Button();
             this.Tab = new System.Windows.Forms.TabControl();
             this.Tab1 = new System.Windows.Forms.TabPage();
+            this.personeFilterAndAdd1 = new _DVLD_.Controls.PersoneFilterAndAdd();
             this.button1 = new System.Windows.Forms.Button();
             this.Tab2 = new System.Windows.Forms.TabPage();
             this.CBLicenceClasses = new System.Windows.Forms.ComboBox();
@@ -54,8 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.personeFilterAndAdd1 = new _DVLD_.Controls.PersoneFilterAndAdd();
+            this.LBLTitle = new System.Windows.Forms.Label();
             this.Tab.SuspendLayout();
             this.Tab1.SuspendLayout();
             this.Tab2.SuspendLayout();
@@ -114,6 +114,16 @@
             this.Tab1.TabIndex = 0;
             this.Tab1.Text = "Persone Info";
             this.Tab1.UseVisualStyleBackColor = true;
+            // 
+            // personeFilterAndAdd1
+            // 
+            this.personeFilterAndAdd1.FilterEnabled = true;
+            this.personeFilterAndAdd1.Location = new System.Drawing.Point(8, 6);
+            this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
+            this.personeFilterAndAdd1.ShowAddPerson = true;
+            this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
+            this.personeFilterAndAdd1.TabIndex = 4;
+            this.personeFilterAndAdd1.OnPersonSelected += new System.Action<int>(this.personeFilterAndAdd1_OnPersonSelected);
             // 
             // button1
             // 
@@ -218,7 +228,6 @@
             this.LBLCreator.Size = new System.Drawing.Size(92, 16);
             this.LBLCreator.TabIndex = 10;
             this.LBLCreator.Text = "Created By :";
-            this.LBLCreator.Click += new System.EventHandler(this.label8_Click);
             // 
             // lbl
             // 
@@ -229,7 +238,6 @@
             this.lbl.Size = new System.Drawing.Size(132, 16);
             this.lbl.TabIndex = 10;
             this.lbl.Text = "Application Fees :";
-            this.lbl.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -240,7 +248,6 @@
             this.label9.Size = new System.Drawing.Size(112, 16);
             this.label9.TabIndex = 10;
             this.label9.Text = "Licence Class :";
-            this.label9.Click += new System.EventHandler(this.label8_Click);
             // 
             // label8
             // 
@@ -251,7 +258,6 @@
             this.label8.Size = new System.Drawing.Size(126, 16);
             this.label8.TabIndex = 10;
             this.label8.Text = "ApplicationDate :";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label6
             // 
@@ -357,23 +363,16 @@
             this.label5.Size = new System.Drawing.Size(0, 16);
             this.label5.TabIndex = 5;
             // 
-            // label1
+            // LBLTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(224, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(415, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "New Local Driving Licence Application";
-            // 
-            // personeFilterAndAdd1
-            // 
-            this.personeFilterAndAdd1.Location = new System.Drawing.Point(8, 6);
-            this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
-            this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
-            this.personeFilterAndAdd1.TabIndex = 4;
+            this.LBLTitle.AutoSize = true;
+            this.LBLTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLTitle.ForeColor = System.Drawing.Color.Red;
+            this.LBLTitle.Location = new System.Drawing.Point(224, 9);
+            this.LBLTitle.Name = "LBLTitle";
+            this.LBLTitle.Size = new System.Drawing.Size(415, 25);
+            this.LBLTitle.TabIndex = 5;
+            this.LBLTitle.Text = "New Local Driving Licence Application";
             // 
             // FrmNewDrivingLicenceApp
             // 
@@ -383,11 +382,12 @@
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.BTNsave);
             this.Controls.Add(this.Tab);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LBLTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmNewDrivingLicenceApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewFrmDrivingLicenceApp";
+            this.Activated += new System.EventHandler(this.FrmNewDrivingLicenceApp_Activated);
             this.Load += new System.EventHandler(this.NewFrmDrivingLicenceApp_Load);
             this.Tab.ResumeLayout(false);
             this.Tab1.ResumeLayout(false);
@@ -408,7 +408,7 @@
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.Button BTNsave;
         private System.Windows.Forms.TabControl Tab;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LBLTitle;
         private System.Windows.Forms.TabPage Tab1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage Tab2;

@@ -33,7 +33,6 @@
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
             this.TBNotes = new System.Windows.Forms.TextBox();
-            this.localDrivingLicenceAppInfoAndApplicationInfo1 = new _DVLD_.Controls.LocalDrivingLicenceAppInfoAndApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,10 +94,7 @@
             // 
             // localDrivingLicenceAppInfoAndApplicationInfo1
             // 
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Location = new System.Drawing.Point(12, 12);
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Name = "localDrivingLicenceAppInfoAndApplicationInfo1";
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Size = new System.Drawing.Size(850, 373);
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.TabIndex = 0;
+           
             // 
             // Issue_Driving_Licence
             // 
@@ -110,7 +106,6 @@
             this.Controls.Add(this.BTNsave);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.localDrivingLicenceAppInfoAndApplicationInfo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Issue_Driving_Licence";
             this.Text = "Issue Driving Licence";
@@ -122,7 +117,6 @@
 
         #endregion
 
-        private Controls.LocalDrivingLicenceAppInfoAndApplicationInfo localDrivingLicenceAppInfoAndApplicationInfo1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button BTNcancel;

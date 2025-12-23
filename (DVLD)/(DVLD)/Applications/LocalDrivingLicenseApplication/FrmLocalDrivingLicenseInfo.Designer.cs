@@ -1,6 +1,6 @@
-﻿namespace _DVLD_.LicencesLocal_And_International
+﻿namespace _DVLD_.Applications.LocalDrivingLicenseApplication
 {
-    partial class InternationLicenceDetailsInfo
+    partial class FrmLocalDrivingLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ctrlDrivingLicenseApp1 = new _DVLD_.Applications.LocalDrivingLicenseApplication.ctrlDrivingLicenseApp();
             this.BTNcancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // ctrlDrivingLicenseApp1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(291, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 25);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Driving International Lisence Info";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::_DVLD_.Properties.Resources.id_search__2_1;
-            this.pictureBox1.Location = new System.Drawing.Point(434, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 84);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.ctrlDrivingLicenseApp1.Location = new System.Drawing.Point(3, 3);
+            this.ctrlDrivingLicenseApp1.Name = "ctrlDrivingLicenseApp1";
+            this.ctrlDrivingLicenseApp1.Size = new System.Drawing.Size(907, 362);
+            this.ctrlDrivingLicenseApp1.TabIndex = 0;
             // 
             // BTNcancel
             // 
@@ -60,41 +45,33 @@
             this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
             this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNcancel.Location = new System.Drawing.Point(848, 413);
+            this.BTNcancel.Location = new System.Drawing.Point(787, 365);
             this.BTNcancel.Name = "BTNcancel";
             this.BTNcancel.Size = new System.Drawing.Size(104, 37);
-            this.BTNcancel.TabIndex = 9;
+            this.BTNcancel.TabIndex = 37;
             this.BTNcancel.Text = "Cancel";
             this.BTNcancel.UseVisualStyleBackColor = false;
             this.BTNcancel.Click += new System.EventHandler(this.BTNcancel_Click);
             // 
-            // driver_International_License_Info1
-            // 
-           
-            // 
-            // InternationLicenceDetailsInfo
+            // FrmLocalDrivingLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 455);
-           this.Controls.Add(this.BTNcancel);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(900, 408);
+            this.Controls.Add(this.BTNcancel);
+            this.Controls.Add(this.ctrlDrivingLicenseApp1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "InternationLicenceDetailsInfo";
+            this.Name = "FrmLocalDrivingLicenseInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InternationLicenceDetailsInfo";
-            this.Load += new System.EventHandler(this.InternationLicenceDetailsInfo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "FrmLocalDrivingLicenseInfo";
+            this.Load += new System.EventHandler(this.FrmLocalDrivingLicenseInfo_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private ctrlDrivingLicenseApp ctrlDrivingLicenseApp1;
         private System.Windows.Forms.Button BTNcancel;
     }
 }

@@ -44,8 +44,7 @@ namespace _DVLD_.AllAboutTest
 
         public void _FillControleWithData(int TrialNum,int TestTypeID)
         {
-            LBLAPPID.Text = ApplicationLocal.LocalApp.LocalDrivingLicenceAppLicationID.ToString();
-            LBLClass.Text = ApplicationLocal.GetClassName(ApplicationLocal.LocalApp.LicenceClasses).ToString();
+
             LBLFees.Text = Convert.ToInt32(App.GetPaidFees(TestTypeID)).ToString();
             LBLTrial.Text = TrialNum.ToString();
             LBLName.Text = Per.FullName;

@@ -28,7 +28,6 @@ namespace _DVLD_.AllAboutTest
             Appointments.TestAppointement.TestTypeID = Type;
 
             LBLAPPID.Text = localId.ToString();
-            LBLClass.Text = ApplicationLocal.GetClassName(ApplicationLocal.LocalApp.LicenceClasses).ToString();
             LBLfees.Text = Convert.ToInt32(Appointments.GetPaidFees(Appointments.TestAppointement.TestTypeID)).ToString();
             LBLTrial.Text = Appointments.Trial(localId, Type).ToString();
             LBLNAME.Text = Per.FullName;
@@ -41,7 +40,6 @@ namespace _DVLD_.AllAboutTest
         void FillDataInDB()
         {
             Appointments.TestAppointement.AppointmentDate = dateTimePicker1.Value;
-            Appointments.TestAppointement.PaidFees = ApplicationLocal.App.PaidFees;
             Appointments.TestAppointement.CreatedByUser = clsGlobal.UserLogin.UserID;
             Appointments.TestAppointement.IsLocked = false;
         }

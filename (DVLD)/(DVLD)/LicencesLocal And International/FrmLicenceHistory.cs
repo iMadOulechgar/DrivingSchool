@@ -20,9 +20,6 @@ namespace _DVLD_.Licences
             InitializeComponent();
 
             clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
-            App = Application.GetDataByLocalID(LocalID);
-           personeFilterAndAdd1.fillfilter(App.App.AppPersoneId);
-            driver_Licences_Hirtory1.FillDataGridView(App.App.ApplicationId);
             driver_Licences_Hirtory1.FillDataGridViewInternationalLicence();
         }
 

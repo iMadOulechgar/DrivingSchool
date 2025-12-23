@@ -42,7 +42,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.localDrivingLicenceAppInfoAndApplicationInfo1 = new _DVLD_.Controls.LocalDrivingLicenceAppInfoAndApplicationInfo();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVAppointments)).BeginInit();
             this.SuspendLayout();
@@ -171,13 +170,6 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // localDrivingLicenceAppInfoAndApplicationInfo1
-            // 
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Location = new System.Drawing.Point(12, 12);
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Name = "localDrivingLicenceAppInfoAndApplicationInfo1";
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.Size = new System.Drawing.Size(799, 365);
-            this.localDrivingLicenceAppInfoAndApplicationInfo1.TabIndex = 0;
-            // 
             // Test_Appointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,7 +181,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.localDrivingLicenceAppInfoAndApplicationInfo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Test_Appointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -204,7 +195,6 @@
 
         #endregion
 
-        private Controls.LocalDrivingLicenceAppInfoAndApplicationInfo localDrivingLicenceAppInfoAndApplicationInfo1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BTNcancel;

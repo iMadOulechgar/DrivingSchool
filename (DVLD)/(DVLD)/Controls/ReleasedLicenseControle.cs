@@ -40,9 +40,6 @@ namespace _DVLD_.Controls
             clsBussinessLayerDetainedLicense Det = new clsBussinessLayerDetainedLicense();
 
             driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
-            driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-            driverLicenceInfo1._FillDataInControle();
             if (IsReleasedAlready)
             {
                 Released = Det.FindDetainedLicenceByLicenceID(driverLicenceInfo1.Licence.LicenceID);
@@ -66,16 +63,7 @@ namespace _DVLD_.Controls
             }
         }
 
-        public void FillDataBaseApp(int PersonID)
-        {
-            Application.App.AppPersoneId = PersonID;
-            Application.App.AppStatus = 3;
-            Application.App.AppDate = DateTime.Now;
-            Application.App.LastStatusDate = DateTime.Now;
-            Application.App.PaidFees = Convert.ToDecimal(int.Parse(LBLAppFees.Text));
-            Application.App.AppType = 5;
-            Application.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
-        }
+
 
         void FillDataWhenSearch(int LicenceID)
         {
@@ -99,15 +87,7 @@ namespace _DVLD_.Controls
 
         void FillDataInDb()
         {
-            FillDataBaseApp(driverLicenceInfo1.Person.PersonID);
-            if (Application.SaveAddAppCanBeChange())
-            {
-                MessageBox.Show("App Saved Successfly","Confirm",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Something Wrong On App", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         void FillDbRelease()
@@ -115,8 +95,7 @@ namespace _DVLD_.Controls
             Released.ReleaseDate = DateTime.Now;
             Released.ReleasedByUserID = clsGlobal.UserLogin.UserID;
             Released.IsReleased = true;
-            Released.ReleaseApplicationID = Application.App.ApplicationId;
-            LBLAppID.Text = Application.App.ApplicationId.ToString();
+
         }
 
         void LogicUi()
@@ -185,7 +164,6 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Person.PersonID, driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
 

@@ -40,9 +40,7 @@ namespace _DVLD_.Controls
             clsBusinessPersone Per = new clsBusinessPersone();
 
             driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
-            driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
             //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-            driverLicenceInfo1._FillDataInControle();
             FillReplacementControlesWithData();
         }
 
@@ -107,20 +105,7 @@ namespace _DVLD_.Controls
             }
         }
 
-        public void FillDataBaseApp(int PersonID)
-        {
-            Application.App.AppPersoneId = PersonID;
-            Application.App.AppStatus = 3;
-            Application.App.AppDate = DateTime.Now;
-            Application.App.LastStatusDate = DateTime.Now;
-            Application.App.PaidFees = Convert.ToDecimal(int.Parse(LBLAppFees.Text));
-            if(RBForDamaged.Checked == true)
-            Application.App.AppType = 4;
-            else
-            Application.App.AppType = 3;
-
-            Application.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
-        }
+        
 
         public void FillDataBaseLicence(int AppID, int DriverID, int LicenceClassID)
         {
@@ -141,39 +126,14 @@ namespace _DVLD_.Controls
             BTNInternational.Enabled = false;
             linkLabel1.Enabled = true;
             linkLabel2.Enabled = true;
-            LBLReplacAppID.Text = Application.App.ApplicationId.ToString();
             LBLReplacedLicenceID.Text = licences.LicenceID.ToString();
         }
 
-        bool Save()
-        {
-            FillDataBaseApp(driverLicenceInfo1.Person.PersonID);
-
-            if (Application.SaveAddAppCanBeChange())
-            {
-                FillDataBaseLicence(Application.App.ApplicationId,driverLicenceInfo1.Licence.DriverID,driverLicenceInfo1.Licence.LicenceClassID);
-
-                if (licences.Save())
-                {
-                    licences.ChangeActiveToInActive(int.Parse(LBLOldLicenceID.Text));
-                    AfterSaved();
-                    return true;
-                }
-            }
-
-            return false;
-        }
+       
 
         private void BTNInternational_Click(object sender, EventArgs e)
         {
-            if (Save())
-            {
-                MessageBox.Show("The Data Saved Successfly","Confirm",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Something Wrong :(", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -186,7 +146,6 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Application.App.AppPersoneId,driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
     }

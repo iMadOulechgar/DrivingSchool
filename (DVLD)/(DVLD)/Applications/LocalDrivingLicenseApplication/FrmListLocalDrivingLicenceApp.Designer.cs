@@ -1,6 +1,6 @@
 ﻿namespace _DVLD_.Applications
 {
-    partial class FrmLocalDrivingLicenceApp
+    partial class FrmListLocalDrivingLicenceApp
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.DGVLocalDrivingLicenceApp = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvLocalDrivingLicenseApplications = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showApplicationDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -63,69 +56,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVLocalDrivingLicenceApp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // DGVLocalDrivingLicenceApp
+            // dgvLocalDrivingLicenseApplications
             // 
-            this.DGVLocalDrivingLicenceApp.AllowUserToAddRows = false;
-            this.DGVLocalDrivingLicenceApp.AllowUserToDeleteRows = false;
-            this.DGVLocalDrivingLicenceApp.AllowUserToOrderColumns = true;
-            this.DGVLocalDrivingLicenceApp.BackgroundColor = System.Drawing.Color.White;
-            this.DGVLocalDrivingLicenceApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVLocalDrivingLicenceApp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.DGVLocalDrivingLicenceApp.ContextMenuStrip = this.contextMenuStrip1;
-            this.DGVLocalDrivingLicenceApp.Location = new System.Drawing.Point(13, 266);
-            this.DGVLocalDrivingLicenceApp.Name = "DGVLocalDrivingLicenceApp";
-            this.DGVLocalDrivingLicenceApp.Size = new System.Drawing.Size(1026, 324);
-            this.DGVLocalDrivingLicenceApp.TabIndex = 13;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "LocalDrivingLicenceID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "ClassName";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "NationalNo";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "FullName";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "ApplicationDate";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 180;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "PassedTest";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Status";
-            this.Column7.Name = "Column7";
+            this.dgvLocalDrivingLicenseApplications.AllowUserToAddRows = false;
+            this.dgvLocalDrivingLicenseApplications.AllowUserToDeleteRows = false;
+            this.dgvLocalDrivingLicenseApplications.AllowUserToOrderColumns = true;
+            this.dgvLocalDrivingLicenseApplications.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLocalDrivingLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalDrivingLicenseApplications.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvLocalDrivingLicenseApplications.Location = new System.Drawing.Point(13, 266);
+            this.dgvLocalDrivingLicenseApplications.Name = "dgvLocalDrivingLicenseApplications";
+            this.dgvLocalDrivingLicenseApplications.Size = new System.Drawing.Size(1026, 324);
+            this.dgvLocalDrivingLicenseApplications.TabIndex = 13;
             // 
             // contextMenuStrip1
             // 
@@ -155,6 +102,7 @@
             this.showApplicationDetailsToolStripMenuItem.Name = "showApplicationDetailsToolStripMenuItem";
             this.showApplicationDetailsToolStripMenuItem.Size = new System.Drawing.Size(258, 38);
             this.showApplicationDetailsToolStripMenuItem.Text = "Show Application Details";
+            this.showApplicationDetailsToolStripMenuItem.Click += new System.EventHandler(this.showApplicationDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -168,6 +116,7 @@
             this.editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
             this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(258, 38);
             this.editApplicationToolStripMenuItem.Text = "Edit Application";
+            this.editApplicationToolStripMenuItem.Click += new System.EventHandler(this.editApplicationToolStripMenuItem_Click);
             // 
             // deleteApplicationToolStripMenuItem
             // 
@@ -208,6 +157,7 @@
             this.sechduleTestToolStripMenuItem.Name = "sechduleTestToolStripMenuItem";
             this.sechduleTestToolStripMenuItem.Size = new System.Drawing.Size(258, 38);
             this.sechduleTestToolStripMenuItem.Text = "Sechdule Test";
+            this.sechduleTestToolStripMenuItem.Click += new System.EventHandler(this.sechduleTestToolStripMenuItem_Click);
             // 
             // sechToolStripMenuItem
             // 
@@ -295,10 +245,17 @@
             this.CBSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBSelect.FormattingEnabled = true;
+            this.CBSelect.Items.AddRange(new object[] {
+            "None",
+            "L.D.L.AppID",
+            "National No.",
+            "Full Name",
+            "Status"});
             this.CBSelect.Location = new System.Drawing.Point(87, 236);
             this.CBSelect.Name = "CBSelect";
             this.CBSelect.Size = new System.Drawing.Size(211, 23);
             this.CBSelect.TabIndex = 11;
+            this.CBSelect.SelectedIndexChanged += new System.EventHandler(this.CBSelect_SelectedIndexChanged);
             // 
             // LBLRec
             // 
@@ -365,13 +322,13 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmLocalDrivingLicenceApp
+            // FrmListLocalDrivingLicenceApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 626);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.DGVLocalDrivingLicenceApp);
+            this.Controls.Add(this.dgvLocalDrivingLicenseApplications);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CBSelect);
             this.Controls.Add(this.LBLRec);
@@ -380,11 +337,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FrmLocalDrivingLicenceApp";
+            this.Name = "FrmListLocalDrivingLicenceApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLocalDrivingLicenceApp";
             this.Load += new System.EventHandler(this.FrmLocalDrivingLicenceApp_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVLocalDrivingLicenceApp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -395,7 +352,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView DGVLocalDrivingLicenceApp;
+        private System.Windows.Forms.DataGridView dgvLocalDrivingLicenseApplications;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox CBSelect;
         private System.Windows.Forms.Label LBLRec;
@@ -403,13 +360,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem editApplicationToolStripMenuItem;

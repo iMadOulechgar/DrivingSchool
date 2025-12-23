@@ -8,114 +8,106 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using static BusinessLayer.clsApplicationBusinessLayer;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace BusinessLayer
 {
     public class clsApplicationBusinessLayer
     {
-        public enum enMode { Add = 1 , Update = 2 , Stop = 3}
+        public enum enMode { Add = 1 , Update = 2 }
+        public enMode Mode = enMode.Add;
 
-        public enMode Mode ;
-
-        public struct Applications
+        public enum enApplicationType
         {
-            public int ApplicationId { get; set; }
-            public int AppPersoneId { get; set; }
-            public DateTime AppDate { get; set; }
-            public byte AppStatus { get; set; }
-            public int AppType { get; set; }
-            public DateTime LastStatusDate { get; set; }
-            public decimal PaidFees { get; set; }
-            public int CreatedByUserID { get; set; }
+            NewDrivingLicense = 1, RenewDrivingLicense = 2, ReplaceLostDrivingLicense = 3,
+            ReplaceDamagedDrivingLicense = 4, ReleaseDetainedDrivingLicsense = 5, NewInternationalLicense = 6, RetakeTest = 7
+        };
+
+        public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
+
+        public int ApplicationId { get; set; }
+        public int AppPersoneId { get; set; }
+        public clsBusinessPersone PersonInfo;
+        public DateTime AppDate { get; set; }
+        public enApplicationStatus AppStatus { get; set; }
+        public int AppType { get; set; }
+        public clsBusinessApplicationType ApplicationTypeInfo;
+        public DateTime LastStatusDate { get; set; }
+        public decimal PaidFees { get; set; }
+        public int CreatedByUserID { get; set; }
+        public clsUserBusiness CreatedByUserInfo;
+        public string StatusText
+        {
+            get
+            {
+                switch (AppStatus)
+                {
+                    case enApplicationStatus.New:
+                        return "New";
+                    case enApplicationStatus.Cancelled:
+                        return "Cancelled";
+                    case enApplicationStatus.Completed:
+                        return "Completed";
+                    default:
+                        return "Unknown";
+                }
+            }
         }
-
-        public struct LocalDrivingLicenceApp
-        {
-            public int LocalDrivingLicenceAppLicationID { get; set; }
-            public int AppID { get; set; }
-            public int LicenceClasses { get; set; }
-        } 
-        
-        public Applications App;
-        public LocalDrivingLicenceApp LocalApp;
 
         public clsApplicationBusinessLayer()
         {
-            App.ApplicationId = -1;
-            App.AppPersoneId = -1;
-            App.AppDate = default(DateTime);
-            App.AppStatus = 0;
-            App.LastStatusDate = default(DateTime);
-            App.PaidFees = default(decimal);
-            App.CreatedByUserID = -1;
+            ApplicationId = -1;
+            AppPersoneId = -1;
+            AppDate = default(DateTime);
+            AppStatus = enApplicationStatus.New;
+            AppType = -1;
+            LastStatusDate = default(DateTime);
+            PaidFees = default(decimal);
+            CreatedByUserID = -1;
 
             Mode = enMode.Add;
         }
 
-        public clsApplicationBusinessLayer(int local , int appid , int licenceclass , int personeid , DateTime Date , int apptypeid , byte status ,DateTime LastStatus , decimal fees , int createdbyuser)
-
+        public clsApplicationBusinessLayer(int appid, int personeid, DateTime Date, int apptypeid, enApplicationStatus status, DateTime LastStatus, decimal fees, int createdbyuser)
         {
-            App.ApplicationId = appid;
-            App.AppPersoneId = personeid;
-            App.AppDate = Date;
-            App.AppType = apptypeid;
-            App.AppStatus = status;
-            App.LastStatusDate = LastStatus;
-            App.PaidFees = fees;
-            App.CreatedByUserID = createdbyuser;
-            LocalApp.LocalDrivingLicenceAppLicationID = local;
-            LocalApp.AppID = appid;
-            LocalApp.LicenceClasses = licenceclass;
+            ApplicationId = appid;
+            AppPersoneId = personeid;
+            PersonInfo = clsBusinessPersone.FindPersoneByPerId(personeid);
+            AppDate = Date;
+            AppType = apptypeid;
+            ApplicationTypeInfo = clsBusinessApplicationType.Find(apptypeid);
+            AppStatus = status;
+            LastStatusDate = LastStatus;
+            PaidFees = fees;
+            CreatedByUserID = createdbyuser;
+            CreatedByUserInfo = clsUserBusiness.FindByUserID(createdbyuser);
 
             Mode = enMode.Update;
-        }
-
-        public clsApplicationBusinessLayer(int appid, int personeid, DateTime Date, int apptypeid, byte status, DateTime LastStatus, decimal fees, int createdbyuser)
-
-        {
-            App.ApplicationId = appid;
-            App.AppPersoneId = personeid;
-            App.AppDate = Date;
-            App.AppType = apptypeid;
-            App.AppStatus = status;
-            App.LastStatusDate = LastStatus;
-            App.PaidFees = fees;
-            App.CreatedByUserID = createdbyuser;
-
-            Mode = enMode.Update;
-        }
-
-        public bool Exists(int PersonID, int LicenceClass)
-        {
-            return clsDataAccessLayerApplication.CheckPersoneHasSameOrder(PersonID, LicenceClass);
-        }
-
-        private bool _AddLocalDrivingLicenceApplication()
-        {
-            App.ApplicationId = clsDataAccessLayerApplication.AddApplication(App.AppPersoneId,App.AppDate, App.AppStatus, App.AppType,App.LastStatusDate,App.PaidFees,App.CreatedByUserID);
-            LocalApp.LocalDrivingLicenceAppLicationID = clsDataAccessLayerApplication.AddLocalDrivingLicenceApp(App.ApplicationId, LocalApp.LicenceClasses);
-            return (App.ApplicationId != -1 && LocalApp.LocalDrivingLicenceAppLicationID != -1);
         }
 
         private bool _AddApp()
         {
-            App.ApplicationId = clsDataAccessLayerApplication.AddApplication(App.AppPersoneId, App.AppDate, App.AppStatus, App.AppType, App.LastStatusDate, App.PaidFees, App.CreatedByUserID);
-            return (App.ApplicationId != -1);
+            ApplicationId = clsDataAccessLayerApplication.AddNewApplication(AppPersoneId, AppDate, AppType, (byte)AppStatus, LastStatusDate, PaidFees, CreatedByUserID);
+            return (ApplicationId != -1);
         }
-
-        public bool SaveAddAppCanBeChange()
-        {
-            if (_AddApp())
-            {
-                return true;
-            }
-            return false;
-        } 
 
         private bool _UpdateAppCompleted()
         {
-            return clsDataAccessLayerApplication.UpdateApplicationComplet(this.App.ApplicationId);
+            return clsDataAccessLayerApplication.UpdateApplication(this.ApplicationId,this.AppPersoneId,this.AppDate,this.AppType,(byte)this.AppStatus,this.LastStatusDate,this.PaidFees,this.CreatedByUserID);
+        }
+
+        public bool Cancel()
+
+        {
+            return clsDataAccessLayerApplication.UpdateStatus(ApplicationId, 2);
+        }
+
+        public bool SetComplete()
+
+        {
+            return clsDataAccessLayerApplication.UpdateStatus(ApplicationId, 3);
         }
 
         public bool Save()
@@ -123,54 +115,33 @@ namespace BusinessLayer
             switch (Mode)
             {
                 case enMode.Add:
-                    if (_AddLocalDrivingLicenceApplication())
+                    if (_AddApp())
                     {
-                        Mode = enMode.Stop;
+                        Mode = enMode.Update;
                         return true;
                     }
-                break;
-                    case enMode.Update:
-                    if (_UpdateAppCompleted())
+                    else
                     {
-                        return true;
+                        return false;
                     }
-                    break;
+                case enMode.Update:
+                    return _UpdateAppCompleted();
             }
 
             return false;
 
         }
 
-        public DataTable GetAllLicenceClasses()
-        {
-            return clsDataAccessLayerApplication.GetAllLicenceClassesNames();
-        }
-
-        public DataTable GetLDLAFromView()
-        {
-            return clsDataAccessLayerApplication.GetLocalDrivingLicenceAppFromView();
-        }
-
-        public bool Cancel(int LocalID)
-        {
-            return clsDataAccessLayerApplication.CancelTheOrder(LocalID);
-        }
-
-        public int GetPersoneIDFromLDLA(int ID)
-        {
-            return clsDataAccessLayerApplication.GetPersoneIdByLocalDrivingLicenceApp(ID);
-        }
-
-        public clsApplicationBusinessLayer FindAppByAppID(int RefAppID)
+        public static clsApplicationBusinessLayer FindBaseApplication(int RefAppID)
         {
             int personeid = -1, apptypeid = -1, createdbyuser = -1;
             DateTime Date = default(DateTime), LastStatus = default(DateTime);
                 byte status = 0;
                 decimal fees = 0; 
 
-            if (clsDataAccessLayerApplication.FindApplicationByID(RefAppID, ref personeid, ref Date, ref apptypeid, ref status, ref LastStatus, ref fees, ref createdbyuser))
+            if (clsDataAccessLayerApplication.GetApplicationInfoByID(RefAppID, ref personeid, ref Date, ref apptypeid, ref status, ref LastStatus, ref fees, ref createdbyuser))
             {
-                return new clsApplicationBusinessLayer(RefAppID, personeid, Date, apptypeid, status, LastStatus, fees, createdbyuser);
+                return new clsApplicationBusinessLayer(RefAppID, personeid, Date, apptypeid, (enApplicationStatus)status, LastStatus, fees, createdbyuser);
             }
             else
             {
@@ -178,35 +149,47 @@ namespace BusinessLayer
             }
         }
 
-        public clsApplicationBusinessLayer GetDataByLocalID(int LocalDrivingLicenceAppID)
+        public bool DeteleApp(int Delete)
         {
-            int RefAppID = -1, LicenceClass = -1;
-            int AppID = -1, PersoneID = -1, AppTypeID = -1, CreatedByUserID = -1;
-            DateTime Date = default(DateTime), LastDateStatus = default(DateTime);
-            byte Status = 0;
-            decimal Fees = -1;
-
-
-            if (clsDataAccessLayerApplication.GetLDLAByID(LocalDrivingLicenceAppID, ref RefAppID, ref LicenceClass))
-            {
-                if (clsDataAccessLayerApplication.FindApplicationByID(RefAppID, ref PersoneID,ref Date ,ref AppTypeID , ref Status,ref LastDateStatus ,ref Fees , ref CreatedByUserID))
-                {
-                    return new clsApplicationBusinessLayer(LocalDrivingLicenceAppID, RefAppID, LicenceClass, PersoneID, Date, AppTypeID, Status, LastDateStatus, Fees, CreatedByUserID);
-                }
-            }
-
-            return null;
+            return clsDataAccessLayerApplication.DeleteApplication(Delete);
         }
 
-        public string GetClassName(int Id)
+        public bool Detele()
         {
-            return clsDataAccessLayerApplication.GetLicenceClassesNameByID(Id);
+            return clsDataAccessLayerApplication.DeleteApplication(this.ApplicationId);
         }
 
-        public bool DeteleOrderLocal(int Delete)
+        public static bool IsApplicationExist(int ApplicationID)
         {
-            return clsDataAccessLayerApplication.DeleteFromLocal(Delete);
+            return clsDataAccessLayerApplication.IsApplicationExist(ApplicationID);
         }
+
+        public static bool DoesPersonHaveActiveApplication(int PersonID, int ApplicationTypeID)
+        {
+            return clsDataAccessLayerApplication.DoesPersonHaveActiveApplication(PersonID, ApplicationTypeID);
+        }
+
+        public bool DoesPersonHaveActiveApplication(int ApplicationTypeID)
+        {
+            return DoesPersonHaveActiveApplication(this.ApplicationId, ApplicationTypeID);
+        }
+
+        public static int GetActiveApplicationID(int PersonID, enApplicationType ApplicationTypeID)
+        {
+            return clsDataAccessLayerApplication.GetActiveApplicationID(PersonID, (int)ApplicationTypeID);
+        }
+
+        public static int GetActiveApplicationIDForLicenseClass(int PersonID, enApplicationType ApplicationTypeID, int LicenseClassID)
+        {
+            return clsDataAccessLayerApplication.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
+        }
+
+        public int GetActiveApplicationID(enApplicationType ApplicationTypeID)
+        {
+            return GetActiveApplicationID(this.ApplicationId, ApplicationTypeID);
+        }
+
+
 
 
     }

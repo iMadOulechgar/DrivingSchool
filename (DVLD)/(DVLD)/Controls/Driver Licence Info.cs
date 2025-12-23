@@ -29,50 +29,7 @@ namespace _DVLD_.Controls
              return TypesName.GetAppTypesNameByAppID(AppID); 
         }
 
-        public void _FillDataInControle()
-        {
-            clsBussinessLayerDetainedLicense Detained = new clsBussinessLayerDetainedLicense();
-
-            LBLClass.Text = Application.GetClassName(Licence.LicenceClassID);
-            LBLName1.Text = Person.FullName;
-            LBLLicence.Text = Licence.LicenceID.ToString();
-            LBLNATIONALNO.Text = Person.NationalNo;
-            if (Person.Gendor == 1)
-                LBLGendor.Text = "Male";
-            else
-                LBLGendor.Text = "Female";
-
-            LBLIssueDate.Text = Licence.IssueDate.ToString();
-
-            if (Licence.IssueReason == 1 || Application.App.AppType == 1)
-                LBLIssueReason.Text = "First Time";
-            else
-            {
-                LBLIssueReason.Text = GetAppType(Application.App.AppType);
-            }
-                
-
-            if (Licence.Notes != "")
-                LBLNotes.Text = Licence.Notes;
-            else
-                LBLNotes.Text = "No Notes";
-
-            if (Licence.IsActive == true)
-                LBLIsActive.Text = "Yes";
-            else
-                LBLIsActive.Text = "No";
-
-            LBLDateOfBirth.Text = Person.DateOfBirth.ToString();
-            LBLDriverID.Text = Licence.DriverID.ToString();
-            LBLExpirationDate.Text = Licence.ExpirationDate.ToString();
-            if(Detained.IsAlreadyDetained(Licence.LicenceID))
-                LBLIsDetained.Text = "Yes";
-            else
-                LBLIsDetained.Text = "No";
-
-            PB.Load(Person.ImagePath);
-        }
-
+       
 
     }
 }

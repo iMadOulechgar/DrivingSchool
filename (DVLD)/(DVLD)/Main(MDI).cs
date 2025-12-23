@@ -71,7 +71,7 @@ namespace _DVLD_
 
         private void localDrivingLicenceApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLocalDrivingLicenceApp LDL = new FrmLocalDrivingLicenceApp();
+            FrmListLocalDrivingLicenceApp LDL = new FrmListLocalDrivingLicenceApp();
             LDL.ShowDialog();
         }
 
@@ -137,7 +137,7 @@ namespace _DVLD_
 
         private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLocalDrivingLicenceApp App = new FrmLocalDrivingLicenceApp();
+            FrmListLocalDrivingLicenceApp App = new FrmListLocalDrivingLicenceApp();
             App.ShowDialog();
         }
     }

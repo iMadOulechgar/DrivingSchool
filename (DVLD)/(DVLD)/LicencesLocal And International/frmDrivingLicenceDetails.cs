@@ -19,10 +19,7 @@ namespace _DVLD_.Licences
             clsApplicationBusinessLayer App = new clsApplicationBusinessLayer();
             clsBusinessPersone Per = new clsBusinessPersone();
             clsBusinessLayerLicences Lic = new clsBusinessLayerLicences();
-
-            driverLicenceInfo1.Application = App.GetDataByLocalID(localID);
             //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-            driverLicenceInfo1.Licence = Lic.FindByAppID(driverLicenceInfo1.Application.App.ApplicationId);
         }
 
         public frmDrivingLicenceDetails()
@@ -37,7 +34,6 @@ namespace _DVLD_.Licences
             clsBusinessLayerLicences Lic = new clsBusinessLayerLicences();
 
             driverLicenceInfo1.Licence = Lic.FindByLicenceID(LicenceID);
-            driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
             //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
         }
 
@@ -48,7 +44,6 @@ namespace _DVLD_.Licences
 
         private void frmDrivingLicenceDetails_Load(object sender, EventArgs e)
         {
-            driverLicenceInfo1._FillDataInControle();
         }
     }
 }

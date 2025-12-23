@@ -29,16 +29,7 @@ namespace _DVLD_.Controls
             LBLCreatedBy.Text = clsGlobal.UserLogin.UserName;
         }
 
-        public void FillDataBaseApp(int PersonID)
-        {
-            Application.App.AppPersoneId = PersonID;
-            Application.App.AppStatus = 3;
-            Application.App.AppDate = DateTime.Now;
-            Application.App.LastStatusDate = DateTime.Now;
-            Application.App.PaidFees = 5;
-            Application.App.AppType = 2;
-            Application.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
-        }
+        
 
         public void FillDataBaseLicence(int AppID,int DriverID,int LicenceClassID)
         {

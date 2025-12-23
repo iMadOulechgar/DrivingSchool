@@ -59,11 +59,7 @@ namespace _DVLD_.Controls
 
             if (ValidateTheLicenceID(textBox1.Text))
             {
-                driverLicenceInfo1.Licence = Licences.FindByLicenceID(int.Parse(textBox1.Text));
-                driverLicenceInfo1.Application = Application.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
-                //driverLicenceInfo1.Person = persone.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-                driverLicenceInfo1._FillDataInControle();
-
+               
                 if (International.CheckIsThereAlreadyAnInternationalLicence(driverLicenceInfo1.Licence.LicenceID))
                 {
                     LBLLocalLicenceID.Text = driverLicenceInfo1.Licence.LicenceID.ToString();
@@ -84,23 +80,13 @@ namespace _DVLD_.Controls
             }
         }
 
-        void fillDataApplication()
-        {
-            App.App.PaidFees = Convert.ToDecimal(LBLFees.Text);
-            App.App.AppType = 6;
-            App.App.CreatedByUserID = clsGlobal.UserLogin.UserID;
-            App.App.AppDate = DateTime.Now;
-            App.App.AppPersoneId = driverLicenceInfo1.Person.PersonID;
-            App.App.AppStatus = 3;
-            App.App.LastStatusDate = DateTime.Now;            
-        }
+        
 
         void FillDataInternationLicence()
         {
             International.ExpirationDate = DateTime.Now.AddYears(1);
             International.IssueDate = DateTime.Now;
             International.CreatedByUserID = clsGlobal.UserLogin.UserID;
-            International.ApplicationID = App.App.ApplicationId;
             International.DriverID = driverLicenceInfo1.Licence.DriverID;
             International.IsActive = driverLicenceInfo1.Licence.IsActive;
             International.LicenceID = driverLicenceInfo1.Licence.LicenceID;
@@ -110,7 +96,6 @@ namespace _DVLD_.Controls
         {
             linkLabel2.Enabled = true;
             BTNInternational.Enabled = false;
-            LBLIAppID.Text = App.App.ApplicationId.ToString();
             LBLLicenceID.Text = International.InternationalLicenceID.ToString();
         }
 
@@ -118,26 +103,8 @@ namespace _DVLD_.Controls
         {
             if (MessageBox.Show("Are You Sure You Wanna Get International Licence","Info",MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                fillDataApplication();
 
-                if (App.SaveAddAppCanBeChange())
-                {
-                    FillDataInternationLicence();
-
-                    if (International.save())
-                    {
-                        FillDataAfterSave();
-                        MessageBox.Show("Data Saved Succesfly The International Id = " + International.InternationalLicenceID.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show("The International Not Saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("The AppLication Not Saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
             }
         }
 
@@ -145,8 +112,6 @@ namespace _DVLD_.Controls
         {
             InternationLicenceDetailsInfo DetailsInter = new InternationLicenceDetailsInfo();
 
-            DetailsInter.Persone = driverLicenceInfo1.Person.PersonID;
-            DetailsInter.LicenceID = driverLicenceInfo1.Licence.LicenceID;
 
             DetailsInter.ShowDialog();
         }
@@ -154,7 +119,6 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Person.PersonID,driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
     }

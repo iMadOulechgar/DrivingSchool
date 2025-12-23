@@ -18,13 +18,6 @@ namespace _DVLD_.LicencesLocal_And_International
             InitializeComponent();
         }
 
-        clsBusinessLayerInternationalLicence International = new clsBusinessLayerInternationalLicence();
-        clsBusinessPersone Per = new clsBusinessPersone();
-        clsBusinessLayerLicences Lice = new clsBusinessLayerLicences();
-
-        public int  Persone { get; set; }
-        public int LicenceID {  get; set; }
-
         private void BTNcancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -32,8 +25,7 @@ namespace _DVLD_.LicencesLocal_And_International
 
         private void InternationLicenceDetailsInfo_Load(object sender, EventArgs e)
         {
-            driver_International_License_Info1.InternationalLicence = International.FindInternationalLicenceByLicenceID(LicenceID);
-            driver_International_License_Info1.FillData();
+
         }
     }
 }

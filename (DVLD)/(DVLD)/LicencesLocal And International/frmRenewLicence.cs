@@ -51,46 +51,16 @@ namespace _DVLD_.LicencesLocal_And_International
         {
             Licence.LicenceClassID = ClassLicenceID;
             Licence.DriverID = DriverID;
-            Application.App.AppPersoneId = PerID;
             TempAppID = TempID;
         }
 
         public int TempAppID {get; set;}
 
-        bool AddANewLicenceReNewed()
-        {
-            clsBusinessLayerLicences License = new clsBusinessLayerLicences();
-
-            renew_Licence_Controle1.FillDataBaseApp(Application.App.AppPersoneId);
-
-            if (renew_Licence_Controle1.Application.SaveAddAppCanBeChange())
-            {
-                renew_Licence_Controle1.FillDataBaseLicence(renew_Licence_Controle1.Application.App.ApplicationId, Licence.DriverID, Licence.LicenceClassID);
-
-                if (renew_Licence_Controle1.licences.Save())
-                {
-                    renew_Licence_Controle1.FillControleWhenLicenceRenewed(renew_Licence_Controle1.Application.App.ApplicationId, renew_Licence_Controle1.licences.LicenceID);
-                    return true;
-                }
-            }
-
-           return false;
-        }
+       
 
         void Save()
         {
-            if (AddANewLicenceReNewed())
-            {
-                MessageBox.Show("Data Saved Successfly", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BTNSave.Enabled = false;
-                linkLabel1.Enabled = true;
-                linkLabel2.Enabled = true;
-                filterLicences1.EnableFilter();
-            }
-            else
-            {
-                MessageBox.Show("Something Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void BTNSave_Click(object sender, EventArgs e)
@@ -108,7 +78,6 @@ namespace _DVLD_.LicencesLocal_And_International
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory His = new FrmLicenceHistory();
-            His.FillData(Application.App.AppPersoneId, TempAppID);
             His.ShowDialog();
         }
     }

@@ -36,13 +36,7 @@ namespace _DVLD_.Controls
             {
                 int Count = DGVDrivers.Rows.Add();
 
-                DGVDrivers.Rows[Count].Cells[0].Value = Row["LicenceID"];
-                DGVDrivers.Rows[Count].Cells[1].Value = Row["ApplicationID"];
-                string ClassName = App.GetClassName((int)Row["LicenceClass"]);
-                DGVDrivers.Rows[Count].Cells[2].Value = ClassName;
-                DGVDrivers.Rows[Count].Cells[3].Value = Row["IssueDate"];
-                DGVDrivers.Rows[Count].Cells[4].Value = Row["ExpirationDate"];
-                DGVDrivers.Rows[Count].Cells[5].Value = Row["IsActive"];
+                
             }
 
             LBLRec.Text = DGVDrivers.Rows.Count.ToString();
@@ -66,8 +60,6 @@ namespace _DVLD_.Controls
 
                 DGVDrivers.Rows[Count].Cells[0].Value = Row["LicenceID"];
                 DGVDrivers.Rows[Count].Cells[1].Value = Row["ApplicationID"];
-                string ClassName = App.GetClassName((int)Row["LicenceClass"]);
-                DGVDrivers.Rows[Count].Cells[2].Value = ClassName;
                 DGVDrivers.Rows[Count].Cells[3].Value = Row["IssueDate"];
                 DGVDrivers.Rows[Count].Cells[4].Value = Row["ExpirationDate"];
                 DGVDrivers.Rows[Count].Cells[5].Value = Row["IsActive"];

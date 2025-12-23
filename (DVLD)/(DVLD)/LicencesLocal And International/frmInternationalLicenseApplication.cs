@@ -58,12 +58,7 @@ namespace _DVLD_.LicencesLocal_And_International
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
 
-            App = Application.FindAppByAppID((int)DGVInternatioanlLicense.CurrentRow.Cells[1].Value);
-
-            ShowDetails Details = new ShowDetails(App.App.AppPersoneId);
-            Details.ShowDialog();
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,10 +67,8 @@ namespace _DVLD_.LicencesLocal_And_International
             clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
 
             Licence = Lic.FindByLicenceID((int)DGVInternatioanlLicense.CurrentRow.Cells[3].Value);
-            App = Application.FindAppByAppID(Licence.ApplicationID);
 
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(App.App.AppPersoneId,App.App.ApplicationId);
 
             History.ShowDialog();
         }

@@ -59,6 +59,8 @@
     <Compile Include="clsBussinessLayerDetainedLicense.cs" />
     <Compile Include="clsBussinessLayerTestAndAppointment.cs" />
     <Compile Include="clsCountry.cs" />
+    <Compile Include="clsLicenseClass.cs" />
+    <Compile Include="clsLocalDrivingLicenseApplicaionBusiness.cs" />
     <Compile Include="clsUserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

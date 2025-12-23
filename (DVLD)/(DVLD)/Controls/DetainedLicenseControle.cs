@@ -38,9 +38,7 @@ namespace _DVLD_.Controls
             clsBusinessPersone Per = new clsBusinessPersone();
 
             driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
-            driverLicenceInfo1.Application = App.FindAppByAppID(driverLicenceInfo1.Licence.ApplicationID);
             //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-            driverLicenceInfo1._FillDataInControle();
             FillDataWhenSearch(driverLicenceInfo1.Licence.LicenceID);
         }
 
@@ -138,7 +136,6 @@ namespace _DVLD_.Controls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmLicenceHistory History = new FrmLicenceHistory();
-            History.FillData(driverLicenceInfo1.Person.PersonID,driverLicenceInfo1.Application.App.ApplicationId);
             History.ShowDialog();
         }
     }
