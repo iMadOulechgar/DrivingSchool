@@ -1,5 +1,6 @@
 ﻿using _DVLD_.AllAboutTest;
 using BusinessLayer;
+using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,94 +15,78 @@ namespace _DVLD_.TestForms
 {
     public partial class Take_Test : Form
     {
-        public Take_Test(int TestApp , int num , int LocalID , int Trial,int TestTypeID)
+        private int _AppointmentID;
+        private clsTestType.enTestType _TestType;
+
+        private int _TestID = -1;
+        private clsBusinessTest _Test;
+
+        public Take_Test(int AppointmentID , clsTestType.enTestType TestType)
         {
             InitializeComponent();
-
-            TestAppointmentID = TestApp;
-
-            clsApplicationBusinessLayer App = new clsApplicationBusinessLayer();
-            clsBusinessPersone Persone = new clsBusinessPersone();
-
-            checkTest(num);
-
-            //clTakeTest2.Per = Persone.FindPersoneByPerId(clTakeTest2.ApplicationLocal.App.AppPersoneId);
-            clTakeTest2._FillControleWithData(Trial,TestTypeID);
+            _AppointmentID = AppointmentID;
+            _TestType = TestType;
         }
 
-        public event Action LoadDataAfterSaving;
-
-        private int TestAppointmentID { get; set; }
-
-        clsBussinessLayerTestAndAppointment TakeTest = new clsBussinessLayerTestAndAppointment();
-
-        void _FillDataFromControles()
+        private void Take_Test_Load(object sender, EventArgs e)
         {
-            TakeTest.testOrAppointment = 2;
+            clTakeTest2.TestTypeID = _TestType;
+            clTakeTest2.FillControleWithData(_AppointmentID);
 
-            if (textBox1.Text != "")
-                TakeTest.Test.Notes = textBox1.Text;
+            if (clTakeTest2.AppointmentID == -1)
+                BTNsave.Enabled = false;
             else
-                TakeTest.Test.Notes = "";
+                BTNsave.Enabled=true;
 
-            if (RBpass.Checked == true)
+            int _TestID = clTakeTest2.TestID;
+
+            if (_TestID != -1)
             {
-                clsBussinessLayerTestAndAppointment retakeTheTestType = new clsBussinessLayerTestAndAppointment();
-                TakeTest.Test.TestResult = 1;
+                _Test = clsBusinessTest.Find(_TestID);
+
+                if (_Test.TestResult)
+                    RBpass.Checked = true;
+                else
+                    RBFail.Checked = true;
+                textBox1.Text = _Test.Notes;
+
+                RBFail.Enabled = false;
+                RBpass.Enabled = false;
             }
             else
             {
-                TakeTest.Test.TestResult = 0;
-            }
-                
-
-            TakeTest.Test.CreateByUserID = clsGlobal.UserLogin.UserID;
-            TakeTest.Test.TestAppointID = TestAppointmentID;
-        }
-
-        void Save()
-        {
-            _FillDataFromControles();
-
-            if (TakeTest.Save())
-            {
-                TakeTest.Lock(TestAppointmentID);
-                LoadDataAfterSaving?.Invoke();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Something Wrong with save", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        void checkTest(int Num)
-        {
-            switch (Num)
-            {
-                case 0:
-                    clTakeTest2.vision();
-                    break;
-
-                case 1:
-                    clTakeTest2.Written();
-                    break;
-
-                case 2:
-                    clTakeTest2.Street();
-                    break;
+                _Test = new clsBusinessTest();
             }
         }
 
         private void BTNsave_Click(object sender, EventArgs e)
         {
-            Save();
+            if (MessageBox.Show("Are you sure you want to save? After that you cannot change the Pass/Fail results after you save?.",
+            "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No
+                 )
+            {
+                return;
+            }
+
+            _Test.TestAppointmentID = _AppointmentID;
+            _Test.TestResult = RBpass.Checked;
+            _Test.Notes = textBox1.Text.Trim();
+            _Test.CreatedByUserID = clsGlobal.UserLogin.UserID;
+
+            if (_Test.Save())
+            {
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BTNsave.Enabled = false;
+            }
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void BTNcancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
     }
 }

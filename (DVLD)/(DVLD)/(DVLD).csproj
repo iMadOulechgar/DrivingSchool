@@ -68,16 +68,16 @@
     <Compile Include="Applications\LocalDrivingLicenseApplication\FrmLocalDrivingLicenseInfo.Designer.cs">
       <DependentUpon>FrmLocalDrivingLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ClTakeTest.cs">
+    <Compile Include="Tests\ClTakeTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ClTakeTest.Designer.cs">
+    <Compile Include="Tests\ClTakeTest.Designer.cs">
       <DependentUpon>ClTakeTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ClTestAppointment.cs">
+    <Compile Include="Tests\ClTestAppointment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ClTestAppointment.Designer.cs">
+    <Compile Include="Tests\ClTestAppointment.Designer.cs">
       <DependentUpon>ClTestAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\ApplicationTypes\FrmEditApplicationType.cs">
@@ -350,10 +350,10 @@
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\FrmLocalDrivingLicenseInfo.resx">
       <DependentUpon>FrmLocalDrivingLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ClTakeTest.resx">
+    <EmbeddedResource Include="Tests\ClTakeTest.resx">
       <DependentUpon>ClTakeTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ClTestAppointment.resx">
+    <EmbeddedResource Include="Tests\ClTestAppointment.resx">
       <DependentUpon>ClTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ApplicationTypes\FrmEditApplicationType.resx">

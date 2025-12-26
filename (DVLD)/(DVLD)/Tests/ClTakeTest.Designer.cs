@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.LBLTestID = new System.Windows.Forms.Label();
             this.LBLFees = new System.Windows.Forms.Label();
             this.LBLTrial = new System.Windows.Forms.Label();
             this.LBLClass = new System.Windows.Forms.Label();
@@ -50,8 +48,10 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LBLTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LBLDate = new System.Windows.Forms.Label();
+            this.LBLTestID = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -65,9 +65,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.LBLTestID);
             this.groupBox1.Controls.Add(this.LBLFees);
+            this.groupBox1.Controls.Add(this.LBLTestID);
+            this.groupBox1.Controls.Add(this.LBLDate);
             this.groupBox1.Controls.Add(this.LBLTrial);
             this.groupBox1.Controls.Add(this.LBLClass);
             this.groupBox1.Controls.Add(this.LBLName);
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.pictureBox9);
             this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.LBLTitle);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 3);
@@ -95,22 +95,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vision Test";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(210, 327);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(217, 21);
-            this.dateTimePicker1.TabIndex = 60;
-            // 
-            // LBLTestID
-            // 
-            this.LBLTestID.AutoSize = true;
-            this.LBLTestID.Location = new System.Drawing.Point(207, 418);
-            this.LBLTestID.Name = "LBLTestID";
-            this.LBLTestID.Size = new System.Drawing.Size(83, 15);
-            this.LBLTestID.TabIndex = 59;
-            this.LBLTestID.Text = "Not Taken Yet";
             // 
             // LBLFees
             // 
@@ -297,16 +281,16 @@
             this.pictureBox2.TabIndex = 43;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // LBLTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(170, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 20);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Sechudule Test";
+            this.LBLTitle.AutoSize = true;
+            this.LBLTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLTitle.ForeColor = System.Drawing.Color.Red;
+            this.LBLTitle.Location = new System.Drawing.Point(170, 96);
+            this.LBLTitle.Name = "LBLTitle";
+            this.LBLTitle.Size = new System.Drawing.Size(134, 20);
+            this.LBLTitle.TabIndex = 42;
+            this.LBLTitle.Text = "Sechudule Test";
             // 
             // pictureBox1
             // 
@@ -316,6 +300,24 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
+            // 
+            // LBLDate
+            // 
+            this.LBLDate.AutoSize = true;
+            this.LBLDate.Location = new System.Drawing.Point(207, 327);
+            this.LBLDate.Name = "LBLDate";
+            this.LBLDate.Size = new System.Drawing.Size(34, 15);
+            this.LBLDate.TabIndex = 58;
+            this.LBLDate.Text = "[???]";
+            // 
+            // LBLTestID
+            // 
+            this.LBLTestID.AutoSize = true;
+            this.LBLTestID.Location = new System.Drawing.Point(207, 423);
+            this.LBLTestID.Name = "LBLTestID";
+            this.LBLTestID.Size = new System.Drawing.Size(34, 15);
+            this.LBLTestID.TabIndex = 58;
+            this.LBLTestID.Text = "[???]";
             // 
             // ClTakeTest
             // 
@@ -341,8 +343,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label LBLTestID;
         private System.Windows.Forms.Label LBLFees;
         private System.Windows.Forms.Label LBLTrial;
         private System.Windows.Forms.Label LBLClass;
@@ -362,7 +362,9 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LBLTitle;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label LBLDate;
+        private System.Windows.Forms.Label LBLTestID;
     }
 }

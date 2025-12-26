@@ -55,12 +55,13 @@
     <Compile Include="clsBusinessLayerInternationalLicence.cs" />
     <Compile Include="clsBusinessLayerLicences.cs" />
     <Compile Include="clsBusinessPersone.cs" />
-    <Compile Include="clsBusinessTestTypes.cs" />
     <Compile Include="clsBussinessLayerDetainedLicense.cs" />
-    <Compile Include="clsBussinessLayerTestAndAppointment.cs" />
+    <Compile Include="clsBussinessLayerTestAppointment.cs" />
     <Compile Include="clsCountry.cs" />
     <Compile Include="clsLicenseClass.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicaionBusiness.cs" />
+    <Compile Include="clsBusinessTest.cs" />
+    <Compile Include="clsTestType.cs" />
     <Compile Include="clsUserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

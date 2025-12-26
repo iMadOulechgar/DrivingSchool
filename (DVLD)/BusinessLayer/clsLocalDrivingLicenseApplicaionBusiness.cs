@@ -1,4 +1,5 @@
-﻿using DVLD_DataAccess;
+﻿using DVLD_Buisness;
+using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,7 @@ namespace BusinessLayer
 
         public int LocalDrivingLicenseApplicationID { set; get; }
         public int LicenseClassID { set; get; }
+        public clsLicenseClass LicenceClassInfo;
         public string PersonFullName
         {
             get
@@ -52,6 +54,7 @@ namespace BusinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
             this.LicenseClassID = LicenseClassID;
+            this.LicenceClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
         }
 
@@ -181,10 +184,36 @@ namespace BusinessLayer
         }
 
         public bool DoesPassTestType(clsTestType.enTestType TestTypeID)
-
         {
             return clsLocalDrivingLicenseApplicationData.DoesPassTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
+
+        public bool DoesAttendTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.DoesAttendTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public byte TotalTrialsPerTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public static bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public bool IsThereAnActiveScheduledTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public clsBusinessTest GetLastTestPerTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsBusinessTest.FindLastTestPerPersonAndLicenseClass(this.ApplicationId, this.LicenseClassID, TestTypeID);
+        }
+
+
 
     }
 }

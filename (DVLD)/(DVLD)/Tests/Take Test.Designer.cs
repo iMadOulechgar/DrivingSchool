@@ -142,6 +142,7 @@
             this.Name = "Take_Test";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Take_Test";
+            this.Load += new System.EventHandler(this.Take_Test_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
