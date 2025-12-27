@@ -213,7 +213,70 @@ namespace BusinessLayer
             return clsBusinessTest.FindLastTestPerPersonAndLicenseClass(this.ApplicationId, this.LicenseClassID, TestTypeID);
         }
 
+        public bool PassedAllTests()
+        {
+            return clsBusinessTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
+        }
 
+        public int GetActiveLicenseID()
+        {//this will get the license id that belongs to this application
+            return clsBusinessLayerLicences.GetActiveLicenseIDByPersonID(this.AppPersoneId, this.LicenseClassID);
+        }
+
+        public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
+
+            clsBusinessLayerDrivers Driver = clsBusinessLayerDrivers.FindByPersonID(this.AppPersoneId);
+
+            if (Driver == null)
+            {
+                //we check if the driver already there for this person.
+                Driver = new clsBusinessLayerDrivers();
+
+                Driver.PersonID = this.AppPersoneId;
+                Driver.CreatedByUserID = CreatedByUserID;
+                if (Driver.save())
+                {
+                    DriverID = Driver.DriverID;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                DriverID = Driver.DriverID;
+            }
+            //now we diver is there, so we add new licesnse
+
+            clsBusinessLayerLicences License = new clsBusinessLayerLicences();
+            License.ApplicationID = this.ApplicationId;
+            License.DriverID = DriverID;
+            License.LicenseClass = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenceClassInfo.DefaultValidityLength);
+            License.Notes = Notes;
+            License.PaidFees = this.LicenceClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsBusinessLayerLicences.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+            if (License.Save())
+            {
+                //now we should set the application status to complete.
+                this.SetComplete();
+                return License.LicenseID;
+            }
+            else
+                return -1;
+        }
+
+        public bool IsLicenseIssued()
+        {
+            return (GetActiveLicenseID() != -1);
+        }
 
     }
 }

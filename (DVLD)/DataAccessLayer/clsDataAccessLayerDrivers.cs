@@ -12,6 +12,111 @@ namespace DataAccessLayer
 {
     public static class clsDataAccessLayerDrivers
     {
+        public static bool GetDriverInfoByDriverID(int DriverID,
+            ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = "SELECT * FROM Drivers WHERE DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    // The record was found
+                    isFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)reader["CreatedDate"];
+
+
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool GetDriverInfoByPersonID(int PersonID, ref int DriverID,
+            ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = "SELECT * FROM Drivers WHERE PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    // The record was found
+                    isFound = true;
+
+                    DriverID = (int)reader["DriverID"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)reader["CreatedDate"];
+
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         public static bool IsItAdriverAlreadyByPersoneID(int PersonID)
         {
             bool result = false;
@@ -44,42 +149,85 @@ namespace DataAccessLayer
             return result;
         }
 
-        public static int AddDriver(int PersonID,int CreatedByUser,DateTime CreatedDate)
+        public static int AddNewDriver(int PersonID, int CreatedByUserID)
         {
-            int Number = -1;
+            int DriverID = -1;
 
-            SqlConnection Connection = new SqlConnection(clsConnection.ConnectionString);
-            string Query = @"INSERT INTO Drivers(PersonID,CreatedByUserID,CreatedDate)VALUES(@PersonID,@CreatedByUserID,@CreatedDate);
-                                 SELECT SCOPE_IDENTITY();";
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
-            SqlCommand cmd = new SqlCommand(Query, Connection);
+            string query = @"Insert Into Drivers (PersonID,CreatedByUserID,CreatedDate)
+                            Values (@PersonID,@CreatedByUserID,@CreatedDate);
+                          
+                            SELECT SCOPE_IDENTITY();";
 
-            cmd.Parameters.AddWithValue("@PersonID", PersonID);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUser);
-            cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    DriverID = insertedID;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return DriverID;
+
+        }
+
+        public static bool UpdateDriver(int DriverID, int PersonID, int CreatedByUserID)
+        {
+
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
+
+            string query = @"Update  Drivers  
+                            set PersonID = @PersonID,
+                                CreatedByUserID = @CreatedByUserID
+                                where DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
             {
-                Connection.Open();
-
-                object result = cmd.ExecuteScalar();
-
-                if (int.TryParse(result.ToString(), out int Num))
-                {
-                    Number = Num;
-                }
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-                throw new Exception("Error in AddPersone: " + ex.Message);
-            }
-            finally
-            {
-                Connection.Close();
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
 
-            return Number;
+            finally
+            {
+                connection.Close();
+            }
+
+            return (rowsAffected > 0);
         }
 
         public static int GetDriverIDByPersonID(int PerID)

@@ -50,7 +50,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_DVLD_.Properties.Resources.icons8_history_folder_100;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 196);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 197);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(121, 117);
             this.pictureBox1.TabIndex = 1;
@@ -58,17 +58,21 @@
             // 
             // personeFilterAndAdd1
             // 
-            this.personeFilterAndAdd1.Location = new System.Drawing.Point(180, 37);
+            this.personeFilterAndAdd1.FilterEnabled = true;
+            this.personeFilterAndAdd1.Location = new System.Drawing.Point(139, 37);
             this.personeFilterAndAdd1.Name = "personeFilterAndAdd1";
+            this.personeFilterAndAdd1.ShowAddPerson = true;
             this.personeFilterAndAdd1.Size = new System.Drawing.Size(776, 351);
             this.personeFilterAndAdd1.TabIndex = 0;
+            this.personeFilterAndAdd1.OnPersonSelected += new System.Action<int>(this.personeFilterAndAdd1_OnPersonSelected);
             // 
             // driver_Licences_Hirtory1
             // 
-            this.driver_Licences_Hirtory1.Location = new System.Drawing.Point(104, 394);
+            this.driver_Licences_Hirtory1.Location = new System.Drawing.Point(42, 394);
             this.driver_Licences_Hirtory1.Name = "driver_Licences_Hirtory1";
             this.driver_Licences_Hirtory1.Size = new System.Drawing.Size(859, 300);
             this.driver_Licences_Hirtory1.TabIndex = 10;
+            this.driver_Licences_Hirtory1.Load += new System.EventHandler(this.driver_Licences_Hirtory1_Load);
             // 
             // BTNcancel
             // 
@@ -76,7 +80,7 @@
             this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
             this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNcancel.Location = new System.Drawing.Point(852, 700);
+            this.BTNcancel.Location = new System.Drawing.Point(790, 692);
             this.BTNcancel.Name = "BTNcancel";
             this.BTNcancel.Size = new System.Drawing.Size(104, 37);
             this.BTNcancel.TabIndex = 11;
@@ -88,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 749);
+            this.ClientSize = new System.Drawing.Size(897, 732);
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.driver_Licences_Hirtory1);
             this.Controls.Add(this.label1);

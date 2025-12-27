@@ -63,22 +63,12 @@ namespace _DVLD_.LicencesLocal_And_International
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsBusinessLayerLicences Lic = new clsBusinessLayerLicences();
-            clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
 
-            Licence = Lic.FindByLicenceID((int)DGVInternatioanlLicense.CurrentRow.Cells[3].Value);
-
-            FrmLicenceHistory History = new FrmLicenceHistory();
-
-            History.ShowDialog();
         }
 
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrivingLicenceDetails Details =new frmDrivingLicenceDetails();
-            Details.FillData((int)DGVInternatioanlLicense.CurrentRow.Cells[3].Value);
-
-            Details.ShowDialog();
+        
         }
 
         void _FillCBWithColumns()

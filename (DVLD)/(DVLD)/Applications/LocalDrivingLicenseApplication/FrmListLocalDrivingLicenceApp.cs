@@ -139,26 +139,26 @@ namespace _DVLD_.Applications
 
         private void sechToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value, 1);
+            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.VisionTest);
             Test.ShowDialog();
         }
 
         private void sechduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value, 2);
+            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.WrittenTest);
             Test.ShowDialog();
         }
 
         private void sechduleDriveTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value, 3);
+            Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.StreetTest);
             Test.ShowDialog();
         }
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Issue_Driving_Licence Licence = new Issue_Driving_Licence((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value);
-            Licence.ShowDialog();
+            //Issue_Driving_Licence Licence = new Issue_Driving_Licence((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value);
+            //Licence.ShowDialog();
         }
 
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,14 +187,22 @@ namespace _DVLD_.Applications
 
         private void showLicenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrivingLicenceDetails frm = new frmDrivingLicenceDetails((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
+            int LicenseID = clsLocalDrivingLicenseApplicaionBusiness.FindByLocalDrivingAppLicenseID((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value).GetActiveLicenseID();
+            if (LicenseID != -1)
+            {
+                frmDrivingLicenceDetails frm = new frmDrivingLicenceDetails(LicenseID);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void showPersoneLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLicenceHistory History = new FrmLicenceHistory((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
-            History.ShowDialog();
+
         }
 
         private void CBSelect_SelectedIndexChanged(object sender, EventArgs e)

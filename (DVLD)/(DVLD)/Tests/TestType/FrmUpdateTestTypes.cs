@@ -1,5 +1,6 @@
 ﻿using _DVLD_.GlobalClasses;
 using BusinessLayer;
+using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,9 @@ namespace _DVLD_.About_Test
 {
     public partial class FrmUpdateTestTypes : Form
     {
-        clsBusinessTestTypes.enTestTypes _TestTypeID = clsBusinessTestTypes.enTestTypes.VisionTest;
-        clsBusinessTestTypes _Tests;
-        public FrmUpdateTestTypes(clsBusinessTestTypes.enTestTypes TestType)
+        clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
+        clsTestType _Tests;
+        public FrmUpdateTestTypes(clsTestType.enTestType TestType)
         {
             InitializeComponent();
             _TestTypeID = TestType;
@@ -47,14 +48,14 @@ namespace _DVLD_.About_Test
 
         private void FrmUpdateTestTypes_Load(object sender, EventArgs e)
         {
-            _Tests = clsBusinessTestTypes.FindById(_TestTypeID);
+            _Tests = clsTestType.Find(_TestTypeID);
 
             if (_Tests != null)
             {
                 LBLID.Text = ((int)_TestTypeID).ToString();
-                TBtitle.Text = _Tests.TestTypeTitle;
-                TBDescription.Text = _Tests.TestTypeDescription;
-                TBFees.Text = _Tests.TestTypeFees.ToString();
+                TBtitle.Text = _Tests.Title;
+                TBDescription.Text = _Tests.Description;
+                TBFees.Text = _Tests.Fees.ToString();
             }
             else
             {

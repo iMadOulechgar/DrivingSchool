@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LBLRec = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DGVDrivers = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BTNcancel = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.CBSelect = new System.Windows.Forms.ComboBox();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showPersonDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDrivers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LBLRec
@@ -75,52 +75,10 @@
             this.DGVDrivers.AllowUserToDeleteRows = false;
             this.DGVDrivers.BackgroundColor = System.Drawing.Color.White;
             this.DGVDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
             this.DGVDrivers.Location = new System.Drawing.Point(12, 223);
             this.DGVDrivers.Name = "DGVDrivers";
             this.DGVDrivers.Size = new System.Drawing.Size(812, 219);
             this.DGVDrivers.TabIndex = 9;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Column1.HeaderText = "DriverID";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 71;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "PersonID";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "NationalNo";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 5F;
-            this.Column4.HeaderText = "FullName";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 250;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Date";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 140;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Active Licence";
-            this.Column6.Name = "Column6";
             // 
             // label1
             // 
@@ -165,16 +123,24 @@
             this.textBox1.Size = new System.Drawing.Size(211, 23);
             this.textBox1.TabIndex = 17;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // CBSelect
+            // cbFilterBy
             // 
-            this.CBSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBSelect.FormattingEnabled = true;
-            this.CBSelect.Location = new System.Drawing.Point(91, 194);
-            this.CBSelect.Name = "CBSelect";
-            this.CBSelect.Size = new System.Drawing.Size(211, 23);
-            this.CBSelect.TabIndex = 16;
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "Driver ID",
+            "Person ID",
+            "National No.",
+            "Full Name"});
+            this.cbFilterBy.Location = new System.Drawing.Point(91, 194);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(211, 23);
+            this.cbFilterBy.TabIndex = 16;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -187,13 +153,43 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Find By : ";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showPersonDetailsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showLicenseHistoryToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 76);
+            // 
+            // showPersonDetailsToolStripMenuItem
+            // 
+            this.showPersonDetailsToolStripMenuItem.Image = global::_DVLD_.Properties.Resources.icons8_details_48;
+            this.showPersonDetailsToolStripMenuItem.Name = "showPersonDetailsToolStripMenuItem";
+            this.showPersonDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showPersonDetailsToolStripMenuItem.Text = "Show Person Details";
+            this.showPersonDetailsToolStripMenuItem.Click += new System.EventHandler(this.showPersonDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
+            // 
+            // showLicenseHistoryToolStripMenuItem
+            // 
+            this.showLicenseHistoryToolStripMenuItem.Image = global::_DVLD_.Properties.Resources.icons8_new_contact_48;
+            this.showLicenseHistoryToolStripMenuItem.Name = "showLicenseHistoryToolStripMenuItem";
+            this.showLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.showLicenseHistoryToolStripMenuItem.Text = "Show License History";
+            this.showLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showLicenseHistoryToolStripMenuItem_Click);
+            // 
             // frmAllDrivers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 500);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.CBSelect);
+            this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.LBLRec);
@@ -208,6 +204,7 @@
             this.Load += new System.EventHandler(this.frmAllDrivers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDrivers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,13 +219,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox CBSelect;
+        private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem showPersonDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showLicenseHistoryToolStripMenuItem;
     }
 }

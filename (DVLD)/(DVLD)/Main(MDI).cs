@@ -101,8 +101,7 @@ namespace _DVLD_
 
         private void renewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRenewLicence Lic = new frmRenewLicence();
-            Lic.ShowDialog();
+
         }
 
         private void replacementForLostOrDemageLicenseToolStripMenuItem_Click(object sender, EventArgs e)

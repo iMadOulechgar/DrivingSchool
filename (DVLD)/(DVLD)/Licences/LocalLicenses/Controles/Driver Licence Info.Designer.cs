@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DriverLicenceInfo));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -108,7 +109,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::_DVLD_.Properties.Resources.icons8_date_50;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.Location = new System.Drawing.Point(538, 62);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(29, 22);
@@ -118,7 +119,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::_DVLD_.Properties.Resources.icons8_date_50;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(538, 90);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(29, 22);
@@ -138,7 +139,7 @@
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = global::_DVLD_.Properties.Resources.icons8_date_50;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
             this.pictureBox11.Location = new System.Drawing.Point(538, 157);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(29, 22);
@@ -188,7 +189,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::_DVLD_.Properties.Resources.icons8_date_50;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(122, 192);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(29, 22);

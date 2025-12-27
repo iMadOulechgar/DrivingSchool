@@ -1,13 +1,13 @@
-﻿namespace _DVLD_.Controls
+﻿namespace _DVLD_.Applications.Renew_Local_License
 {
-    partial class Renew_Licence_Controle
+    partial class frmRenew
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -52,16 +52,22 @@
             this.LBLAppDate = new System.Windows.Forms.Label();
             this.LBLIssueDate = new System.Windows.Forms.Label();
             this.LBLRenewAppID = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.filterLicences1 = new _DVLD_.Controls.FilterLicences();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LLlicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.LLHistory = new System.Windows.Forms.LinkLabel();
+            this.BTNcancel = new System.Windows.Forms.Button();
+            this.BTNIssued = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -101,20 +107,20 @@
             this.groupBox1.Controls.Add(this.LBLAppDate);
             this.groupBox1.Controls.Add(this.LBLIssueDate);
             this.groupBox1.Controls.Add(this.LBLRenewAppID);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.pictureBox5);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 432);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(890, 261);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Renew Licence Info";
             // 
@@ -336,15 +342,15 @@
             this.LBLRenewAppID.TabIndex = 67;
             this.LBLRenewAppID.Text = "[???]";
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 175);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 16);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "License Fees : ";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 175);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 16);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "License Fees : ";
             // 
             // label6
             // 
@@ -396,15 +402,15 @@
             this.pictureBox5.TabIndex = 62;
             this.pictureBox5.TabStop = false;
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 16);
-            this.label2.TabIndex = 63;
-            this.label2.Text = "R.L.App ID : ";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(43, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 16);
+            this.label4.TabIndex = 63;
+            this.label4.Text = "R.L.App ID : ";
             // 
             // pictureBox4
             // 
@@ -436,13 +442,95 @@
             this.pictureBox2.TabIndex = 59;
             this.pictureBox2.TabStop = false;
             // 
-            // Renew_Licence_Controle
+            // filterLicences1
+            // 
+            this.filterLicences1.FilterEnabled = true;
+            this.filterLicences1.Location = new System.Drawing.Point(12, 38);
+            this.filterLicences1.Name = "filterLicences1";
+            this.filterLicences1.Size = new System.Drawing.Size(881, 388);
+            this.filterLicences1.TabIndex = 25;
+            this.filterLicences1.OnLicenseSelected += new System.Action<int>(this.filterLicences1_OnLicenseSelected);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(329, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(271, 25);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Renew License Application";
+            // 
+            // LLlicenseInfo
+            // 
+            this.LLlicenseInfo.AutoSize = true;
+            this.LLlicenseInfo.Enabled = false;
+            this.LLlicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LLlicenseInfo.Location = new System.Drawing.Point(232, 708);
+            this.LLlicenseInfo.Name = "LLlicenseInfo";
+            this.LLlicenseInfo.Size = new System.Drawing.Size(131, 15);
+            this.LLlicenseInfo.TabIndex = 30;
+            this.LLlicenseInfo.TabStop = true;
+            this.LLlicenseInfo.Text = "Show Licenses Info";
+            this.LLlicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLlicenseInfo_LinkClicked);
+            // 
+            // LLHistory
+            // 
+            this.LLHistory.AutoSize = true;
+            this.LLHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LLHistory.Location = new System.Drawing.Point(42, 708);
+            this.LLHistory.Name = "LLHistory";
+            this.LLHistory.Size = new System.Drawing.Size(151, 15);
+            this.LLHistory.TabIndex = 29;
+            this.LLHistory.TabStop = true;
+            this.LLHistory.Text = "Show Licenses History";
+            // 
+            // BTNcancel
+            // 
+            this.BTNcancel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
+            this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTNcancel.Location = new System.Drawing.Point(652, 698);
+            this.BTNcancel.Name = "BTNcancel";
+            this.BTNcancel.Size = new System.Drawing.Size(104, 37);
+            this.BTNcancel.TabIndex = 27;
+            this.BTNcancel.Text = "Cancel";
+            this.BTNcancel.UseVisualStyleBackColor = false;
+            this.BTNcancel.Click += new System.EventHandler(this.BTNcancel_Click);
+            // 
+            // BTNIssued
+            // 
+            this.BTNIssued.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNIssued.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNIssued.Image = global::_DVLD_.Properties.Resources.icons8_renew_48;
+            this.BTNIssued.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTNIssued.Location = new System.Drawing.Point(762, 698);
+            this.BTNIssued.Name = "BTNIssued";
+            this.BTNIssued.Size = new System.Drawing.Size(104, 37);
+            this.BTNIssued.TabIndex = 28;
+            this.BTNIssued.Text = "Issue";
+            this.BTNIssued.UseVisualStyleBackColor = false;
+            this.BTNIssued.Click += new System.EventHandler(this.BTNIssued_Click);
+            // 
+            // frmRenew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(895, 742);
+            this.Controls.Add(this.LLlicenseInfo);
+            this.Controls.Add(this.LLHistory);
+            this.Controls.Add(this.BTNcancel);
+            this.Controls.Add(this.BTNIssued);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.filterLicences1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Renew_Licence_Controle";
-            this.Size = new System.Drawing.Size(896, 270);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frmRenew";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmRenew";
+            this.Load += new System.EventHandler(this.frmRenew_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -457,27 +545,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label LBLLicenceFees;
-        private System.Windows.Forms.Label LBLAppFees;
-        private System.Windows.Forms.Label LBLAppDate;
-        private System.Windows.Forms.Label LBLIssueDate;
-        private System.Windows.Forms.Label LBLRenewAppID;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label TTFees;
         private System.Windows.Forms.Label LBLCreatedBy;
         private System.Windows.Forms.Label LBLOldLic;
@@ -496,5 +570,26 @@
         private System.Windows.Forms.TextBox TBNotes;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LBLLicenceFees;
+        private System.Windows.Forms.Label LBLAppFees;
+        private System.Windows.Forms.Label LBLAppDate;
+        private System.Windows.Forms.Label LBLIssueDate;
+        private System.Windows.Forms.Label LBLRenewAppID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private Controls.FilterLicences filterLicences1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel LLlicenseInfo;
+        private System.Windows.Forms.LinkLabel LLHistory;
+        private System.Windows.Forms.Button BTNcancel;
+        private System.Windows.Forms.Button BTNIssued;
     }
 }

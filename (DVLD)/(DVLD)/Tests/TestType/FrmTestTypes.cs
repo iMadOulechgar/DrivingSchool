@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace _DVLD_.About_Test
 
         private void FrmTestTypes_Load(object sender, EventArgs e)
         {
-            _dtAllTestTypes = clsBusinessTestTypes.GetDataFromTestTypes();
+            _dtAllTestTypes = clsTestType.GetAllTestTypes();
             dgvTestTypes.DataSource = _dtAllTestTypes;
             LBLRec.Text = dgvTestTypes.Rows.Count.ToString();
 
@@ -43,7 +44,7 @@ namespace _DVLD_.About_Test
 
         private void editTestTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmUpdateTestTypes Update = new FrmUpdateTestTypes((clsBusinessTestTypes.enTestTypes)dgvTestTypes.CurrentRow.Cells[0].Value);
+            FrmUpdateTestTypes Update = new FrmUpdateTestTypes((clsTestType.enTestType)dgvTestTypes.CurrentRow.Cells[0].Value);
             Update.ShowDialog();
             FrmTestTypes_Load(null,null);
         }

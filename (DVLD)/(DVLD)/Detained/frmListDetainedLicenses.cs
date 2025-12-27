@@ -109,24 +109,17 @@ namespace _DVLD_.Detained
 
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrivingLicenceDetails details = new frmDrivingLicenceDetails();
-            details.FillData((int)DGVDetainedLicenses.CurrentRow.Cells[1].Value);
-            details.ShowDialog();
+         
         }
         clsBusinessPersone Person;
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLicenceHistory History = new FrmLicenceHistory();
-            clsBusinessPersone Per = new clsBusinessPersone();
-            //Person = Per.FindPersoneByNationalNo((string)DGVDetainedLicenses.CurrentRow.Cells[6].Value);
-            History.FillByDetained(Person.PersonID, (int)DGVDetainedLicenses.CurrentRow.Cells[1].Value);
-            History.ShowDialog();
+
         }
 
         private void showDetainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReleaseDetainedLicenses Released = new frmReleaseDetainedLicenses((int)DGVDetainedLicenses.CurrentRow.Cells[1].Value);
-            Released.ShowDialog();
+
         }
     }
 }

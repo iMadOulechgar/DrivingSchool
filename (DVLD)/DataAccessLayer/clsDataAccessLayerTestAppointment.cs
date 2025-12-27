@@ -105,7 +105,7 @@ namespace DataAccessLayer
 
                     TestAppointmentID = (int)reader["TestAppointmentID"];
                     AppointmentDate = (DateTime)reader["AppointmentDate"];
-                    PaidFees = Convert.ToSingle(reader["PaidFees"]);
+                    PaidFees = Convert.ToDecimal(reader["PaidFees"]);
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     IsLocked = (bool)reader["IsLocked"];
 

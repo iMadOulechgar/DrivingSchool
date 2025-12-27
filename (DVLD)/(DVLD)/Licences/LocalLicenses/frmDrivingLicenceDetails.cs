@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,24 +11,23 @@ using System.Windows.Forms;
 
 namespace _DVLD_.Licences
 {
-    public partial class Issue_Driving_Licence : Form
+    public partial class frmDrivingLicenceDetails : Form
     {
-
-        public Issue_Driving_Licence(int localID,int passedTest)
+        private int _LicenseID = -1; 
+        public frmDrivingLicenceDetails(int LicenseID)
         {
             InitializeComponent();
-
+            _LicenseID = LicenseID;
         }
-
-
+        
         private void BTNcancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-
-        private void BTNsave_Click(object sender, EventArgs e)
+        private void frmDrivingLicenceDetails_Load(object sender, EventArgs e)
         {
+            driverLicenceInfo1.LoadInfo(_LicenseID);
         }
     }
 }

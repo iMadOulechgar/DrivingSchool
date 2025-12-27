@@ -15,13 +15,7 @@ namespace _DVLD_.Detained
         public frmReleaseDetainedLicenses()
         {
             InitializeComponent();
-            releasedLicenseControle1.UiLogicLoad();
         }
 
-        public frmReleaseDetainedLicenses(int LicID)
-        {
-            InitializeComponent();
-            releasedLicenseControle1.LoadDatainListViewDetainedLicenses(LicID);
-        }
     }
 }

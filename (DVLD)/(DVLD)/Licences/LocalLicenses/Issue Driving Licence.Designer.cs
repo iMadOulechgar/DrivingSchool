@@ -33,6 +33,7 @@
             this.BTNcancel = new System.Windows.Forms.Button();
             this.BTNsave = new System.Windows.Forms.Button();
             this.TBNotes = new System.Windows.Forms.TextBox();
+            this.ctrlDrivingLicenseApp1 = new _DVLD_.Applications.LocalDrivingLicenseApplication.ctrlDrivingLicenseApp();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 410);
+            this.label1.Location = new System.Drawing.Point(17, 385);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 19);
             this.label1.TabIndex = 1;
@@ -49,7 +50,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_DVLD_.Properties.Resources.icons8_edit_32__1_2;
-            this.pictureBox1.Location = new System.Drawing.Point(77, 405);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 380);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(33, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -62,7 +63,7 @@
             this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
             this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNcancel.Location = new System.Drawing.Point(645, 566);
+            this.BTNcancel.Location = new System.Drawing.Point(697, 534);
             this.BTNcancel.Name = "BTNcancel";
             this.BTNcancel.Size = new System.Drawing.Size(104, 37);
             this.BTNcancel.TabIndex = 3;
@@ -76,7 +77,7 @@
             this.BTNsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNsave.Image = global::_DVLD_.Properties.Resources.icons8_save_20;
             this.BTNsave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNsave.Location = new System.Drawing.Point(758, 566);
+            this.BTNsave.Location = new System.Drawing.Point(810, 534);
             this.BTNsave.Name = "BTNsave";
             this.BTNsave.Size = new System.Drawing.Size(104, 37);
             this.BTNsave.TabIndex = 4;
@@ -86,21 +87,25 @@
             // 
             // TBNotes
             // 
-            this.TBNotes.Location = new System.Drawing.Point(116, 405);
+            this.TBNotes.Location = new System.Drawing.Point(116, 380);
             this.TBNotes.Multiline = true;
             this.TBNotes.Name = "TBNotes";
-            this.TBNotes.Size = new System.Drawing.Size(746, 148);
+            this.TBNotes.Size = new System.Drawing.Size(797, 148);
             this.TBNotes.TabIndex = 5;
             // 
-            // localDrivingLicenceAppInfoAndApplicationInfo1
+            // ctrlDrivingLicenseApp1
             // 
-           
+            this.ctrlDrivingLicenseApp1.Location = new System.Drawing.Point(21, 12);
+            this.ctrlDrivingLicenseApp1.Name = "ctrlDrivingLicenseApp1";
+            this.ctrlDrivingLicenseApp1.Size = new System.Drawing.Size(907, 362);
+            this.ctrlDrivingLicenseApp1.TabIndex = 6;
             // 
             // Issue_Driving_Licence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 615);
+            this.ClientSize = new System.Drawing.Size(939, 579);
+            this.Controls.Add(this.ctrlDrivingLicenseApp1);
             this.Controls.Add(this.TBNotes);
             this.Controls.Add(this.BTNcancel);
             this.Controls.Add(this.BTNsave);
@@ -109,6 +114,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Issue_Driving_Licence";
             this.Text = "Issue Driving Licence";
+            this.Load += new System.EventHandler(this.Issue_Driving_Licence_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,5 +128,6 @@
         private System.Windows.Forms.Button BTNcancel;
         private System.Windows.Forms.Button BTNsave;
         private System.Windows.Forms.TextBox TBNotes;
+        private Applications.LocalDrivingLicenseApplication.ctrlDrivingLicenseApp ctrlDrivingLicenseApp1;
     }
 }

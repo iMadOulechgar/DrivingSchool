@@ -31,16 +31,7 @@ namespace _DVLD_.Controls
                 return false;
         }
 
-        void FillControlesWithData()
-        {
-            clsBusinessLayerLicences CheckLicence = new clsBusinessLayerLicences();
-            clsApplicationBusinessLayer App = new clsApplicationBusinessLayer();
-            clsBusinessPersone Per = new clsBusinessPersone();
-
-            driverLicenceInfo1.Licence = CheckLicence.FindByLicenceID(Convert.ToInt32(textBox1.Text));
-            //driverLicenceInfo1.Person = Per.FindPersoneByPerId(driverLicenceInfo1.Application.App.AppPersoneId);
-            FillDataWhenSearch(driverLicenceInfo1.Licence.LicenceID);
-        }
+       
 
         void UiLogic(bool I)
         {
@@ -76,17 +67,7 @@ namespace _DVLD_.Controls
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (checkIsLicenceDetainedAlready())
-            {
-                FillControlesWithData();
-                UiLogic(false);
-                MessageBox.Show("You Can Not Detain This License","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            else
-            {
-                FillControlesWithData();
-                UiLogic(true);
-            }
+           
         }
 
         void FillDataBeforeSaving()
@@ -128,9 +109,7 @@ namespace _DVLD_.Controls
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmDrivingLicenceDetails Licence = new frmDrivingLicenceDetails();
-            Licence.FillData(int.Parse(LBLLicenceID.Text));
-            Licence.ShowDialog();
+          
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

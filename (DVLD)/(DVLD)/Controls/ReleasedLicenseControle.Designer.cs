@@ -357,7 +357,6 @@
             this.linkLabel2.TabIndex = 31;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Show Licenses Info";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // linkLabel1
             // 
@@ -369,7 +368,6 @@
             this.linkLabel1.TabIndex = 30;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Show Licenses History";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // BTNcancel
             // 
@@ -396,7 +394,6 @@
             this.BTNInternational.TabIndex = 29;
             this.BTNInternational.Text = "Released";
             this.BTNInternational.UseVisualStyleBackColor = false;
-            this.BTNInternational.Click += new System.EventHandler(this.BTNInternational_Click);
             // 
             // driverLicenceInfo1
             // 
@@ -425,7 +422,6 @@
             this.button2.Size = new System.Drawing.Size(57, 48);
             this.button2.TabIndex = 13;
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
