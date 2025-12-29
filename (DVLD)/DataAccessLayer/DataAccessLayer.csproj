@@ -47,9 +47,9 @@
     <Compile Include="clsDataAccessLayerApplicationType.cs" />
     <Compile Include="clsDataAccessLayerDetained.cs" />
     <Compile Include="clsDataAccessLayerDrivers.cs" />
-    <Compile Include="clsDataAccessLayerInternationalLicences.cs" />
     <Compile Include="clsDataAccessLayerLicences.cs" />
     <Compile Include="clsDataAccessLayerTestAppointment.cs" />
+    <Compile Include="clsDataAccessInternationalLicense.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationData.cs" />
     <Compile Include="clsPersone.cs" />
     <Compile Include="clsTest.cs" />

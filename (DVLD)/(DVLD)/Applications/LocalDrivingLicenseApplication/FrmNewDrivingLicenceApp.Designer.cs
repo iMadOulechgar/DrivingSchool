@@ -185,9 +185,9 @@
             this.LBLFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLFees.Location = new System.Drawing.Point(333, 245);
             this.LBLFees.Name = "LBLFees";
-            this.LBLFees.Size = new System.Drawing.Size(23, 16);
+            this.LBLFees.Size = new System.Drawing.Size(49, 16);
             this.LBLFees.TabIndex = 10;
-            this.LBLFees.Text = "15";
+            this.LBLFees.Text = "[????]";
             // 
             // LBLCreatedBY
             // 

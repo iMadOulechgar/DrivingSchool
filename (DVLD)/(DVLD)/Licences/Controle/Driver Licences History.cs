@@ -1,5 +1,6 @@
 ﻿using _DVLD_.Licences;
 using BusinessLayer;
+using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,7 +56,7 @@ namespace _DVLD_.Controls
 
         void _LoadInternationalLicenses()
         {
-            //DtForInternationalLicence = GetLicenses.GetInternationalLicenses(_DriverID);
+            DtForInternationalLicence = clsInternationalLicense.GetDriverInternationalLicenses(_DriverID);
 
             dgvInternationalLicensesHistory.DataSource = DtForInternationalLicence;
             LBLRecInternational.Text = dgvInternationalLicensesHistory.Rows.Count.ToString();

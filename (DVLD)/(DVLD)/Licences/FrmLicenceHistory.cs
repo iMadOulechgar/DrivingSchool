@@ -52,7 +52,7 @@ namespace _DVLD_.Licences
 
             if (_PersonID == -1)
             {
-                driver_Licences_Hirtory1.Clear();
+                //driver_Licences_Hirtory1.Clear();
             }
             else
             {

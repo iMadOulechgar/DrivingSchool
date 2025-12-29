@@ -36,11 +36,11 @@ namespace DataAccessLayer
                     // The record was found
                     isFound = true;
                     TestTypeID = (int)reader["TestTypeID"];
-                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
+                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenceApplicationID"];
                     AppointmentDate = (DateTime)reader["AppointmentDate"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     PaidFees = Convert.ToDecimal(reader["PaidFees"]);
-                    IsLocked = (bool)reader["IsLocked"];
+                    IsLocked = (bool)reader["Islocked"];
 
                     if (reader["RetakeTestApplicationID"] == DBNull.Value)
                         RetakeTestApplicationID = -1;
@@ -83,7 +83,7 @@ namespace DataAccessLayer
             string query = @"SELECT       top 1 *
                 FROM            TestAppointments
                 WHERE        (TestTypeID = @TestTypeID) 
-                AND (LocalDrivingLicenceApplicationID = @LocalDrivingLicenceApplicationID) 
+                AND (LocalDrivingLicenceApplicationID = @LocalDrivingLicenseApplicationID) 
                 order by TestAppointmentID Desc";
 
 
@@ -107,7 +107,7 @@ namespace DataAccessLayer
                     AppointmentDate = (DateTime)reader["AppointmentDate"];
                     PaidFees = Convert.ToDecimal(reader["PaidFees"]);
                     CreatedByUserID = (int)reader["CreatedByUserID"];
-                    IsLocked = (bool)reader["IsLocked"];
+                    IsLocked = (bool)reader["Islocked"];
 
                     if (reader["RetakeTestApplicationID"] == DBNull.Value)
                         RetakeTestApplicationID = -1;

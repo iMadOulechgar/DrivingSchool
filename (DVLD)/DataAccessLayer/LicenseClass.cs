@@ -90,7 +90,7 @@ namespace DVLD_DataAccess
                 {
                     // The record was found
                     isFound = true;
-                    LicenseClassID = (int)reader["LicenseClassID"];
+                    LicenseClassID = (int)reader["LicenceClassID"];
                     ClassDescription = (string)reader["ClassDescription"];
                     MinimumAllowedAge = (byte)reader["MinimumAllowedAge"];
                     DefaultValidityLength = (byte)reader["DefaultValidityLength"];

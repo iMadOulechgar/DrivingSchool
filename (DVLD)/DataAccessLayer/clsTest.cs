@@ -85,17 +85,18 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
-            string query = @"SELECT  top 1 Tests.TestID, 
+            string query = @"SELECT top 1 Tests.TestID, 
                 Tests.TestAppointmentID, Tests.TestResult, 
-			    Tests.Notes, Tests.CreatedByUserID, Applications.ApplicantPersonID
-                FROM            LocalDrivingLicenseApplications INNER JOIN
+			    Tests.Notes, Tests.CreatedByUserID, Applications.ApplicationPersonID
+                FROM            LocalDrivingLicenceApplications INNER JOIN
                                          Tests INNER JOIN
-                                         TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
-                                         Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
-                WHERE        (Applications.ApplicantPersonID = @PersonID) 
-                        AND (LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID)
+                                         TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID ON LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = TestAppointments.LocalDrivingLicenceApplicationID INNER JOIN
+                                         Applications ON LocalDrivingLicenceApplications.ApplicationID = Applications.ApplicationID
+                WHERE        (Applications.ApplicationPersonID = @PersonID) 
+                        AND (LocalDrivingLicenceApplications.LicenceClassID = @LicenseClassID)
                         AND ( TestAppointments.TestTypeID=@TestTypeID)
                 ORDER BY Tests.TestAppointmentID DESC";
+
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -116,19 +117,11 @@ namespace DVLD_DataAccess
                     TestID = (int)reader["TestID"];
                     TestAppointmentID = (int)reader["TestAppointmentID"];
                     TestResult = (bool)reader["TestResult"];
-                    if (reader["Notes"] == DBNull.Value)
-
+                    if (reader["Notes"] == System.DBNull.Value)
                         Notes = "";
                     else
                         Notes = (string)reader["Notes"];
-
                     CreatedByUserID = (int)reader["CreatedByUserID"];
-
-                }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
                 }
 
                 reader.Close();
@@ -197,9 +190,9 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
             string query = @"Insert Into Tests (TestAppointmentID,TestResult,
-                                                Notes,   CreatedByUserID)
+                                                Notes,CreatedByUserID)
                             Values (@TestAppointmentID,@TestResult,
-                                                @Notes,   @CreatedByUserID);
+                                                @Notes,@CreatedByUserID);
                             
                                 UPDATE TestAppointments 
                                 SET IsLocked=1 where TestAppointmentID = @TestAppointmentID;
@@ -211,13 +204,10 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             command.Parameters.AddWithValue("@TestResult", TestResult);
 
-            if (Notes != "" && Notes != null)
+            if (Notes != "")
                 command.Parameters.AddWithValue("@Notes", Notes);
             else
                 command.Parameters.AddWithValue("@Notes", System.DBNull.Value);
-
-      
-            
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
@@ -296,10 +286,10 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
-            string query = @"SELECT PassedTestCount = count(TestTypeID)
+            string query = @"SELECT count(TestTypeID)
                          FROM Tests INNER JOIN
                          TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
-						 where LocalDrivingLicenseApplicationID =@LocalDrivingLicenseApplicationID and TestResult=1";
+						 where LocalDrivingLicenceApplicationID =@LocalDrivingLicenseApplicationID and TestResult=1";
 
             SqlCommand command = new SqlCommand(query, connection);
 

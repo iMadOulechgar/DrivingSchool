@@ -38,7 +38,7 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static bool FindByAppTypeID(ref int ID ,ref string title , ref decimal fees)
+        public static bool FindByAppTypeID(int ID ,ref string title , ref decimal fees)
         {
             bool result = false;
             SqlConnection con = new SqlConnection(clsConnection.ConnectionString);
@@ -56,7 +56,6 @@ namespace DataAccessLayer
                 {
                     result = true;
 
-                    ID = (int)reader["ApplicationTypeID"];
                     title = (string)reader["ApplicationTypeTitle"];
                     fees = (decimal)reader["ApplicationFees"];
                 }

@@ -27,7 +27,7 @@ namespace BusinessLayer
             public int CreatedByUser { get; set; }
             public bool IsLocked { get; set; }    
             public int RetakeTestID { get; set; }
-            public clsApplicationBusinessLayer RetakeTestInfo { get; set; }    
+            public clsApplication RetakeTestInfo { get; set; }    
 
             public int TestID
             {
@@ -62,7 +62,7 @@ namespace BusinessLayer
             CreatedByUser = createdbyuser;
             IsLocked = islocked;
             RetakeTestID = retakeid;
-            RetakeTestInfo = clsApplicationBusinessLayer.FindBaseApplication(RetakeTestID);
+            RetakeTestInfo = clsApplication.FindBaseApplication(RetakeTestID);
              Mode = enmode.Update;
         }
 
@@ -92,12 +92,10 @@ namespace BusinessLayer
 
             if (clsDataAccessLayerTestAppointment.GetTestAppointmentInfoByID(TestAppointmentID, ref testtype, ref LocalDrivingLicenseApplicationID,
             ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked, ref RetakeTestApplicationID))
-
                 return new clsBussinessLayerTestAppointment(TestAppointmentID, (clsTestType.enTestType)testtype, LocalDrivingLicenseApplicationID,
              AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID);
             else
                 return null;
-
         }
 
         public static clsBussinessLayerTestAppointment GetLastTestAppointment(int LocalDrivingLicenseApplicationID,int TestTypeID)

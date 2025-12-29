@@ -6,11 +6,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static BusinessLayer.clsApplicationBusinessLayer;
 
 namespace BusinessLayer
 {
-    public class clsLocalDrivingLicenseApplicaionBusiness : clsApplicationBusinessLayer
+    public class clsLocalDrivingLicenseApplicaionBusiness : clsApplication
     {
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -42,13 +41,13 @@ namespace BusinessLayer
             DateTime ApplicationDate, int ApplicationTypeID,
              enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
              decimal PaidFees, int CreatedByUserID, int LicenseClassID)
-
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ApplicationId = ApplicationID;
             this.AppPersoneId = ApplicantPersonID;
+            base.PersonInfo = clsPersone.FindPersoneByPerId(AppPersoneId);
             this.AppDate = ApplicationDate;
-            this.AppType = (int)ApplicationTypeID;
+            this.AppType =(int)ApplicationTypeID;
             this.AppStatus = ApplicationStatus;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
@@ -89,7 +88,7 @@ namespace BusinessLayer
             if (IsFound)
             {
                 //now we find the base application
-                clsApplicationBusinessLayer Application = clsApplicationBusinessLayer.FindBaseApplication(ApplicationID);
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
 
                 //we return new object of that person with the right data
                 return new clsLocalDrivingLicenseApplicaionBusiness(
@@ -115,7 +114,7 @@ namespace BusinessLayer
             if (IsFound)
             {
                 //now we find the base application
-                clsApplicationBusinessLayer Application = clsApplicationBusinessLayer.FindBaseApplication(ApplicationID);
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
 
                 return new clsLocalDrivingLicenseApplicaionBusiness(
                      LocalDrivingLicenseApplicationID, Application.ApplicationId,
@@ -131,10 +130,9 @@ namespace BusinessLayer
 
         public bool Save()
         {
-
             //Because of inheritance first we call the save method in the base class,
             //it will take care of adding all information to the application table.
-            base.Mode = (clsApplicationBusinessLayer.enMode)Mode;
+            base.Mode = (clsApplication.enMode)Mode;
             if (!base.Save())
                 return false;
 

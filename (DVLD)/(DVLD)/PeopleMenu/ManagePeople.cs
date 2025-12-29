@@ -18,7 +18,7 @@ namespace _DVLD_.PeopleMenu
             InitializeComponent();
         }
 
-        private static DataTable _DtAllPeople = clsBusinessPersone.GetAllRowsFromPeople();
+        private static DataTable _DtAllPeople = BusinessLayer.clsPersone.GetAllRowsFromPeople();
         private DataTable _DtPeople = _DtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
                                                        "FirstName", "SecondName", "ThirdName", "LastName",
                                                        "GendorCaption", "DateOfBirth", "CountryName",
@@ -26,7 +26,7 @@ namespace _DVLD_.PeopleMenu
 
         private void _RefreshPeoplList()
         {
-            _DtAllPeople = clsBusinessPersone.GetAllRowsFromPeople();
+            _DtAllPeople = BusinessLayer.clsPersone.GetAllRowsFromPeople();
             _DtPeople = _DtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
                                                        "FirstName", "SecondName", "ThirdName", "LastName",
                                                        "GendorCaption", "DateOfBirth", "CountryName",
@@ -101,9 +101,9 @@ namespace _DVLD_.PeopleMenu
             }
             else
             {
-                if (clsBusinessPersone.DeletePersoneById((int)DGVmanagePeople.CurrentRow.Cells[0].Value)) {
+                if (BusinessLayer.clsPersone.DeletePersoneById((int)DGVmanagePeople.CurrentRow.Cells[0].Value)) {
                     MessageBox.Show("Persone Deleted Sucssesfly", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                     _RefreshPeoplList();
+                    _RefreshPeoplList();
                 }
                 else
                 {

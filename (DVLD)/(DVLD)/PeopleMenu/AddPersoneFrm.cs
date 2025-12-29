@@ -23,7 +23,7 @@ namespace _DVLD_.PeopleMenu
         enum enMode { Add = 0 , Update = 1}
         enMode _Mode = enMode.Add;
         private int _PersonID = -1;
-        clsBusinessPersone _Person;
+        BusinessLayer.clsPersone _Person;
 
         public AddPersoneFrm()
         {
@@ -56,7 +56,7 @@ namespace _DVLD_.PeopleMenu
             if (_Mode == enMode.Add)
             {
                 lblTitle.Text = "Add New Person";
-                _Person = new clsBusinessPersone();
+                _Person = new BusinessLayer.clsPersone();
             }
             else
             {
@@ -95,7 +95,7 @@ namespace _DVLD_.PeopleMenu
 
         private void _LoadData()
         {
-            _Person = clsBusinessPersone.FindPersoneByPerId(_PersonID);
+            _Person = BusinessLayer.clsPersone.FindPersoneByPerId(_PersonID);
 
             if (_Person == null)
             {

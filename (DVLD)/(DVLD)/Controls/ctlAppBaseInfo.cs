@@ -16,7 +16,7 @@ namespace _DVLD_.Controls
     public partial class ctlAppBaseInfo : UserControl
     {
 
-        private clsApplicationBusinessLayer _Application;
+        private clsApplication _Application;
         private int _ApplicationID;
                 
         public int ApplicationId{
@@ -32,7 +32,7 @@ namespace _DVLD_.Controls
 
         public void LoadApplicationInfo(int ApplicationID)
         {
-            _Application = clsApplicationBusinessLayer.FindBaseApplication(ApplicationID);
+            _Application = clsApplication.FindBaseApplication(ApplicationID);
             if (_Application == null)
             {
                 ResetApplicationInfo();

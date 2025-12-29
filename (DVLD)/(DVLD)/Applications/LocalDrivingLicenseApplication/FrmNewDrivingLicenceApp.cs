@@ -59,7 +59,7 @@ namespace _DVLD_.Applications
                 Tab2.Enabled = false;
 
                 CBLicenceClasses.SelectedIndex = 2;
-                LBLFees.Text = clsBusinessApplicationType.Find((int)clsApplicationBusinessLayer.enApplicationType.NewInternationalLicense).AppFees.ToString();
+                LBLFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.NewInternationalLicense).AppFees.ToString();
                 LBLDate.Text = DateTime.Now.ToShortDateString();
                 LBLCreatedBY.Text = clsGlobal.UserLogin.UserName;
             }
@@ -137,7 +137,7 @@ namespace _DVLD_.Applications
 
             int LicenseClassID = clsLicenseClass.Find(CBLicenceClasses.Text).LicenseClassID;
 
-            int ActiveApplicationID = clsApplicationBusinessLayer.GetActiveApplicationIDForLicenseClass(_SelectedPersonID, clsApplicationBusinessLayer.enApplicationType.NewDrivingLicense, LicenseClassID);
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(_SelectedPersonID, clsApplication.enApplicationType.NewDrivingLicense, LicenseClassID);
 
             if (ActiveApplicationID != -1)
             {
@@ -146,12 +146,19 @@ namespace _DVLD_.Applications
                 return;
             }
 
-            _LocalDrivingLicenseApplication.ApplicationId = personeFilterAndAdd1.PersonID;
+            //check if user already have issued license of the same driving class.
+            if (clsBusinessLayerLicences.IsLicenseExistByPersonID(personeFilterAndAdd1.PersonID, LicenseClassID))
+            {
+                MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _LocalDrivingLicenseApplication.AppPersoneId = personeFilterAndAdd1.PersonID;
             _LocalDrivingLicenseApplication.AppDate = DateTime.Now;
             _LocalDrivingLicenseApplication.AppType = 1;
-            _LocalDrivingLicenseApplication.AppStatus = clsApplicationBusinessLayer.enApplicationStatus.New;
+            _LocalDrivingLicenseApplication.AppStatus = clsApplication.enApplicationStatus.New;
             _LocalDrivingLicenseApplication.LastStatusDate = DateTime.Now;
-            _LocalDrivingLicenseApplication.PaidFees = Convert.ToDecimal(LBLFees.Text);
+            _LocalDrivingLicenseApplication.PaidFees = clsApplicationType.Find(1).AppFees;
             _LocalDrivingLicenseApplication.CreatedByUserID = clsGlobal.UserLogin.UserID;
             _LocalDrivingLicenseApplication.LicenseClassID = LicenseClassID;
             

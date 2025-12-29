@@ -14,7 +14,7 @@ namespace _DVLD_.Applications
 {
     public partial class FrmEditApplicationType : Form
     {
-        clsBusinessApplicationType _AppTypes;
+        clsApplicationType _AppTypes;
         private int _ApplicationID;
         public FrmEditApplicationType(int AppID)
         {
@@ -30,7 +30,7 @@ namespace _DVLD_.Applications
 
         private void FrmEditApplicationType_Load(object sender, EventArgs e)
         {
-            _AppTypes = clsBusinessApplicationType.Find(_ApplicationID);
+            _AppTypes = clsApplicationType.Find(_ApplicationID);
 
             if (_AppTypes != null)
             {

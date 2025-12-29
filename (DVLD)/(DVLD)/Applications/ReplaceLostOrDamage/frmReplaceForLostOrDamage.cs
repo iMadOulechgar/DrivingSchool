@@ -40,9 +40,9 @@ namespace _DVLD_.LicencesLocal_And_International
         private int _GetApplicationTypeID()
         {
             if(RBDamage.Checked)
-                return (int)clsApplicationBusinessLayer.enApplicationType.ReplaceDamagedDrivingLicense;
+                return (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense;
             else
-                return (int)clsApplicationBusinessLayer.enApplicationType.ReplaceLostDrivingLicense;
+                return (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense;
         }
 
         private void BTNInternational_Click(object sender, EventArgs e)
@@ -79,14 +79,14 @@ namespace _DVLD_.LicencesLocal_And_International
         {
             LBLtitle.Text = "Replacement for Lost License";
             this.Text = LBLtitle.Text;
-            LBLAppFees.Text = clsBusinessApplicationType.Find(_GetApplicationTypeID()).AppFees.ToString();
+            LBLAppFees.Text = clsApplicationType.Find(_GetApplicationTypeID()).AppFees.ToString();
         }
 
         private void RBDamage_CheckedChanged(object sender, EventArgs e)
         {
             LBLtitle.Text = "Replacement for Damaged License";
             this.Text = LBLtitle.Text;
-            LBLAppFees.Text = clsBusinessApplicationType.Find(_GetApplicationTypeID()).AppFees.ToString();
+            LBLAppFees.Text = clsApplicationType.Find(_GetApplicationTypeID()).AppFees.ToString();
         }
 
         private void filterLicences1_OnLicenseSelected(int obj)

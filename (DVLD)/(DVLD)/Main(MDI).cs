@@ -1,6 +1,7 @@
 ﻿using _DVLD_.About_Test;
 using _DVLD_.Application;
 using _DVLD_.Applications;
+using _DVLD_.Applications.Renew_Local_License;
 using _DVLD_.Detained;
 using _DVLD_.Drivers;
 using _DVLD_.LicencesLocal_And_International;
@@ -101,7 +102,8 @@ namespace _DVLD_
 
         private void renewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmRenew Renew = new frmRenew();
+            Renew.ShowDialog();    
         }
 
         private void replacementForLostOrDemageLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,5 +141,6 @@ namespace _DVLD_
             FrmListLocalDrivingLicenceApp App = new FrmListLocalDrivingLicenceApp();
             App.ShowDialog();
         }
+
     }
 }

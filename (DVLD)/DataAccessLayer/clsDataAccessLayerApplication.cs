@@ -37,7 +37,7 @@ namespace DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    ApplicantPersonID = (int)reader["ApplicantPersonID"];
+                    ApplicantPersonID = (int)reader["ApplicationPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
                     ApplicationStatus = (byte)reader["ApplicationStatus"];
@@ -121,26 +121,23 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
             string query = @"INSERT INTO Applications ( 
-                            ApplicantPersonID,ApplicationDate,ApplicationTypeID,
+                            ApplicationPersonID,ApplicationDate,ApplicationTypeID,
                             ApplicationStatus,LastStatusDate,
                             PaidFees,CreatedByUserID)
                              VALUES (@ApplicantPersonID,@ApplicationDate,@ApplicationTypeID,
                                       @ApplicationStatus,@LastStatusDate,
-                                      @PaidFees,   @CreatedByUserID);
+                                      @PaidFees,@CreatedByUserID);
                              SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("ApplicantPersonID", @ApplicantPersonID);
-            command.Parameters.AddWithValue("ApplicationDate", @ApplicationDate);
-            command.Parameters.AddWithValue("ApplicationTypeID", @ApplicationTypeID);
-            command.Parameters.AddWithValue("ApplicationStatus", @ApplicationStatus);
-            command.Parameters.AddWithValue("LastStatusDate", @LastStatusDate);
-            command.Parameters.AddWithValue("PaidFees", @PaidFees);
-            command.Parameters.AddWithValue("CreatedByUserID", @CreatedByUserID);
-
-
-
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+            command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
             {
@@ -153,18 +150,15 @@ namespace DataAccessLayer
                     ApplicationID = insertedID;
                 }
             }
-
             catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
-
             }
 
             finally
             {
                 connection.Close();
             }
-
 
             return ApplicationID;
         }
@@ -179,7 +173,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
             string query = @"Update  Applications  
-                            set ApplicantPersonID = @ApplicantPersonID,
+                            set ApplicationPersonID = @ApplicantPersonID,
                                 ApplicationDate = @ApplicationDate,
                                 ApplicationTypeID = @ApplicationTypeID,
                                 ApplicationStatus = @ApplicationStatus, 
@@ -191,13 +185,13 @@ namespace DataAccessLayer
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("ApplicantPersonID", @ApplicantPersonID);
-            command.Parameters.AddWithValue("ApplicationDate", @ApplicationDate);
-            command.Parameters.AddWithValue("ApplicationTypeID", @ApplicationTypeID);
-            command.Parameters.AddWithValue("ApplicationStatus", @ApplicationStatus);
-            command.Parameters.AddWithValue("LastStatusDate", @LastStatusDate);
-            command.Parameters.AddWithValue("PaidFees", @PaidFees);
-            command.Parameters.AddWithValue("CreatedByUserID", @CreatedByUserID);
+            command.Parameters.AddWithValue("@ApplicantPersonID", @ApplicantPersonID);
+            command.Parameters.AddWithValue("@ApplicationDate", @ApplicationDate);
+            command.Parameters.AddWithValue("@ApplicationTypeID", @ApplicationTypeID);
+            command.Parameters.AddWithValue("@ApplicationStatus", @ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", @LastStatusDate);
+            command.Parameters.AddWithValue("@PaidFees", @PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", @CreatedByUserID);
 
 
             try

@@ -27,7 +27,7 @@ namespace DVLD_DataAccess
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                command.Parameters.AddWithValue("@LocalDrivingLicenceApplicationID", LocalDrivingLicenseApplicationID);
 
                 try
                 {
@@ -182,8 +182,8 @@ namespace DVLD_DataAccess
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("LicenseClassID", LicenseClassID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
             
             try
             {
@@ -346,11 +346,11 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
             string query = @" SELECT top 1 Found=1
-                            FROM LocalDrivingLicenseApplications INNER JOIN
-                                 TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                            FROM LocalDrivingLicenceApplications INNER JOIN
+                                 TestAppointments ON LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = TestAppointments.LocalDrivingLicenceApplicationID INNER JOIN
                                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
                             WHERE
-                            (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
+                            (LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = @LocalDrivingLicenseApplicationID) 
                             AND(TestAppointments.TestTypeID = @TestTypeID)
                             ORDER BY TestAppointments.TestAppointmentID desc";
 
@@ -393,11 +393,11 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
             string query = @" SELECT TotalTrialsPerTest = count(TestID)
-                            FROM LocalDrivingLicenseApplications INNER JOIN
-                                 TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                            FROM LocalDrivingLicenceApplications INNER JOIN
+                                 TestAppointments ON LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = TestAppointments.LocalDrivingLicenceApplicationID INNER JOIN
                                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
                             WHERE
-                            (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
+                            (LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = @LocalDrivingLicenseApplicationID) 
                             AND(TestAppointments.TestTypeID = @TestTypeID)";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -441,9 +441,9 @@ namespace DVLD_DataAccess
 
             string query = @" SELECT top 1 Found=1
                             FROM LocalDrivingLicenceApplications INNER JOIN
-                                 TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID 
+                                 TestAppointments ON LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = TestAppointments.LocalDrivingLicenceApplicationID 
                             WHERE
-                            (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)  
+                            (LocalDrivingLicenceApplications.LocalDrivingLicenceApplicationID = @LocalDrivingLicenseApplicationID)  
                             AND(TestAppointments.TestTypeID = @TestTypeID) and isLocked=0
                             ORDER BY TestAppointments.TestAppointmentID desc";
 

@@ -72,10 +72,10 @@ namespace _DVLD_.AllAboutTest
 
         public void LoadInfo(int LocalDrivingLicenseAppID , int AppointmentID = -1)
         {
-            if (AppointmentID != -1)
-                _Mode = enMode.Update;
-            else
+            if (AppointmentID == -1)
                 _Mode = enMode.AddNew;
+            else
+                _Mode = enMode.Update;
 
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseAppID;
             _TestAppointmentID = AppointmentID;
@@ -96,7 +96,7 @@ namespace _DVLD_.AllAboutTest
 
             if (_CreationMode == enCreationMode.RetakeTestSchedule)
             {
-                LBLRetakeFees.Text = clsBusinessApplicationType.Find((int)clsApplicationBusinessLayer.enApplicationType.RetakeTest).AppFees.ToString();
+                LBLRetakeFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).AppFees.ToString();
                 gbRetakeTest.Enabled = true;
                 LBLTitle.Text = "Schedule Retake Test";
                 LBLAppointmentID.Text = "0";
@@ -120,6 +120,7 @@ namespace _DVLD_.AllAboutTest
                 dateTimePicker1.MinDate = DateTime.Now;
                 LBLAppointmentID.Text = "N/A";
                 LBLfees.Text = clsTestType.Find(_TestTypeID).Fees.ToString();
+                _TestAppointment = new clsBussinessLayerTestAppointment();
             }
             else
             {
@@ -127,7 +128,7 @@ namespace _DVLD_.AllAboutTest
                     return;
             }
 
-            LBLTotalFees.Text = (Convert.ToSingle(LBLfees) + Convert.ToSingle(LBLRetakeFees)).ToString();
+            LBLTotalFees.Text = (Convert.ToSingle(LBLfees.Text) + Convert.ToSingle(LBLRetakeFees.Text)).ToString();
 
             if (!_HandleActiveTestAppointmentConstraint())
                 return;
@@ -138,7 +139,6 @@ namespace _DVLD_.AllAboutTest
 
 
         }
-
 
         private bool _HandlePrviousTestConstraint()
         {
@@ -278,14 +278,14 @@ namespace _DVLD_.AllAboutTest
                 //then we linke it with the appointment.
 
                 //First Create Applicaiton 
-                clsApplicationBusinessLayer Application = new clsApplicationBusinessLayer();
+                clsApplication Application = new clsApplication();
 
                 Application.AppPersoneId = _LocalDrivingLicenseApplication.AppPersoneId;
                 Application.AppDate = DateTime.Now;
-                Application.AppType = (int)clsApplicationBusinessLayer.enApplicationType.RetakeTest;
-                Application.AppStatus = clsApplicationBusinessLayer.enApplicationStatus.Completed;
+                Application.AppType = (int)clsApplication.enApplicationType.RetakeTest;
+                Application.AppStatus = clsApplication.enApplicationStatus.Completed;
                 Application.LastStatusDate = DateTime.Now;
-                Application.PaidFees = clsBusinessApplicationType.Find((int)clsApplicationBusinessLayer.enApplicationType.RetakeTest).AppFees;
+                Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).AppFees;
                 Application.CreatedByUserID = clsGlobal.UserLogin.UserID;
 
                 if (!Application.Save())

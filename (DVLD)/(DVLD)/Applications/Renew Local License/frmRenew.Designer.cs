@@ -117,7 +117,7 @@
             this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 432);
+            this.groupBox1.Location = new System.Drawing.Point(12, 411);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(890, 261);
             this.groupBox1.TabIndex = 24;
@@ -445,7 +445,7 @@
             // filterLicences1
             // 
             this.filterLicences1.FilterEnabled = true;
-            this.filterLicences1.Location = new System.Drawing.Point(12, 38);
+            this.filterLicences1.Location = new System.Drawing.Point(12, 26);
             this.filterLicences1.Name = "filterLicences1";
             this.filterLicences1.Size = new System.Drawing.Size(881, 388);
             this.filterLicences1.TabIndex = 25;
@@ -467,7 +467,7 @@
             this.LLlicenseInfo.AutoSize = true;
             this.LLlicenseInfo.Enabled = false;
             this.LLlicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LLlicenseInfo.Location = new System.Drawing.Point(232, 708);
+            this.LLlicenseInfo.Location = new System.Drawing.Point(226, 678);
             this.LLlicenseInfo.Name = "LLlicenseInfo";
             this.LLlicenseInfo.Size = new System.Drawing.Size(131, 15);
             this.LLlicenseInfo.TabIndex = 30;
@@ -479,7 +479,7 @@
             // 
             this.LLHistory.AutoSize = true;
             this.LLHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LLHistory.Location = new System.Drawing.Point(42, 708);
+            this.LLHistory.Location = new System.Drawing.Point(36, 678);
             this.LLHistory.Name = "LLHistory";
             this.LLHistory.Size = new System.Drawing.Size(151, 15);
             this.LLHistory.TabIndex = 29;
@@ -492,7 +492,7 @@
             this.BTNcancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancel.Image = global::_DVLD_.Properties.Resources.icons8_cancel_20;
             this.BTNcancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNcancel.Location = new System.Drawing.Point(652, 698);
+            this.BTNcancel.Location = new System.Drawing.Point(688, 668);
             this.BTNcancel.Name = "BTNcancel";
             this.BTNcancel.Size = new System.Drawing.Size(104, 37);
             this.BTNcancel.TabIndex = 27;
@@ -506,7 +506,7 @@
             this.BTNIssued.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNIssued.Image = global::_DVLD_.Properties.Resources.icons8_renew_48;
             this.BTNIssued.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTNIssued.Location = new System.Drawing.Point(762, 698);
+            this.BTNIssued.Location = new System.Drawing.Point(798, 668);
             this.BTNIssued.Name = "BTNIssued";
             this.BTNIssued.Size = new System.Drawing.Size(104, 37);
             this.BTNIssued.TabIndex = 28;
@@ -518,7 +518,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 742);
+            this.ClientSize = new System.Drawing.Size(916, 712);
             this.Controls.Add(this.LLlicenseInfo);
             this.Controls.Add(this.LLHistory);
             this.Controls.Add(this.BTNcancel);

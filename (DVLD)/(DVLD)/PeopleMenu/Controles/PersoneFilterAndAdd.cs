@@ -63,7 +63,7 @@ namespace _DVLD_.Controls
             InitializeComponent();
         }
 
-        public clsBusinessPersone Persone1;
+        public BusinessLayer.clsPersone Persone1;
 
         public void FilterFocus()
         {
@@ -75,7 +75,7 @@ namespace _DVLD_.Controls
             get { return personInfo1.PersonID; }
         }
 
-        public clsBusinessPersone SelectedPersonInfo
+        public BusinessLayer.clsPersone SelectedPersonInfo
         {
             get { return personInfo1.SelectedPersonInfo; }
         }

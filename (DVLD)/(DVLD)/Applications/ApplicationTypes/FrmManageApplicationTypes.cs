@@ -24,7 +24,7 @@ namespace _DVLD_.Application
 
         private void FrmManageApplicationTypes_Load(object sender, EventArgs e)
         {
-            _DtAppTypes = clsBusinessApplicationType.GetAllFromAppTypes();
+            _DtAppTypes = clsApplicationType.GetAllFromAppTypes();
 
             dataGridView1.DataSource = _DtAppTypes;
 

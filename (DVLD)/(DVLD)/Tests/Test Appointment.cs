@@ -82,17 +82,17 @@ namespace _DVLD_.TestForms
 
             clsBusinessTest LastTest = Local.GetLastTestPerTestType(_TestTypes);
 
-            if (LastTest == null)
+            if (Local.DoesPassTestType(_TestTypes))
             {
-                Schedule_Test Frm = new Schedule_Test(_LocalDrivingLicenseAppID,_TestTypes);
-                Frm.ShowDialog();
-                Test_Appointment_Load(null, null);
+                MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (LastTest.TestResult == true)
+            if (LastTest == null)
             {
-                MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Schedule_Test Frm = new Schedule_Test(_LocalDrivingLicenseAppID, _TestTypes);
+                Frm.ShowDialog();
+                Test_Appointment_Load(null, null);
                 return;
             }
 

@@ -15,7 +15,7 @@ namespace _DVLD_.TestForms
 {
     public partial class Take_Test : Form
     {
-        private int _AppointmentID;
+        private int _AppointmentID = -1;
         private clsTestType.enTestType _TestType;
 
         private int _TestID = -1;
@@ -69,7 +69,7 @@ namespace _DVLD_.TestForms
             }
 
             _Test.TestAppointmentID = _AppointmentID;
-            _Test.TestResult = RBpass.Checked;
+            _Test.TestResult = (RBpass.Checked) ? true : false;
             _Test.Notes = textBox1.Text.Trim();
             _Test.CreatedByUserID = clsGlobal.UserLogin.UserID;
 

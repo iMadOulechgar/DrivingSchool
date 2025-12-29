@@ -89,10 +89,9 @@ namespace _DVLD_.Applications
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
             clsLocalDrivingLicenseApplicaionBusiness LocalDrivingLicenseApplication =
                     clsLocalDrivingLicenseApplicaionBusiness.FindByLocalDrivingAppLicenseID
-                                                    (LocalDrivingLicenseApplicationID);
+                                                    ((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
 
             int TotalPassedTests = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value;
 
@@ -102,17 +101,17 @@ namespace _DVLD_.Applications
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3) && !LicenseExists;
 
             showLicenToolStripMenuItem.Enabled = LicenseExists;
-            editApplicationToolStripMenuItem.Enabled = !LicenseExists && (LocalDrivingLicenseApplication.AppStatus == clsApplicationBusinessLayer.enApplicationStatus.New);
+            editApplicationToolStripMenuItem.Enabled = !LicenseExists && (LocalDrivingLicenseApplication.AppStatus == clsApplication.enApplicationStatus.New);
             sechduleTestToolStripMenuItem.Enabled = !LicenseExists;
 
             //Enable/Disable Cancel Menue Item
             //We only canel the applications with status=new.
-            cancelApplicationToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.AppStatus == clsApplicationBusinessLayer.enApplicationStatus.New);
+            cancelApplicationToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.AppStatus == clsApplication.enApplicationStatus.New);
 
             //Enable/Disable Delete Menue Item
             //We only allow delete incase the application status is new not complete or Cancelled.
             deleteApplicationToolStripMenuItem.Enabled =
-                (LocalDrivingLicenseApplication.AppStatus == clsApplicationBusinessLayer.enApplicationStatus.New);
+                (LocalDrivingLicenseApplication.AppStatus == clsApplication.enApplicationStatus.New);
 
 
 
@@ -121,7 +120,7 @@ namespace _DVLD_.Applications
             bool PassedWrittenTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.WrittenTest);
             bool PassedStreetTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.StreetTest);
 
-            sechduleTestToolStripMenuItem.Enabled = (!PassedVisionTest || !PassedWrittenTest || !PassedStreetTest) && (LocalDrivingLicenseApplication.AppStatus == clsApplicationBusinessLayer.enApplicationStatus.New);
+            sechduleTestToolStripMenuItem.Enabled = (!PassedVisionTest || !PassedWrittenTest || !PassedStreetTest) && (LocalDrivingLicenseApplication.AppStatus == clsApplication.enApplicationStatus.New);
 
             if (sechduleTestToolStripMenuItem.Enabled)
             {
@@ -141,24 +140,27 @@ namespace _DVLD_.Applications
         {
             Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.VisionTest);
             Test.ShowDialog();
+            FrmLocalDrivingLicenceApp_Load(null, null);
         }
 
         private void sechduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.WrittenTest);
             Test.ShowDialog();
+            FrmLocalDrivingLicenceApp_Load(null, null);
         }
 
         private void sechduleDriveTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Test_Appointment Test = new Test_Appointment((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, clsTestType.enTestType.StreetTest);
             Test.ShowDialog();
+            FrmLocalDrivingLicenceApp_Load(null, null);
         }
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Issue_Driving_Licence Licence = new Issue_Driving_Licence((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value, (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value);
-            //Licence.ShowDialog();
+            Issue_Driving_Licence Licence = new Issue_Driving_Licence((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            Licence.ShowDialog();
         }
 
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,7 +204,9 @@ namespace _DVLD_.Applications
 
         private void showPersoneLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            int PersonID = clsLocalDrivingLicenseApplicaionBusiness.FindByLocalDrivingAppLicenseID((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value).PersonInfo.PersonID;
+            FrmLicenceHistory History = new FrmLicenceHistory(PersonID);
+            History.ShowDialog();
         }
 
         private void CBSelect_SelectedIndexChanged(object sender, EventArgs e)

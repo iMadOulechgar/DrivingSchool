@@ -13,7 +13,7 @@ namespace BusinessLayer
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
-        public clsBusinessPersone PersonInfo;
+        public clsPersone PersonInfo;
         public int DriverID { get; set; }
         public int PersonID { get; set; }
         public int CreatedByUserID { get; set; }
@@ -34,7 +34,7 @@ namespace BusinessLayer
             this.PersonID = PersonID;
             this.CreatedByUserID = CreatedByUserID;
             this.CreatedDate = CreatedDate;
-            this.PersonInfo = clsBusinessPersone.FindPersoneByPerId(PersonID);
+            this.PersonInfo = clsPersone.FindPersoneByPerId(PersonID);
 
             Mode = enMode.Update;
         }

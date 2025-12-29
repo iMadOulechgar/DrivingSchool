@@ -23,7 +23,7 @@ namespace DataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
-            string query = "SELECT * FROM Licences WHERE LicenceID = @LicenceID";
+            string query = "SELECT * FROM Licences WHERE LicenceID = @LicenseID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -41,7 +41,7 @@ namespace DataAccessLayer
                     isFound = true;
                     ApplicationID = (int)reader["ApplicationID"];
                     DriverID = (int)reader["DriverID"];
-                    LicenseClass = (int)reader["LicenseClass"];
+                    LicenseClass = (int)reader["LicenceClass"];
                     IssueDate = (DateTime)reader["IssueDate"];
                     ExpirationDate = (DateTime)reader["ExpirationDate"];
 
@@ -132,7 +132,7 @@ namespace DataAccessLayer
 		                   LicenceClasses.ClassName, Licences.IssueDate, 
 		                   Licences.ExpirationDate, Licences.IsActive
                            FROM Licences INNER JOIN
-                                LicenceClasses ON Licensces.LicenceClass = LicenceClasses.LicenceClassID
+                                LicenceClasses ON Licences.LicenceClass = LicenceClasses.LicenceClassID
                             where DriverID=@DriverID
                             Order By IsActive Desc, ExpirationDate Desc";
 
@@ -314,12 +314,12 @@ namespace DataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsConnection.ConnectionString);
 
-            string query = @"SELECT        Licences.LicenseID
+            string query = @"SELECT        Licences.LicenceID
                             FROM Licences INNER JOIN
                                                      Drivers ON Licences.DriverID = Drivers.DriverID
                             WHERE  
                              
-                             Licences.LicenseClass = @LicenseClass 
+                             Licences.LicenceClass = @LicenseClass 
                               AND Drivers.PersonID = @PersonID
                               And IsActive=1;";
 

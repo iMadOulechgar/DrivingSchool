@@ -16,7 +16,7 @@ namespace _DVLD_.Controls
             InitializeComponent();
         }
 
-        private clsBusinessPersone _Person;
+        private BusinessLayer.clsPersone _Person;
 
         private int _PersonID = -1;
 
@@ -25,7 +25,7 @@ namespace _DVLD_.Controls
             get { return _PersonID; }
         }
 
-        public clsBusinessPersone SelectedPersonInfo
+        public BusinessLayer.clsPersone SelectedPersonInfo
         {
             get { return _Person; }
         }
@@ -63,7 +63,7 @@ namespace _DVLD_.Controls
 
         public void LoadPersonInfo(int PersonID)
         {
-            _Person = clsBusinessPersone.FindPersoneByPerId(PersonID);
+            _Person = BusinessLayer.clsPersone.FindPersoneByPerId(PersonID);
             if (_Person == null)
             {
                 ResetPersonInfo();
@@ -75,7 +75,7 @@ namespace _DVLD_.Controls
 
         public void LoadPersonInfo(string NationalNo)
         {
-            _Person = clsBusinessPersone.FindPersoneByNationalNo(NationalNo);
+            _Person = BusinessLayer.clsPersone.FindPersoneByNationalNo(NationalNo);
             if (_Person == null)
             {
                 ResetPersonInfo();

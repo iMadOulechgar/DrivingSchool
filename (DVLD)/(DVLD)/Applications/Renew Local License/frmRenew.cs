@@ -29,7 +29,7 @@ namespace _DVLD_.Applications.Renew_Local_License
             LBLAppDate.Text = clsFormat.DateToShort(DateTime.Now);
             LBLIssueDate.Text = LBLAppDate.Text;
             LBLExpirationDate.Text = "???";
-            LBLAppFees.Text = clsBusinessApplicationType.Find((int)clsApplicationBusinessLayer.enApplicationType.RenewDrivingLicense).AppFees.ToString();
+            LBLAppFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.RenewDrivingLicense).AppFees.ToString();
             LBLCreatedBy.Text = clsGlobal.UserLogin.UserName;
         }
 
